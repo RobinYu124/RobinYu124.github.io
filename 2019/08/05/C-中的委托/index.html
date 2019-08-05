@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="记录自己的点点滴滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MyBlog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="hushzhangC#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#中的委托">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/C-中的委托/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="记录自己的点点滴滴">
+<meta property="og:description" content="hushzhangC#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-05T09:33:55.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBlog">
-<meta name="twitter:description" content="记录自己的点点滴滴">
+<meta name="twitter:title" content="C#中的委托">
+<meta name="twitter:description" content="hushzhangC#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/05/C-中的委托/">
 
 
 
 
 
-  <title>MyBlog</title>
+  <title>C#中的委托 | MyBlog</title>
   
 
 
@@ -143,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -249,9 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/05/C-中的委托/" itemprop="url">C#中的委托</a></h1>
+          <h1 class="post-title" itemprop="name headline">C#中的委托</h1>
         
 
         <div class="post-meta">
@@ -301,9 +299,7 @@
       
 
       
-        
-          
-            <p>hushzhang<br>C#中的委托<br>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
+        <p>hushzhang<br>C#中的委托<br>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
 <p>1.1 理解委托</p>
 <p>1.1.1 将方法作为方法的参数<br>   我们先不管这个标题如何的绕口，也不管委托究竟是个什么东西，来看下面这两个最简单的方法，它们不过是在屏幕上输出一句问候的话语：</p>
 <p>复制代码<br>public void GreetPeople(string name)<br>{<br>    EnglishGreeting(name);<br>}</p>
@@ -370,8 +366,6 @@ Console.ReadLine();</code></pre><p>}<br>复制代码</p>
 <pre><code>使用委托可以将多个方法绑定到同一个委托变量，当调用此变量时(这里用“调用”这个词，是因为此变量代表一个方法)，可以依次调用所有绑定的方法。</code></pre><hr>
 <p>转自：<a href="https://www.cnblogs.com/hushzhang/p/5901052.html" target="_blank" rel="noopener">https://www.cnblogs.com/hushzhang/p/5901052.html</a></p>
 
-          
-        
       
     </div>
     
@@ -388,12 +382,12 @@ Console.ReadLine();</code></pre><p>}<br>复制代码</p>
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -403,10 +397,11 @@ Console.ReadLine();</code></pre><p>}<br>复制代码</p>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -414,6 +409,10 @@ Console.ReadLine();</code></pre><p>}<br>复制代码</p>
 
 
           
+
+  
+
+
 
         </div>
         
@@ -617,6 +616,10 @@ Console.ReadLine();</code></pre><p>}<br>复制代码</p>
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
