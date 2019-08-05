@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang>
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,13 +79,16 @@
 
 
 
+<meta name="description" content="记录自己的点点滴滴">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="MyBlog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
+<meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="记录自己的点点滴滴">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="MyBlog">
+<meta name="twitter:description" content="记录自己的点点滴滴">
 
 
 
@@ -101,7 +104,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -121,7 +124,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>MyBlog</title>
   
 
 
@@ -133,7 +136,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -152,12 +155,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">MyBlog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">每天进步一点点</p>
       
   </div>
 
@@ -182,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首页
           </a>
         </li>
       
@@ -192,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -229,16 +232,151 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/article-title/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/Linq中的Join笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="RobinYu">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/Linq中的Join笔记/" itemprop="url">Linq中的Join笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T16:06:59+08:00">
+                2019-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于Linq中的join使用笔记<br>在进行数据库操作时，经常会涉及到多表联合查询，这时就需要用到join。而连接也分为以下两种：</p>
+<p>内连接(INNER JOIN)：是最常见的一种连接，只连接匹配的行。</p>
+<p>外连接：分为左连接(LEFT JOIN)，右连接(RIGHT JOIN)以及全连接(FULL OUTER JOIN)。</p>
+<p>但在Linq中，在进行连接时只有join这样一个关键词，所以在需要用Linq实现不同的连接时就需要一些另外的操作。<br>测试数据如下：</p>
+<p>Id    GroupName<br>1    A<br>2    B<br>3    C<br>Id    UserName    GroupId<br>1    王1    1<br>1    王2    2<br>1    王3    4<br>Linq实现内连接<br>from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>select new { GroupName=g.GroupName, UserName=u.UserName}<br>1<br>2<br>3<br>4<br>对应SQL语句为</p>
+<p>SELECT [t0].[GroupName], [t1].[UserName]<br>FROM [Group] AS [t0]<br>INNER JOIN [User] AS [t1] ON ([t0].[Id]) = [t1].[GroupId]<br>1<br>2<br>3<br>结果如下：</p>
+<p>GroupName    UserName<br>A    张1<br>B    张2<br>Linq实现左连接<br>from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=g.GroupName, UserName=(grp==null)?””:grp.UserName}<br>1<br>2<br>3<br>4<br>5<br>6<br>对应Sql为</p>
+<p>SELECT [t0].[GroupName],<br>    (CASE<br>        WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>        ELSE [t2].[UserName]<br>     END) AS [UserName]<br>FROM [Group] AS [t0]<br>LEFT OUTER JOIN (<br>    SELECT 1 AS [test], [t1].[UserName], [t1].[GroupId]<br>    FROM [User] AS [t1]<br>    ) AS [t2] ON ([t0].[Id]) = [t2].[GroupId]<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>结果为：</p>
+<p>GroupName    UserName<br>A    王1<br>B    王2<br>C<br>Linq实现右连接<br>from u in Users<br>join g in Groups<br>on u.GroupId equals g.Id<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=(grp==null)?””:grp.GroupName, UserName=u.UserName}<br>1<br>2<br>3<br>4<br>5<br>6<br>对应Sql</p>
+<p>SELECT<br>    (CASE<br>        WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>        ELSE [t2].[GroupName]<br>     END) AS [GroupName], [t0].[UserName]<br>FROM [User] AS [t0]<br>LEFT OUTER JOIN (<br>    SELECT 1 AS [test], [t1].[Id], [t1].[GroupName]<br>    FROM [Group] AS [t1]<br>    ) AS [t2] ON [t0].[GroupId] = ([t2].[Id])<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>结果为</p>
+<p>GroupName    UserName<br>A    王1<br>B    王2<br>王3<br>Linq实现全连接<br>var a=from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=g.GroupName, UserName=(grp==null)?””:grp.UserName};</p>
+<p>var b=from u in Users<br>join g in Groups<br>on u.GroupId equals g.Id<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=(grp==null)?””:grp.GroupName, UserName=u.UserName};</p>
+<p>var c=a.Concat(b).Distinct();<br>c.Dump();<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>对应Sql</p>
+<p>SELECT DISTINCT [t7].[GroupName], [t7].[value] AS [UserName]<br>FROM (<br>    SELECT [t6].[GroupName], [t6].[value]<br>    FROM (<br>        SELECT [t0].[GroupName],<br>            (CASE<br>                WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>                ELSE [t2].[UserName]<br>             END) AS [value]<br>        FROM [Group] AS [t0]<br>        LEFT OUTER JOIN (<br>            SELECT 1 AS [test], [t1].[UserName], [t1].[GroupId]<br>            FROM [User] AS [t1]<br>            ) AS [t2] ON ([t0].[Id]) = [t2].[GroupId]<br>        UNION ALL<br>        SELECT<br>            (CASE<br>                WHEN [t5].[test] IS NULL THEN CONVERT(NVarChar(50),@p1)<br>                ELSE [t5].[GroupName]<br>             END) AS [value], [t3].[UserName]<br>        FROM [User] AS [t3]<br>        LEFT OUTER JOIN (<br>            SELECT 1 AS [test], [t4].[Id], [t4].[GroupName]<br>            FROM [Group] AS [t4]<br>            ) AS [t5] ON [t3].[GroupId] = ([t5].[Id])<br>        ) AS [t6]<br>    ) AS [t7]<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>结果为</p>
+<p>GroupName    UserName<br>王3<br>A    王1<br>B    王2</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C    "></a>C    </h2><p>作者：猫亦<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/deaoe/article/details/85224733" target="_blank" rel="noopener">https://blog.csdn.net/deaoe/article/details/85224733</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/article-title/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
     </span>
 
     
@@ -258,9 +396,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-05T15:19:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T15:19:44+08:00">
                 2019-08-05
               </time>
             
@@ -806,13 +944,13 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="RobinYu">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="MyBlog">
     </span>
 
     
@@ -832,9 +970,9 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T14:38:07+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T14:38:07+08:00">
                 2019-08-02
               </time>
             
@@ -957,8 +1095,8 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">RobinYu</p>
+              <p class="site-description motion-element" itemprop="description">记录自己的点点滴滴</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -968,8 +1106,8 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -1013,13 +1151,13 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">RobinYu</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1027,7 +1165,7 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 

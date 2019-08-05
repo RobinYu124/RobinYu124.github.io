@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="关于Linq中的join使用笔记在进行数据库操作时，经常会涉及到多表联合查询，这时就需要用到join。而连接也分为以下两种： 内连接(INNER JOIN)：是最常见的一种连接，只连接匹配的行。 外连接：分为左连接(LEFT JOIN)，右连接(RIGHT JOIN)以及全连接(FULL OUTER JOIN)。 但在Linq中，在进行连接时只有join这样一个关键词，所以在需要用Linq实现不同">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/08/02/hello-world/index.html">
+<meta property="og:title" content="Linq中的Join笔记">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/Linq中的Join笔记/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="关于Linq中的join使用笔记在进行数据库操作时，经常会涉及到多表联合查询，这时就需要用到join。而连接也分为以下两种： 内连接(INNER JOIN)：是最常见的一种连接，只连接匹配的行。 外连接：分为左连接(LEFT JOIN)，右连接(RIGHT JOIN)以及全连接(FULL OUTER JOIN)。 但在Linq中，在进行连接时只有join这样一个关键词，所以在需要用Linq实现不同">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T06:38:07.713Z">
+<meta property="og:updated_time" content="2019-08-05T08:07:56.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Linq中的Join笔记">
+<meta name="twitter:description" content="关于Linq中的join使用笔记在进行数据库操作时，经常会涉及到多表联合查询，这时就需要用到join。而连接也分为以下两种： 内连接(INNER JOIN)：是最常见的一种连接，只连接匹配的行。 外连接：分为左连接(LEFT JOIN)，右连接(RIGHT JOIN)以及全连接(FULL OUTER JOIN)。 但在Linq中，在进行连接时只有join这样一个关键词，所以在需要用Linq实现不同">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/02/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/05/Linq中的Join笔记/">
 
 
 
 
 
-  <title>Hello World | MyBlog</title>
+  <title>Linq中的Join笔记 | MyBlog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/Linq中的Join笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RobinYu">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Linq中的Join笔记</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T14:38:07+08:00">
-                2019-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T16:06:59+08:00">
+                2019-08-05
               </time>
             
 
@@ -299,19 +299,22 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>关于Linq中的join使用笔记<br>在进行数据库操作时，经常会涉及到多表联合查询，这时就需要用到join。而连接也分为以下两种：</p>
+<p>内连接(INNER JOIN)：是最常见的一种连接，只连接匹配的行。</p>
+<p>外连接：分为左连接(LEFT JOIN)，右连接(RIGHT JOIN)以及全连接(FULL OUTER JOIN)。</p>
+<p>但在Linq中，在进行连接时只有join这样一个关键词，所以在需要用Linq实现不同的连接时就需要一些另外的操作。<br>测试数据如下：</p>
+<p>Id    GroupName<br>1    A<br>2    B<br>3    C<br>Id    UserName    GroupId<br>1    王1    1<br>1    王2    2<br>1    王3    4<br>Linq实现内连接<br>from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>select new { GroupName=g.GroupName, UserName=u.UserName}<br>1<br>2<br>3<br>4<br>对应SQL语句为</p>
+<p>SELECT [t0].[GroupName], [t1].[UserName]<br>FROM [Group] AS [t0]<br>INNER JOIN [User] AS [t1] ON ([t0].[Id]) = [t1].[GroupId]<br>1<br>2<br>3<br>结果如下：</p>
+<p>GroupName    UserName<br>A    张1<br>B    张2<br>Linq实现左连接<br>from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=g.GroupName, UserName=(grp==null)?””:grp.UserName}<br>1<br>2<br>3<br>4<br>5<br>6<br>对应Sql为</p>
+<p>SELECT [t0].[GroupName],<br>    (CASE<br>        WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>        ELSE [t2].[UserName]<br>     END) AS [UserName]<br>FROM [Group] AS [t0]<br>LEFT OUTER JOIN (<br>    SELECT 1 AS [test], [t1].[UserName], [t1].[GroupId]<br>    FROM [User] AS [t1]<br>    ) AS [t2] ON ([t0].[Id]) = [t2].[GroupId]<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>结果为：</p>
+<p>GroupName    UserName<br>A    王1<br>B    王2<br>C<br>Linq实现右连接<br>from u in Users<br>join g in Groups<br>on u.GroupId equals g.Id<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=(grp==null)?””:grp.GroupName, UserName=u.UserName}<br>1<br>2<br>3<br>4<br>5<br>6<br>对应Sql</p>
+<p>SELECT<br>    (CASE<br>        WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>        ELSE [t2].[GroupName]<br>     END) AS [GroupName], [t0].[UserName]<br>FROM [User] AS [t0]<br>LEFT OUTER JOIN (<br>    SELECT 1 AS [test], [t1].[Id], [t1].[GroupName]<br>    FROM [Group] AS [t1]<br>    ) AS [t2] ON [t0].[GroupId] = ([t2].[Id])<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>结果为</p>
+<p>GroupName    UserName<br>A    王1<br>B    王2<br>王3<br>Linq实现全连接<br>var a=from g in Groups<br>join u in Users<br>on g.Id  equals u.GroupId<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=g.GroupName, UserName=(grp==null)?””:grp.UserName};</p>
+<p>var b=from u in Users<br>join g in Groups<br>on u.GroupId equals g.Id<br>into Grp<br>from grp in Grp.DefaultIfEmpty()<br>select new { GroupName=(grp==null)?””:grp.GroupName, UserName=u.UserName};</p>
+<p>var c=a.Concat(b).Distinct();<br>c.Dump();<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>对应Sql</p>
+<p>SELECT DISTINCT [t7].[GroupName], [t7].[value] AS [UserName]<br>FROM (<br>    SELECT [t6].[GroupName], [t6].[value]<br>    FROM (<br>        SELECT [t0].[GroupName],<br>            (CASE<br>                WHEN [t2].[test] IS NULL THEN CONVERT(NVarChar(50),@p0)<br>                ELSE [t2].[UserName]<br>             END) AS [value]<br>        FROM [Group] AS [t0]<br>        LEFT OUTER JOIN (<br>            SELECT 1 AS [test], [t1].[UserName], [t1].[GroupId]<br>            FROM [User] AS [t1]<br>            ) AS [t2] ON ([t0].[Id]) = [t2].[GroupId]<br>        UNION ALL<br>        SELECT<br>            (CASE<br>                WHEN [t5].[test] IS NULL THEN CONVERT(NVarChar(50),@p1)<br>                ELSE [t5].[GroupName]<br>             END) AS [value], [t3].[UserName]<br>        FROM [User] AS [t3]<br>        LEFT OUTER JOIN (<br>            SELECT 1 AS [test], [t4].[Id], [t4].[GroupName]<br>            FROM [Group] AS [t4]<br>            ) AS [t5] ON [t3].[GroupId] = ([t5].[Id])<br>        ) AS [t6]<br>    ) AS [t7]<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>结果为</p>
+<p>GroupName    UserName<br>王3<br>A    王1<br>B    王2</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C    "></a>C    </h2><p>作者：猫亦<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/deaoe/article/details/85224733" target="_blank" rel="noopener">https://blog.csdn.net/deaoe/article/details/85224733</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
 
       
     </div>
@@ -336,15 +339,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/08/05/article-title/" rel="next" title="article title">
+                <i class="fa fa-chevron-left"></i> article title
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/05/article-title/" rel="prev" title="article title">
-                article title <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,7 +461,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C    </span></a></li></ol></div>
             
 
           </div>
