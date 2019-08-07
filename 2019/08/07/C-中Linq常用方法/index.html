@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="MyBlog">
 <meta property="og:description" content="Aggregate—自定义的聚合计算 All—检测序列中所有元素是否都满足指定的条件 Any—检测序列中是否存在满足指定条件的元素 Average—计算序列中元素的平均值 Cast—将序列中元素的类型转换成指定的类型(由TResult参数指定) Contact—将一个序列中的元素全部追加到另一个序列中，并构成一个新的序列。 Contains—检测序列中是否存在指定的元素。 Count—计算序列中元">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T02:45:21.005Z">
+<meta property="og:updated_time" content="2019-08-07T02:48:25.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中Linq常用方法">
 <meta name="twitter:description" content="Aggregate—自定义的聚合计算 All—检测序列中所有元素是否都满足指定的条件 Any—检测序列中是否存在满足指定条件的元素 Average—计算序列中元素的平均值 Cast—将序列中元素的类型转换成指定的类型(由TResult参数指定) Contact—将一个序列中的元素全部追加到另一个序列中，并构成一个新的序列。 Contains—检测序列中是否存在指定的元素。 Count—计算序列中元">
@@ -349,41 +349,51 @@
 <p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
 <p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
 <hr>
-<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><h2 id="SelectMany、"><a href="#SelectMany、" class="headerlink" title="　　SelectMany、"></a>　　SelectMany、</h2><h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
-<h2 id="GroupJoin"><a href="#GroupJoin" class="headerlink" title="　　GroupJoin"></a>　　GroupJoin</h2><h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><h2 id="Where"><a href="#Where" class="headerlink" title="　　Where"></a>　　Where</h2><h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
+<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><p>　　SelectMany、</p>
+<h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
+<p>　　GroupJoin</p>
+<h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><p>　　Where</p>
+<h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
 <p>　　OrderByDescending</p>
 <p>　　ThereBy</p>
 <p>　　ThereByDescending</p>
-<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="　　Reverse"></a>　　Reverse</h2><h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>　　Max</p>
+<p>　　Reverse</p>
+<h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>　　Max</p>
 <p>　　Min</p>
 <p>　　Count</p>
 <p>　　LongCount</p>
 <p>　　Sum</p>
-<h2 id="Aggregate"><a href="#Aggregate" class="headerlink" title="　　Aggregate"></a>　　Aggregate</h2><h2 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h2><p>　　Distinct</p>
+<p>　　Aggregate</p>
+<h2 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h2><p>　　Distinct</p>
 <p>　　Except</p>
 <p>　　Intersect</p>
-<h2 id="Union"><a href="#Union" class="headerlink" title="　　Union"></a>　　Union</h2><h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><p>　　Element</p>
+<p>　　Union</p>
+<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><p>　　Element</p>
 <p>　　ElementAtOrDefault</p>
 <p>　　First</p>
 <p>　　FirstOrDefault</p>
 <p>　　Last</p>
 <p>　　LastOrDefault</p>
 <p>　　Single</p>
-<h2 id="SingleOrDefault"><a href="#SingleOrDefault" class="headerlink" title="　　SingleOrDefault"></a>　　SingleOrDefault</h2><h2 id="数据类型转换操作"><a href="#数据类型转换操作" class="headerlink" title="数据类型转换操作"></a>数据类型转换操作</h2><p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
+<p>　　SingleOrDefault</p>
+<h2 id="数据类型转换操作"><a href="#数据类型转换操作" class="headerlink" title="数据类型转换操作"></a>数据类型转换操作</h2><p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
 <p>　　AsEnumerable ： 可以将数据源转换成IEnumerable<t>或者IEnumerable的集合序列。</t></p>
 <p>　　Cast ： 将序列中元素的类型转换为指定类型。</p>
 <p>　　OfType ：从序列中筛选一个指定类型的元素，并构成一个序列。</p>
 <p>　　ToArray ： 将一个IEnumerable<t>的序列转换成一个T[]类型的一个数组。</t></p>
 <p>　　ToList ： 将一个IEnumerable<t>的序列转换成一个List<t>类型的一个序列。</t></t></p>
 <p>　　ToDictionary ： 按照键值将序列中的元素放入到一对一的字典序列中。</p>
-<h2 id="ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。"><a href="#ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。" class="headerlink" title="　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。"></a>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</h2><h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
+<p>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</p>
+<h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
 <p>　　Any</p>
-<h2 id="Contains"><a href="#Contains" class="headerlink" title="　　Contains"></a>　　Contains</h2><h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>　　Skip</p>
+<p>　　Contains</p>
+<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>　　Skip</p>
 <p>　　SkipWhile</p>
 <p>　　Take</p>
 <p>　　TakeWhile</p>
 <p>　　Contact</p>
-<h2 id="SequenceEqual"><a href="#SequenceEqual" class="headerlink" title="　　SequenceEqual"></a>　　SequenceEqual</h2><h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据<br>      var linqtest = (from r in db.Am_recProScheme<br>                      where r.rpId &gt; 10<br>                      orderby r.rpId descending<br>                      select r).Skip(10).Take(10); //取第11条到第20条数据  </p>
+<p>　　SequenceEqual</p>
+<h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据<br>      var linqtest = (from r in db.Am_recProScheme<br>                      where r.rpId &gt; 10<br>                      orderby r.rpId descending<br>                      select r).Skip(10).Take(10); //取第11条到第20条数据  </p>
 
       
     </div>
@@ -530,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这些方法大致有可以分成几类："><span class="nav-number">1.</span> <span class="nav-text">这些方法大致有可以分成几类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#投影操作"><span class="nav-number">2.</span> <span class="nav-text">投影操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SelectMany、"><span class="nav-number">3.</span> <span class="nav-text">　　SelectMany、</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接操作"><span class="nav-number">4.</span> <span class="nav-text">链接操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GroupJoin"><span class="nav-number">5.</span> <span class="nav-text">　　GroupJoin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选操作"><span class="nav-number">6.</span> <span class="nav-text">筛选操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">7.</span> <span class="nav-text">　　Where</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序操作"><span class="nav-number">8.</span> <span class="nav-text">排序操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reverse"><span class="nav-number">9.</span> <span class="nav-text">　　Reverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合操作"><span class="nav-number">10.</span> <span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregate"><span class="nav-number">11.</span> <span class="nav-text">　　Aggregate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作"><span class="nav-number">12.</span> <span class="nav-text">集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Union"><span class="nav-number">13.</span> <span class="nav-text">　　Union</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素操作"><span class="nav-number">14.</span> <span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SingleOrDefault"><span class="nav-number">15.</span> <span class="nav-text">　　SingleOrDefault</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换操作"><span class="nav-number">16.</span> <span class="nav-text">数据类型转换操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。"><span class="nav-number">17.</span> <span class="nav-text">　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限定符操作"><span class="nav-number">18.</span> <span class="nav-text">限定符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contains"><span class="nav-number">19.</span> <span class="nav-text">　　Contains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有"><span class="nav-number">20.</span> <span class="nav-text">还有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SequenceEqual"><span class="nav-number">21.</span> <span class="nav-text">　　SequenceEqual</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子（待补充）"><span class="nav-number">22.</span> <span class="nav-text">例子（待补充）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这些方法大致有可以分成几类："><span class="nav-number">1.</span> <span class="nav-text">这些方法大致有可以分成几类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#投影操作"><span class="nav-number">2.</span> <span class="nav-text">投影操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接操作"><span class="nav-number">3.</span> <span class="nav-text">链接操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选操作"><span class="nav-number">4.</span> <span class="nav-text">筛选操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序操作"><span class="nav-number">5.</span> <span class="nav-text">排序操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合操作"><span class="nav-number">6.</span> <span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作"><span class="nav-number">7.</span> <span class="nav-text">集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素操作"><span class="nav-number">8.</span> <span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换操作"><span class="nav-number">9.</span> <span class="nav-text">数据类型转换操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限定符操作"><span class="nav-number">10.</span> <span class="nav-text">限定符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有"><span class="nav-number">11.</span> <span class="nav-text">还有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子（待补充）"><span class="nav-number">12.</span> <span class="nav-text">例子（待补充）</span></a></li></ol></div>
             
 
           </div>
