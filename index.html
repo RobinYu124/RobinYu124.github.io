@@ -303,8 +303,7 @@
       
         
           
-            <hr>
-<p>Aggregate—自定义的聚合计算</p>
+            <p>Aggregate—自定义的聚合计算</p>
 <p>All—检测序列中所有元素是否都满足指定的条件</p>
 <p>Any—检测序列中是否存在满足指定条件的元素</p>
 <p>Average—计算序列中元素的平均值</p>
@@ -352,55 +351,43 @@
 <p>ToList—将IEnumerable<t>类型的序列转换为List<t>类型的序列。</t></t></p>
 <p>ToLookup—按照键值将序列中的元素放入一对多的字典序列(Lookup&lt;TKey,TValue&gt;)中。</p>
 <p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
-<h2 id="Where—处理由逻辑运算符-如逻辑”与”、逻辑”或”-组成的逻辑表达式，并从数据源中筛选数据。"><a href="#Where—处理由逻辑运算符-如逻辑”与”、逻辑”或”-组成的逻辑表达式，并从数据源中筛选数据。" class="headerlink" title="Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。"></a>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</h2><hr>
-<p>这些方法大致有可以分成几类：</p>
-<p>投影操作 </p>
-<pre><code>Select</code></pre><h2 id="SelectMany、"><a href="#SelectMany、" class="headerlink" title="　　SelectMany、"></a>　　SelectMany、</h2><p>链接操作 </p>
-<p>　　Join</p>
-<h2 id="GroupJoin"><a href="#GroupJoin" class="headerlink" title="　　GroupJoin"></a>　　GroupJoin</h2><p>筛选操作</p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="　　Where"></a>　　Where</h2><p>排序操作</p>
-<p>　　OrderBy</p>
+<p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
+<hr>
+<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><h2 id="SelectMany、"><a href="#SelectMany、" class="headerlink" title="　　SelectMany、"></a>　　SelectMany、</h2><h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
+<h2 id="GroupJoin"><a href="#GroupJoin" class="headerlink" title="　　GroupJoin"></a>　　GroupJoin</h2><h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><h2 id="Where"><a href="#Where" class="headerlink" title="　　Where"></a>　　Where</h2><h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
 <p>　　OrderByDescending</p>
 <p>　　ThereBy</p>
 <p>　　ThereByDescending</p>
-<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="　　Reverse"></a>　　Reverse</h2><p>聚合操作</p>
-<p>　　Max</p>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="　　Reverse"></a>　　Reverse</h2><h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>　　Max</p>
 <p>　　Min</p>
 <p>　　Count</p>
 <p>　　LongCount</p>
 <p>　　Sum</p>
-<h2 id="Aggregate"><a href="#Aggregate" class="headerlink" title="　　Aggregate"></a>　　Aggregate</h2><p>集合操作</p>
-<p>　　Distinct</p>
+<h2 id="Aggregate"><a href="#Aggregate" class="headerlink" title="　　Aggregate"></a>　　Aggregate</h2><h2 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h2><p>　　Distinct</p>
 <p>　　Except</p>
 <p>　　Intersect</p>
-<h2 id="Union"><a href="#Union" class="headerlink" title="　　Union"></a>　　Union</h2><p>元素操作</p>
-<p>　　Element</p>
+<h2 id="Union"><a href="#Union" class="headerlink" title="　　Union"></a>　　Union</h2><h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><p>　　Element</p>
 <p>　　ElementAtOrDefault</p>
 <p>　　First</p>
 <p>　　FirstOrDefault</p>
 <p>　　Last</p>
 <p>　　LastOrDefault</p>
 <p>　　Single</p>
-<h2 id="SingleOrDefault"><a href="#SingleOrDefault" class="headerlink" title="　　SingleOrDefault"></a>　　SingleOrDefault</h2><p>数据类型转换操作</p>
-<p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
+<h2 id="SingleOrDefault"><a href="#SingleOrDefault" class="headerlink" title="　　SingleOrDefault"></a>　　SingleOrDefault</h2><h2 id="数据类型转换操作"><a href="#数据类型转换操作" class="headerlink" title="数据类型转换操作"></a>数据类型转换操作</h2><p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
 <p>　　AsEnumerable ： 可以将数据源转换成IEnumerable<t>或者IEnumerable的集合序列。</t></p>
 <p>　　Cast ： 将序列中元素的类型转换为指定类型。</p>
 <p>　　OfType ：从序列中筛选一个指定类型的元素，并构成一个序列。</p>
 <p>　　ToArray ： 将一个IEnumerable<t>的序列转换成一个T[]类型的一个数组。</t></p>
 <p>　　ToList ： 将一个IEnumerable<t>的序列转换成一个List<t>类型的一个序列。</t></t></p>
 <p>　　ToDictionary ： 按照键值将序列中的元素放入到一对一的字典序列中。</p>
-<h2 id="ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。"><a href="#ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。" class="headerlink" title="　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。"></a>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</h2><p>限定符操作</p>
-<p>　　All</p>
+<h2 id="ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。"><a href="#ToLookup-：按照键值将序列中的元素放入到一对多的字典序列中。" class="headerlink" title="　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。"></a>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</h2><h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
 <p>　　Any</p>
-<h2 id="Contains"><a href="#Contains" class="headerlink" title="　　Contains"></a>　　Contains</h2><p>还有</p>
-<p>　　Skip</p>
+<h2 id="Contains"><a href="#Contains" class="headerlink" title="　　Contains"></a>　　Contains</h2><h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>　　Skip</p>
 <p>　　SkipWhile</p>
 <p>　　Take</p>
 <p>　　TakeWhile</p>
 <p>　　Contact</p>
-<h2 id="SequenceEqual"><a href="#SequenceEqual" class="headerlink" title="　　SequenceEqual"></a>　　SequenceEqual</h2><hr>
-<p>例子（待补充）<br>1.跳过前面多少条数据取余下的数据<br>      var linqtest = (from r in db.Am_recProScheme<br>                      where r.rpId &gt; 10<br>                      orderby r.rpId descending<br>                      select r).Skip(10).Take(10); //取第11条到第20条数据</p>
-<hr>
+<h2 id="SequenceEqual"><a href="#SequenceEqual" class="headerlink" title="　　SequenceEqual"></a>　　SequenceEqual</h2><h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据<br>      var linqtest = (from r in db.Am_recProScheme<br>                      where r.rpId &gt; 10<br>                      orderby r.rpId descending<br>                      select r).Skip(10).Take(10); //取第11条到第20条数据  </p>
 
           
         
