@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致[Route(&amp;quot;get_event_join_list&amp;quot;)] [HttpGet] public DataResponse&amp;lt;PageResponse&amp;lt;EventDJoinViewModel&amp;gt;&amp;gt; get_event_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作中C# MVC接口路由的一些命名习惯">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/工作中C-MVC路由的一些命名习惯/index.html">
+<meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致[Route(&amp;quot;get_event_join_list&amp;quot;)] [HttpGet] public DataResponse&amp;lt;PageResponse&amp;lt;EventDJoinViewModel&amp;gt;&amp;gt; get_event_">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-15T06:48:02.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作中C# MVC接口路由的一些命名习惯">
+<meta name="twitter:description" content="1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致[Route(&amp;quot;get_event_join_list&amp;quot;)] [HttpGet] public DataResponse&amp;lt;PageResponse&amp;lt;EventDJoinViewModel&amp;gt;&amp;gt; get_event_">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/15/工作中C-MVC路由的一些命名习惯/">
+
+
+
+
+
+  <title>工作中C# MVC接口路由的一些命名习惯 | MyBlog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MyBlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Robin的程序员之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/工作中C-MVC路由的一些命名习惯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">工作中C# MVC接口路由的一些命名习惯</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T14:10:51+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-接口路由名和方法名保持一致（-Route-“get-event-join-list”-和get-event-join-list）要保持一致"><a href="#1-接口路由名和方法名保持一致（-Route-“get-event-join-list”-和get-event-join-list）要保持一致" class="headerlink" title="1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致"></a>1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致</h2><pre><code>[Route(&quot;get_event_join_list&quot;)]
+[HttpGet]
+public DataResponse&lt;PageResponse&lt;EventDJoinViewModel&gt;&gt; get_event_join_list([FromUri]EventJoinSearchViewModel search)
+{
+    var searchDTO = search.Map&lt;EventJoinSearchViewModel, EventJoinSearchDTO&gt;(Constant.MapType.LowerToPascal);
+    var result = Business.Logic&lt;EventLogic&gt;().GetEventJoinList(searchDTO, AppKey);
+
+    return new DataResponse&lt;PageResponse&lt;EventDJoinViewModel&gt;&gt;
+    {
+        success = true,
+        code = ResponseCode.Ok.code,
+        message = ResponseCode.Ok.message,
+        data = new PageResponse&lt;EventDJoinViewModel&gt;
+        {
+            last_page = searchDTO.PageIndex * searchDTO.PageSize &gt;= searchDTO.TotalCount,
+            total_count = searchDTO.TotalCount,
+            list = result.Map&lt;EventDJoinDTO, EventDJoinViewModel&gt;(Constant.MapType.PascalToLower)
+        }
+    };
+}</code></pre><h2 id="1-1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get-event-join-list和GetEventJoinList"><a href="#1-1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get-event-join-list和GetEventJoinList" class="headerlink" title="1.1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get_event_join_list和GetEventJoinList"></a>1.1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get_event_join_list和GetEventJoinList</h2><p>逻辑层：<br>        public List<eventdjoindto> GetEventJoinList(EventJoinSearchDTO search, string appKey)<br>        {<br>            return new EventRepository().GetEventJoinList(search, appKey).ToList();<br>        }<br>仓存储：<br>        public IQueryable<eventdjoindto> GetEventJoinList(EventJoinSearchDTO search, string appKey)<br>        {<br>            var query = from e in GetAll()<br>                        join ej in DBContext.EventJoins on e.EventId equals ej.EventId<br>                        join t in DBContext.EventTypes on e.EventTypeId equals t.EventTypeId<br>                        join tg in DBContext.EventTypeGroups on t.EventTypeGroupId equals tg.EventTypeGroupId<br>                        where e.AppKey == appKey &amp;&amp; !e.DateDeleted.HasValue<br>                        orderby ej.OrderId<br>                        select new EventDJoinDTO<br>                        {<br>                            AppKey = e.AppKey,<br>                            Title = e.Title,<br>                            EventAddress = e.EventAddress,<br>                            Description = e.Description,<br>                            EventId = e.EventId,<br>                            ShopId = e.ShopId,<br>                            OrderId = ej.OrderId,<br>                            UserId = ej.UserId,<br>                            DateDeleted = e.DateDeleted,<br>                            DateCreated = e.DateCreated,<br>                            ClientId = e.ClientId,<br>                            CategoryId = e.CategoryId,<br>                            Price = e.Price,<br>                            EventTypeId = e.EventTypeId,<br>                            EventTypeName = t.EventTypeName,<br>                            EventTypeGroupId = tg.EventTypeGroupId,<br>                            EventTypeGroupName = tg.EventTypeGroupName,<br>                            UserName = ej.UserName,<br>                            Mobile = ej.Mobile,<br>                            Note = ej.Note,<br>                            ImagePaths = ej.ImagePaths,<br>                            VideoJson = ej.VideoJson,<br>                            EventDateFrom = e.EventDateFrom,<br>                            EventDateTo = e.EventDateTo<br>                        };</eventdjoindto></eventdjoindto></p>
+<pre><code>    if (search.EventId.HasValue)
+    {
+        query = query.Where(r =&gt; r.EventId == search.EventId);
+    }
+    if (search.OrderId.HasValue)
+    {
+        query = query.Where(r =&gt; r.OrderId == search.OrderId);
+    }
+    if (search.EventTypeId.HasValue)
+    {
+        query = query.Where(r =&gt; r.EventTypeId == search.EventTypeId.Value);
+    }
+    if (search.EventTypeGroupId.HasValue)
+    {
+        query = query.Where(r =&gt; r.EventTypeGroupId == search.EventTypeGroupId);
+    }
+    if (search.UserId.HasValue)
+    {
+        query = query.Where(r =&gt; r.UserId == search.UserId);
+    }
+    if (!string.IsNullOrWhiteSpace(search.Mobile))
+    {
+        query = query.Where(r =&gt; r.Mobile.Contains(search.Mobile));
+    }
+
+    if (search.PageIndex &gt; 0)
+    {
+        search.TotalCount = query.Count();
+        query = query.Skip((search.PageIndex - 1) * search.PageSize).Take(search.PageSize);
+    }
+
+    return query.AsNoTracking();
+}</code></pre><p>—More—</p>
+<h2 id="1-2接口-api的controller层-路由方法传入单个参数的时候要用（int-order-id，int-event-id）这样的命名方式"><a href="#1-2接口-api的controller层-路由方法传入单个参数的时候要用（int-order-id，int-event-id）这样的命名方式" class="headerlink" title="1.2接口(api的controller层)路由方法传入单个参数的时候要用（int order_id，int event_id）这样的命名方式"></a>1.2接口(api的controller层)路由方法传入单个参数的时候要用（int order_id，int event_id）这样的命名方式</h2><pre><code>[Route(&quot;get_event_join_detail&quot;)]
+[HttpGet]
+public DataResponse&lt;EventDJoinViewModel&gt; get_event_join_detail(int order_id)
+{
+    var result = Business.Logic&lt;EventLogic&gt;().GetEventDJoinDetail(new EventJoinSearchDTO { OrderId = order_id }, AppKey);
+
+    return new DataResponse&lt;EventDJoinViewModel&gt;
+    {
+        success = true,
+        code = ResponseCode.Ok.code,
+        message = ResponseCode.Ok.message,
+        data = result.Map&lt;EventDJoinDTO, EventDJoinViewModel&gt;(Constant.MapType.PascalToLower)
+    };
+}</code></pre><p>1.2.1后台controller层传入单个参数的时候可以用(int eventId)这样的方式，第一个字母小写，之后单词的第一个字母都大写</p>
+<p>   public ActionResult Forbidden(long eventId)<br>        {<br>            var dto = new ForbiddenEventViewModel { event_id = eventId, user_id = UserId.Value };<br>            var obj = Business.Gateway<event_c_gateway>().ForbiddenEvent(dto);<br>            return Json(new BaseResponse { success = obj.success, code = obj.code, message = obj.message });<br>        }</event_c_gateway></p>
+<h2 id="2-ViewModel和DTO自由属性的命名规范"><a href="#2-ViewModel和DTO自由属性的命名规范" class="headerlink" title="2.ViewModel和DTO自由属性的命名规范"></a>2.ViewModel和DTO自由属性的命名规范</h2><p>2.1Viewmodel:(根据需要返回需要的属性，给Controller层传参或者返回)</p>
+<p>using System;<br>namespace AlaGou.Admin.ViewModel<br>{<br>    public class HouseViewModel<br>    {<br>        public int? house_id { get; set; }<br>        public string title { get; set; }<br>        public int client_id { get; set; }<br>        public string price { get; set; }<br>        public string tag { get; set; }<br>        public DateTime date_created { get; set; }<br>    }<br>    public class HouseDetailViewModel : HouseViewModel<br>    {<br>        public string cover_image_path { get; set; }<br>        public string description { get; set; }<br>    }<br>}</p>
+<p>2.2DTO:(和数据库里设计的属性保持一致，给逻辑层和仓储层用的对象)<br>///HouseDTO(如下)，可以直接继承House表（数据库里自己设计的表，一般在一个项目的Model中），省去再写属性的麻烦<br>using System.ComponentModel.DataAnnotations.Schema;<br>using AlaGou.Models;<br>namespace AlaGou.BusinessLogic.DTO<br>{<br>    [NotMapped]<br>    public class HouseDTO : House<br>    {<br>    }<br>}<br>///HouseEditDTO（如下）<br>using AlaGou.Models;<br>namespace AlaGou.BusinessLogic.DTO<br>{<br>    public class HouseEditDTO : House<br>    {<br>    }<br>}<br>///HouseSearchDTO（如下）<br>using ITPlus.Contract;<br>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using System.Threading.Tasks;<br>namespace AlaGou.BusinessLogic.DTO<br>{<br>    public class HouseSearchDTO : MvcPaging<br>    {<br>        public string Title { get; set; }<br>        public string Tag { get; set; }<br>    }<br>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/EF实体对象变动跟踪/" rel="next" title="EF实体对象变动跟踪">
+                <i class="fa fa-chevron-left"></i> EF实体对象变动跟踪
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">RobinYu</p>
+              <p class="site-description motion-element" itemprop="description">细节.规范.努力.奋斗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-接口路由名和方法名保持一致（-Route-“get-event-join-list”-和get-event-join-list）要保持一致"><span class="nav-number">1.</span> <span class="nav-text">1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get-event-join-list和GetEventJoinList"><span class="nav-number">2.</span> <span class="nav-text">1.1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get_event_join_list和GetEventJoinList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2接口-api的controller层-路由方法传入单个参数的时候要用（int-order-id，int-event-id）这样的命名方式"><span class="nav-number">3.</span> <span class="nav-text">1.2接口(api的controller层)路由方法传入单个参数的时候要用（int order_id，int event_id）这样的命名方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ViewModel和DTO自由属性的命名规范"><span class="nav-number">4.</span> <span class="nav-text">2.ViewModel和DTO自由属性的命名规范</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RobinYu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
