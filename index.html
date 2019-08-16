@@ -434,8 +434,29 @@
 <p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">报名列表</div><br>    </div><br>}</p>
 <p>@IPHtml.Search.BeginSearch(new SearchAttr { Id = “frm”, Action = “/event/eventdjoinlist” })<br>@IPHtml.Search.Select(eventTypeIdList, r =&gt; r.id, r =&gt; r.name, new SelectAttr { Id = “event_type_id”, Label = “活动类型：”, PlaceHolder = “全部”, Required = “不能为空” })<br>@IPHtml.Search.Input(new InputAttr { Id = “mobile”, Label = “手机：”, Width = 200, PlaceHolder = “请输入手机” })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “btnSubmit”, UpdateTargetId = “data_list” })<br>@IPHtml.Search.EndSearch()</p>
 <p>@IPHtml.BeginUpdateTarget(new UpdateTargetAttr { Id = “data_list” })<br>@Html.Partial(“_EventDJoinList”, Model)<br>@IPHtml.EndUpdateTarget()</p>
-<p>Constants文件夹里的常量<br>namespace ITPlus.Event.Intern.D.Contract<br>{<br>        public enum EventTypeId<br>        {<br>            报名 = 1,<br>            投票 = 2<br>        }<br>}</p>
-<h2 id="2-例子2"><a href="#2-例子2" class="headerlink" title="2.例子2"></a>2.例子2</h2></style></p>
+<p>Constants.cs里的常量<br>    public class Constants<br>    {<br>        public enum EventTypeId<br>        {<br>            报名 = 1,<br>            投票 = 2<br>        }<br>    }     </p>
+<h2 id="2-例子2"><a href="#2-例子2" class="headerlink" title="2.例子2"></a>2.例子2</h2><p>@IPHtml.Form.Select(<br>    new List<dynamic><br>    {<br>        new { Status = (int)Constants.Gender.女+””, Name = “女”},<br>        new { Status = (int)Constants.Gender.男+””, Name = “男” }<br>    },<br>    r =&gt; r.Status,<br>    r =&gt; r.Name,<br>    new SelectAttr<br>    {<br>        Id = “gender”,  //用于接收的ViewModel里的gender为int（int gender）<br>        Label = “性别：”,<br>        SelectedValue = Model.gender,<br>        Required = “性别不能为空！”,<br>        IgnoreDefaultOption = true<br>})</p>
+<p>Constants.cs里的常量<br>    public class Constants<br>    {<br>        public enum Gender<br>        {<br>            男 = 1,<br>            女 = 2<br>        }<br>    }</p>
+<h2 id="3-例子3"><a href="#3-例子3" class="headerlink" title="3.例子3"></a>3.例子3</h2><p>@IPHtml.Form.RadioButton(<br>   new List<dynamic><br>   {<br>       new { name = “男”, value = “1” },<br>       new { name = “女”, value = “2” }<br>   },<br>   r =&gt; r.value,<br>   r =&gt; r.name,<br>   new RadioButtonAttr<br>   {<br>       Id = “gender”, //用于接收的ViewModel里的gender为int（int gender）<br>       Label = “性别：”<br>  })</p>
+<h2 id="4-例子4"><a href="#4-例子4" class="headerlink" title="4.例子4"></a>4.例子4</h2><p>@model StaticPagedList&lt;ITPlus.Event.Intern.D.ViewModels.EventDJoinViewModel&gt;</p>
+<p>@{<br>    Layout = “~/Views/Shared/_Layout.cshtml”;</p>
+<pre><code>ViewBag.Title = &quot;报名列表&quot;;
+var eventTypeIdList = new List&lt;dynamic&gt; {
+    new {id=ITPlus.Event.Intern.D.Contract.EventConstants.EventTypeId.报名.GetHashCode().ToString(),name = ITPlus.Event.Intern.D.Contract.EventConstants.EventTypeId.报名.ToString() },
+    new {id=ITPlus.Event.Intern.D.Contract.EventConstants.EventTypeId.投票.GetHashCode().ToString(),name = ITPlus.Event.Intern.D.Contract.EventConstants.EventTypeId.投票.ToString() }
+};</code></pre><p>}</p>
+<p>@section head{<br>    <style><br>        .ip_form_select .ip_input {<br>            width: 140px !important;<br>        }</p>
+<pre><code>    #user_name {
+        width: 160px !important;
+    }
+&lt;/style&gt;</code></pre><p>}</p>
+<p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">报名列表</div><br>    </div><br>}</p>
+<p>@IPHtml.Search.BeginSearch(new SearchAttr { Id = “frm”, Action = “/event/eventdjoinlist” })<br>@IPHtml.Search.Select(eventTypeIdList, r =&gt; r.id, r =&gt; r.name, new SelectAttr { Id = “event_type_id”, Label = “活动类型：”, PlaceHolder = “全部”, Required = “不能为空” }) //用于接收的ViewModel里的event_type_id为int（int event_type_id,）<br>@IPHtml.Search.Input(new InputAttr { Id = “mobile”, Label = “手机：”, Width = 200, PlaceHolder = “请输入手机” })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “btnSubmit”, UpdateTargetId = “data_list” })<br>@IPHtml.Search.EndSearch()</p>
+<p>@IPHtml.BeginUpdateTarget(new UpdateTargetAttr { Id = “data_list” })<br>@Html.Partial(“_EventDJoinList”, Model)<br>@IPHtml.EndUpdateTarget()</p>
+<p>EventConstants.cs里的常量<br>    public class EventConstants<br>    {<br>        public enum EventTypeId<br>        {<br>            报名 = 1,<br>            投票 = 2<br>        }<br>    }</p>
+<p>5.例子5（最常用的）<br>一般是Controller层：<br>        public ActionResult ServiceList(ServiceAdminSearchViewModel search ,int page_index = 1)<br>        {<br>            var searchModel = search.Map&lt;ServiceAdminSearchViewModel, ServiceAdminSearchDTO&gt;(Constant.MapType.LowerToPascal);<br>            ViewBag.tags = Business.Logic<DriverSchoolLogic>().GetDriverSchoolList(searchModel).Map&lt;DriverSchoolSelectListDTO, DriverSchoolSelectListViewModel&gt;(Constant.MapType.PascalToLower); //这里很重要<br>            searchModel.PageIndex = page_index;<br>            searchModel.PageSize = 10;<br>            var model = Business.Logic<ServiceLogic>().GetServiceAdminList(searchModel);<br>            var data = new StaticPagedList<ServiceAdminListViewModel>(model.Map&lt;ServiceAdminListDTO, ServiceAdminListViewModel,DriverSchoolSelectListDTO,DriverSchoolListViewModel&gt;(Constant.MapType.PascalToLower), searchModel.PageIndex, searchModel.PageSize, searchModel.TotalCount);<br>            return Request.IsAjaxRequest()? (ActionResult)PartialView(“_ServiceList”, data) : View(data);<br>        }</p>
+<p>View层<br>@IPHtml.Search.Select((List<DriverSchoolSelectListViewModel>)ViewBag.tags,  //ViewBag.tags的作用–数据源<br>    r =&gt; r.driver_school_id.ToString(),<br>    r =&gt; r.school_name,<br>    new SelectAttr<br>    {<br>        Id = “driver_school_id”,<br>        Label = “所属驾校：”,<br>        OptionValue = “”,<br>        OptionText = “不限”,<br>        SelectedValue = Request[“driver_school_id”],<br>    })</p>
+</style></p>
           
         
       
