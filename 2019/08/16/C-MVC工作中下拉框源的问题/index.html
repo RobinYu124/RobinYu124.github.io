@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="MyBlog">
 <meta property="og:description" content="1.例子1@model StaticPagedList&amp;lt;ITPlus.Event.Intern.D.ViewModels.EventDJoinViewModel&amp;gt; @{    Layout = “~/Views/Shared/_Layout.cshtml”; ViewBag.Title = &amp;quot;报名列表&amp;quot;;///这里很重要    var eventTypeIdList">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-16T01:23:04.412Z">
+<meta property="og:updated_time" content="2019-08-16T01:38:54.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# MVC工作中下拉框源的问题">
 <meta name="twitter:description" content="1.例子1@model StaticPagedList&amp;lt;ITPlus.Event.Intern.D.ViewModels.EventDJoinViewModel&amp;gt; @{    Layout = “~/Views/Shared/_Layout.cshtml”; ViewBag.Title = &amp;quot;报名列表&amp;quot;;///这里很重要    var eventTypeIdList">
@@ -310,7 +310,8 @@
 <p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">报名列表</div><br>    </div><br>}</p>
 <p>@IPHtml.Search.BeginSearch(new SearchAttr { Id = “frm”, Action = “/event/eventdjoinlist” })<br>@IPHtml.Search.Select(eventTypeIdList, r =&gt; r.id, r =&gt; r.name, new SelectAttr { Id = “event_type_id”, Label = “活动类型：”, PlaceHolder = “全部”, Required = “不能为空” })<br>@IPHtml.Search.Input(new InputAttr { Id = “mobile”, Label = “手机：”, Width = 200, PlaceHolder = “请输入手机” })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “btnSubmit”, UpdateTargetId = “data_list” })<br>@IPHtml.Search.EndSearch()</p>
 <p>@IPHtml.BeginUpdateTarget(new UpdateTargetAttr { Id = “data_list” })<br>@Html.Partial(“_EventDJoinList”, Model)<br>@IPHtml.EndUpdateTarget()</p>
-</style></p>
+<p>Constants文件夹里的常量<br>namespace ITPlus.Event.Intern.D.Contract<br>{<br>        public enum EventTypeId<br>        {<br>            报名 = 1,<br>            投票 = 2<br>        }<br>}</p>
+<h2 id="2-例子2"><a href="#2-例子2" class="headerlink" title="2.例子2"></a>2.例子2</h2></style></p>
       
     </div>
     

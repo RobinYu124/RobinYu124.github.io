@@ -314,7 +314,8 @@
 <p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">报名列表</div><br>    </div><br>}</p>
 <p>@IPHtml.Search.BeginSearch(new SearchAttr { Id = “frm”, Action = “/event/eventdjoinlist” })<br>@IPHtml.Search.Select(eventTypeIdList, r =&gt; r.id, r =&gt; r.name, new SelectAttr { Id = “event_type_id”, Label = “活动类型：”, PlaceHolder = “全部”, Required = “不能为空” })<br>@IPHtml.Search.Input(new InputAttr { Id = “mobile”, Label = “手机：”, Width = 200, PlaceHolder = “请输入手机” })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “btnSubmit”, UpdateTargetId = “data_list” })<br>@IPHtml.Search.EndSearch()</p>
 <p>@IPHtml.BeginUpdateTarget(new UpdateTargetAttr { Id = “data_list” })<br>@Html.Partial(“_EventDJoinList”, Model)<br>@IPHtml.EndUpdateTarget()</p>
-</style></p>
+<p>Constants文件夹里的常量<br>namespace ITPlus.Event.Intern.D.Contract<br>{<br>        public enum EventTypeId<br>        {<br>            报名 = 1,<br>            投票 = 2<br>        }<br>}</p>
+<h2 id="2-例子2"><a href="#2-例子2" class="headerlink" title="2.例子2"></a>2.例子2</h2></style></p>
           
         
       
