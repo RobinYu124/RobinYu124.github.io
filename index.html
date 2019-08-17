@@ -232,6 +232,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/17/c-工作中我遇到的问题-如何导出excel表/" itemprop="url">c#工作中我遇到的问题--如何导出excel表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-17T15:18:15+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>部分代码演示：<br>View层：（通过Form表单提交）<br> <script><br>        itplus.order = new function ()<br>        {<br>            this.exportOrder = function () {<br>             setValue();<br>        $('#frmExportOrder').submit();<br>    }</p>
+<pre><code>this.exportProduct = function () {
+    setValue();
+    $(&apos;#frmExportProduct&apos;).submit();
+}
+
+    var setValue = function () {
+    $(&apos;input[name=OrderNumber]&apos;).val($(&apos;#OrderNumber&apos;).val());
+    $(&apos;input[name=MinPrice]&apos;).val($(&apos;#MinPrice&apos;).val());
+    $(&apos;input[name=MaxPrice]&apos;).val($(&apos;#MaxPrice&apos;).val());
+    $(&apos;input[name=ShopId]&apos;).val($(&apos;#ShopId&apos;).val());
+    $(&apos;input[name=StatusGroupId]&apos;).val($(&apos;#StatusGroupId&apos;).val());
+}
+ &lt;/script&gt;</code></pre><p>}</p>
+<div class="exportLayer">
+    <form id="frmExportOrder" class="export" action="/order/exportorder">
+        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportOrder()">导出订单表</button></span>
+        <input type="hidden" name="OrderNumber" />
+        <input type="hidden" name="MinPrice" />
+        <input type="hidden" name="MaxPrice" />
+        <input type="hidden" name="ShopId" />
+        <input type="hidden" name="StatusGroupId" />
+    </form>
+    <form id="frmExportProduct" class="export" action="/order/exportproduct">
+        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportProduct()">导出捡货表</button></span>
+        <input type="hidden" name="OrderNumber" />
+        <input type="hidden" name="MinPrice" />
+        <input type="hidden" name="MaxPrice" />
+        <input type="hidden" name="ShopId" />
+        <input type="hidden" name="StatusGroupId" />
+    </form>
+</div>
+
+<p>Controller：（后台调用逻辑层和仓存层的方法略，这两层反正就是去取数据（一般是列表数据）就对了）</p>
+<pre><code>public ActionResult ExportOrder(OrderExportViewModel search)
+{
+    var model = Business.Logic&lt;OrderLogic&gt;().GetOrderWithOrderLines(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;()).Map&lt;OrderDTO, ExportOrderViewModel, OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
+
+    var ip_excel_html = &quot;&quot;;
+    if (model.Count &gt; 0)
+    {
+        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
+        ip_excel_html += this.PartialViewHtml(&quot;_OrderExport&quot;, model);
+    }
+
+    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
+    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;订单表.xls&quot;);
+}
+
+
+
+public ActionResult ExportProduct(OrderExportViewModel search)
+{
+    var orders = Business.Logic&lt;OrderLogic&gt;().GetOrder(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;());
+    var orderLines = Business.Logic&lt;OrderLineLogic&gt;().GetOrderLine(new OrderLineSearchDTO { OrderIds = orders.  Select(r =&gt; r.OrderId).ToList() }).Map&lt;OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
+
+    var ip_excel_html = &quot;&quot;;
+    if (orderLines.Count &gt; 0)
+    {
+        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
+        ip_excel_html += this.PartialViewHtml(&quot;_OrderProductExport&quot;, orderLines);
+    }
+
+    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
+
+    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;捡货表.xls&quot;);
+}</code></pre></script></p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/C-MVC工作中View层配置Web-Config简化命名/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2123,7 +2308,7 @@ Console.ReadLine();</code></pre><p>}</p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

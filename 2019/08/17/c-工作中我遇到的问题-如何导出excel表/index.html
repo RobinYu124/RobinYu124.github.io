@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta name="description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EF实体对象变动跟踪">
-<meta property="og:url" content="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/index.html">
+<meta property="og:title" content="c#工作中我遇到的问题--如何导出excel表">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta property="og:description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T06:08:19.726Z">
+<meta property="og:updated_time" content="2019-08-17T07:27:28.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EF实体对象变动跟踪">
-<meta name="twitter:description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta name="twitter:title" content="c#工作中我遇到的问题--如何导出excel表">
+<meta name="twitter:description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/">
 
 
 
 
 
-  <title>EF实体对象变动跟踪 | MyBlog</title>
+  <title>c#工作中我遇到的问题--如何导出excel表 | MyBlog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RobinYu">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EF实体对象变动跟踪</h1>
+          <h1 class="post-title" itemprop="name headline">c#工作中我遇到的问题--如何导出excel表</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:07:22+08:00">
-                2019-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-17T15:18:15+08:00">
+                2019-08-17
               </time>
             
 
@@ -299,8 +299,73 @@
       
 
       
-        <p>转载：<a href="https://blog.csdn.net/u011127019/article/details/53941235" target="_blank" rel="noopener">https://blog.csdn.net/u011127019/article/details/53941235</a></p>
+        <p>部分代码演示：<br>View层：（通过Form表单提交）<br> <script><br>        itplus.order = new function ()<br>        {<br>            this.exportOrder = function () {<br>             setValue();<br>        $('#frmExportOrder').submit();<br>    }</p>
+<pre><code>this.exportProduct = function () {
+    setValue();
+    $(&apos;#frmExportProduct&apos;).submit();
+}
 
+    var setValue = function () {
+    $(&apos;input[name=OrderNumber]&apos;).val($(&apos;#OrderNumber&apos;).val());
+    $(&apos;input[name=MinPrice]&apos;).val($(&apos;#MinPrice&apos;).val());
+    $(&apos;input[name=MaxPrice]&apos;).val($(&apos;#MaxPrice&apos;).val());
+    $(&apos;input[name=ShopId]&apos;).val($(&apos;#ShopId&apos;).val());
+    $(&apos;input[name=StatusGroupId]&apos;).val($(&apos;#StatusGroupId&apos;).val());
+}
+ &lt;/script&gt;</code></pre><p>}</p>
+<div class="exportLayer">
+    <form id="frmExportOrder" class="export" action="/order/exportorder">
+        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportOrder()">导出订单表</button></span>
+        <input type="hidden" name="OrderNumber" />
+        <input type="hidden" name="MinPrice" />
+        <input type="hidden" name="MaxPrice" />
+        <input type="hidden" name="ShopId" />
+        <input type="hidden" name="StatusGroupId" />
+    </form>
+    <form id="frmExportProduct" class="export" action="/order/exportproduct">
+        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportProduct()">导出捡货表</button></span>
+        <input type="hidden" name="OrderNumber" />
+        <input type="hidden" name="MinPrice" />
+        <input type="hidden" name="MaxPrice" />
+        <input type="hidden" name="ShopId" />
+        <input type="hidden" name="StatusGroupId" />
+    </form>
+</div>
+
+<p>Controller：（后台调用逻辑层和仓存层的方法略，这两层反正就是去取数据（一般是列表数据）就对了）</p>
+<pre><code>public ActionResult ExportOrder(OrderExportViewModel search)
+{
+    var model = Business.Logic&lt;OrderLogic&gt;().GetOrderWithOrderLines(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;()).Map&lt;OrderDTO, ExportOrderViewModel, OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
+
+    var ip_excel_html = &quot;&quot;;
+    if (model.Count &gt; 0)
+    {
+        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
+        ip_excel_html += this.PartialViewHtml(&quot;_OrderExport&quot;, model);
+    }
+
+    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
+    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;订单表.xls&quot;);
+}
+
+
+
+public ActionResult ExportProduct(OrderExportViewModel search)
+{
+    var orders = Business.Logic&lt;OrderLogic&gt;().GetOrder(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;());
+    var orderLines = Business.Logic&lt;OrderLineLogic&gt;().GetOrderLine(new OrderLineSearchDTO { OrderIds = orders.  Select(r =&gt; r.OrderId).ToList() }).Map&lt;OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
+
+    var ip_excel_html = &quot;&quot;;
+    if (orderLines.Count &gt; 0)
+    {
+        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
+        ip_excel_html += this.PartialViewHtml(&quot;_OrderProductExport&quot;, orderLines);
+    }
+
+    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
+
+    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;捡货表.xls&quot;);
+}</code></pre></script></p>
       
     </div>
     
@@ -324,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/Linq中的Join使用笔记/" rel="next" title="Linq中的Join使用笔记">
-                <i class="fa fa-chevron-left"></i> Linq中的Join使用笔记
+              <a href="/2019/08/16/C-MVC工作中View层配置Web-Config简化命名/" rel="next" title="C# MVC工作中View层配置Web.Config简化命名">
+                <i class="fa fa-chevron-left"></i> C# MVC工作中View层配置Web.Config简化命名
               </a>
             
           </div>
@@ -333,10 +398,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/15/工作中C-MVC路由的一些命名习惯/" rel="prev" title="工作中C# MVC接口路由的一些命名习惯">
-                工作中C# MVC接口路由的一些命名习惯 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
