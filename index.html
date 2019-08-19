@@ -232,6 +232,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/后台Controller层返回相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/19/后台Controller层返回相关/" itemprop="url">后台Controller层返回相关</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T15:45:52+08:00">
+                2019-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面</p>
+<pre><code>public ActionResult EventDEdit(long id)
+    {
+        var result = Business.Gateway&lt;Event_D_Gateway&gt;().GetEventList(new EventSearchViewModel { event_id = id }, Config.AppKey);
+        if (result.success &amp;&amp; result.data != null &amp;&amp; result.data.list.Count &gt; 0)
+        {
+            return View(result.data.list.First());
+        }
+        else
+        {
+            return View(new EventListViewModel());
+        }
+    }</code></pre><p>2.从下面的代码可以看出，参数是异步传入（ajax传入）的，从return的Json格式看出。下面代码不用返回一个同名的DeleteEventD.cshtml页面或其他页面，因为她已经通过Json返回了。</p>
+<p>   public ActionResult DeleteEventD(long event_id)<br>        {<br>            var model = new EventDeleteViewModel { event_id = event_id };<br>            var obj = Business.Gateway<event_d_gateway>().DeleteEvent(model, Config.AppKey);</event_d_gateway></p>
+<pre><code>    return Json(new BaseResponse { success = obj.success, code = obj.code, message = obj.message });
+}</code></pre><p>3.那么如何在参数传入是同步传入的情况下（从上面的讨论可以看出，如果参数是同步传入的，必须返回一个同名页面或者通过 return View(“_OtherView”new EventListViewModel());返回另一个页面_OtherView.cshtml），返回Json呢？如下所示：<br>           return Json(new BaseResponse{ success = false, message = “无活动信息！” },JsonRequestBehavior.AllowGet);//通过JsonRequestBehavior.AllowGet</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2081,190 +2216,13 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/C-中的委托/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RobinYu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MyBlog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/05/C-中的委托/" itemprop="url">C#中的委托</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T17:32:25+08:00">
-                2019-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="C-中的委托"><a href="#C-中的委托" class="headerlink" title="C#中的委托"></a>C#中的委托</h2><p>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
-<h2 id="1-1-理解委托"><a href="#1-1-理解委托" class="headerlink" title="1.1 理解委托"></a>1.1 理解委托</h2><h2 id="1-1-1-将方法作为方法的参数"><a href="#1-1-1-将方法作为方法的参数" class="headerlink" title="1.1.1 将方法作为方法的参数"></a>1.1.1 将方法作为方法的参数</h2><p>   我们先不管这个标题如何的绕口，也不管委托究竟是个什么东西，来看下面这两个最简单的方法，它们不过是在屏幕上输出一句问候的话语：</p>
-<p>public void GreetPeople(string name)<br>{<br>    EnglishGreeting(name);<br>}</p>
-<p>public void EnglishGreeting(string name)<br>{<br>    Console.WriteLine(“Good Morning, “ + name);<br>}</p>
-<p>   暂且不管这两个方法有没有什么实际意义。GreetPeople 用于向某人问好，当我们传递代表某人姓名的 name 参数，比如说“Liker”进去的时候，在这个方法中，将调用 EnglishGreeting 方法，再次传递 name 参数，EnglishGreeting 则用于向屏幕输出 “Good Morning, Liker”。</p>
-<p>现在假设这个程序需要进行全球化，哎呀，不好了，我是中国人，我不明白“Good Morning”是什么意思，怎么办呢？好吧，我们再加个中文版的问候方法：</p>
-<p>public void ChineseGreeting(string name)<br>{<br>    Console.WriteLine(“早上好, “ + name);<br>}</p>
-<p>这时候，GreetPeople 也需要改一改了，不然如何判断到底用哪个版本的 Greeting 问候方法合适呢？在进行这个之前，我们最好再定义一个枚举作为判断的依据：</p>
-<p>public enum Language<br>{<br>    English, Chinese<br>}</p>
-<p>public void GreetPeople(string name, Language lang)<br>{<br>    switch (lang)<br>    {<br>        case Language.English:<br>            EnglishGreeting(name);<br>            break;<br>        case Language.Chinese:<br>            ChineseGreeting(name);<br>            break;<br>    }<br>}</p>
-<p>OK，尽管这样解决了问题，但我不说大家也很容易想到，这个解决方案的可扩展性很差，如果日后我们需要再添加韩文版、日文版，就不得不反复修改枚举和GreetPeople() 方法，以适应新的需求。</p>
-<p>在考虑新的解决方案之前，我们先看看 GreetPeople 的方法签名：</p>
-<pre><code>public void GreetPeople(string name, Language lang);</code></pre><p>我们仅看 string name，在这里，string 是参数类型，name 是参数变量，当我们赋给 name 字符串“Liker”时，它就代表“Liker”这个值；当我们赋给它“李志中”时，它又代表着“李志中”这个值。然后，我们可以在方法体内对这个 name 进行其他操作。哎，这简直是废话么，刚学程序就知道了。</p>
-<p>如果你再仔细想想，假如 GreetPeople() 方法可以接受一个参数变量，这个变量可以代表另一个方法，当我们给这个变量赋值 EnglishGreeting 的时候，它代表着 EnglsihGreeting() 这个方法；当我们给它赋值ChineseGreeting 的时候，它又代表着 ChineseGreeting() 法。我们将这个参数变量命名为 MakeGreeting，那么不是可以如同给 name 赋值时一样，在调用 GreetPeople()方法的时候，给这个MakeGreeting 参数也赋上值么(ChineseGreeting 或者EnglsihGreeting 等)？然后，我们在方法体内，也可以像使用别的参数一样使用MakeGreeting。但是，由于 MakeGreeting 代表着一个方法，它的使用方式应该和它被赋的方法(比如ChineseGreeting)是一样的，比如：MakeGreeting(name);</p>
-<p>好了，有了思路了，我们现在就来改改GreetPeople()方法，那么它应该是这个样子了：</p>
-<p>public void GreetPeople(string name, *** MakeGreeting)<br>{<br>       MakeGreeting(name);<br>}</p>
-<p>注意到 *** ，这个位置通常放置的应该是参数的类型，但到目前为止，我们仅仅是想到应该有个可以代表方法的参数，并按这个思路去改写 GreetPeople 方法，现在就出现了一个大问题：这个代表着方法的 MakeGreeting 参数应该是什么类型的？</p>
-<p>说明：这里已不再需要枚举了，因为在给MakeGreeting 赋值的时候动态地决定使用哪个方法，是 ChineseGreeting 还是 EnglishGreeting，而在这个两个方法内部，已经对使用“Good Morning”还是“早上好”作了区分。</p>
-<p>聪明的你应该已经想到了，现在是委托该出场的时候了，但讲述委托之前，我们再看看MakeGreeting 参数所能代表的 ChineseGreeting()和EnglishGreeting()方法的签名：</p>
-<p>public void EnglishGreeting(string name)</p>
-<p>public void ChineseGreeting(string name)</p>
-<p>如同 name 可以接受 String 类型的“true”和“1”，但不能接受bool 类型的true 和int 类型的1 一样。MakeGreeting 的参数类型定义应该能够确定 MakeGreeting 可以代表的方法种类，再进一步讲，就是 MakeGreeting 可以代表的方法的参数类型和返回类型。</p>
-<p>于是，委托出现了：它定义了 MakeGreeting 参数所能代表的方法的种类，也就是 MakeGreeting 参数的类型。</p>
-<p>本例中委托的定义：</p>
-<pre><code>public delegate void GreetingDelegate(string name);</code></pre><p>与上面 EnglishGreeting() 方法的签名对比一下，除了加入了delegate 关键字以外，其余的是不是完全一样？现在，让我们再次改动GreetPeople()方法，如下所示：</p>
-<p>public delegate void GreetingDelegate(string name);<br>public void GreetPeople(string name, GreetingDelegate MakeGreeting)<br>{<br>    MakeGreeting(name);<br>}</p>
-<p>   如你所见，委托 GreetingDelegate 出现的位置与 string 相同，string 是一个类型，那么 GreetingDelegate 应该也是一个类型，或者叫类(Class)。但是委托的声明方式和类却完全不同，这是怎么一回事？实际上，委托在编译的时候确实会编译成类。因为 Delegate 是一个类，所以在任何可以声明类的地方都可以声明委托。更多的内容将在下面讲述，现在，请看看这个范例的完整代码：</p>
-<p>public delegate void GreetingDelegate(string name);</p>
-<p>class Program<br>{<br>    private static void EnglishGreeting(string name)<br>    {<br>        Console.WriteLine(“Good Morning, “ + name);<br>    }</p>
-<pre><code>private static void ChineseGreeting(string name)
-{
-    Console.WriteLine(&quot;早上好, &quot; + name);
-}
-
-private static void GreetPeople(string name, GreetingDelegate MakeGreeting)
-{
-    MakeGreeting(name);
-}
-
-static void Main(string[] args)
-{
-    GreetPeople(&quot;Liker&quot;, EnglishGreeting);
-    GreetPeople(&quot;李志中&quot;, ChineseGreeting);
-    Console.ReadLine();
-}</code></pre><p>}</p>
-<p>   我们现在对委托做一个总结：委托是一个类，它定义了方法的类型，使得可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数的做法，可以避免在程序中大量使用If … Else(Switch)语句，同时使得程序具有更好的可扩展性。</p>
-<h2 id="1-1-2-将方法绑定到委托"><a href="#1-1-2-将方法绑定到委托" class="headerlink" title="1.1.2 将方法绑定到委托"></a>1.1.2 将方法绑定到委托</h2><p>   看到这里，是不是有那么点如梦初醒的感觉？于是，你是不是在想：在上面的例子中，我不一定要直接在 GreetPeople() 方法中给 name 参数赋值，我可以像这样使用变量：</p>
-<p>static void Main(string[] args)<br>{<br>    GreetPeople(“Liker”, EnglishGreeting);<br>    GreetPeople(“李志中”, ChineseGreeting);<br>    Console.ReadLine();<br>}</p>
-<p>而既然委托 GreetingDelegate 和类型 string 的地位一样，都是定义了一种参数类型，那么，我是不是也可以这么使用委托？</p>
-<p>static void Main(string[] args)<br>{<br>    GreetingDelegate delegate1, delegate2;<br>    delegate1 = EnglishGreeting;<br>    delegate2 = ChineseGreeting;<br>    GreetPeople(“Liker”, delegate1);<br>    GreetPeople(“李志中”, delegate2);<br>    Console.ReadLine();<br>}</p>
-<p>   如你所料，这样是没有问题的，程序一如预料的那样输出。这里，我想说的是委托不同于 string 的一个特性：可以将多个方法赋给同一个委托，或者叫将多个方法绑定到同一个委托，当调用这个委托的时候，将依次调用其所绑定的方法。在这个例子中，语法如下：</p>
-<p>static void Main(string[] args)<br>{<br>    GreetingDelegate delegate1;<br>    delegate1 = EnglishGreeting;<br>    delegate1 += ChineseGreeting;<br>    GreetPeople(“Liker”, delegate1);<br>    Console.ReadLine();<br>}</p>
-<p>   实际上，我们可以也可以绕过GreetPeople 方法，通过委托来直接调用EnglishGreeting 和ChineseGreeting：</p>
-<p>static void Main(string[] args)<br>{<br>    GreetingDelegate delegate1;<br>    delegate1 = EnglishGreeting;<br>    delegate1 += ChineseGreeting;<br>    delegate1(“Liker”);<br>    Console.ReadLine();<br>} </p>
-<p>   说明：这在本例中是没有问题的，但回头看下上面 GreetPeople() 的定义，在它之中可以做一些对于 EnglshihGreeting 和 ChineseGreeting 来说都需要进行的工作，为了简便我做了省略。</p>
-<p>注意这里，第一次用的“=”，是赋值的语法；第二次，用的是“+=”，是绑定的语法。如果第一次就使用“+=”，将出现“使用了未赋值的局部变量”的编译错误。我们也可以使用下面的代码来这样简化这一过程：</p>
-<p>GreetingDelegate delegate1 = new GreetingDelegate(EnglishGreeting);<br>delegate1 += ChineseGreeting;</p>
-<p>  既然给委托可以绑定一个方法，那么也应该有办法取消对方法的绑定，很容易想到，这个语法是“-=”：</p>
-<p>static void Main(string[] args)<br>{<br>    GreetingDelegate delegate1 = new GreetingDelegate(EnglishGreeting);<br>    delegate1 += ChineseGreeting;<br>    GreetPeople(“Liker”, delegate1);<br>    Console.WriteLine();</p>
-<pre><code>delegate1 -= EnglishGreeting;
-GreetPeople(&quot;李志中&quot;, delegate1);
-Console.ReadLine();</code></pre><p>}</p>
-<h2 id="让我们再次对委托作个总结："><a href="#让我们再次对委托作个总结：" class="headerlink" title=" 让我们再次对委托作个总结："></a> 让我们再次对委托作个总结：</h2><pre><code>使用委托可以将多个方法绑定到同一个委托变量，当调用此变量时(这里用“调用”这个词，是因为此变量代表一个方法)，可以依次调用所有绑定的方法。</code></pre><h2 id="转自：https-www-cnblogs-com-hushzhang-p-5901052-html"><a href="#转自：https-www-cnblogs-com-hushzhang-p-5901052-html" class="headerlink" title="转自：https://www.cnblogs.com/hushzhang/p/5901052.html"></a>转自：<a href="https://www.cnblogs.com/hushzhang/p/5901052.html" target="_blank" rel="noopener">https://www.cnblogs.com/hushzhang/p/5901052.html</a></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2308,7 +2266,7 @@ Console.ReadLine();</code></pre><p>}</p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

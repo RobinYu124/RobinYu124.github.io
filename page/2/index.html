@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C#中的委托">
-<meta property="og:url" content="http://yoursite.com/2019/08/05/C-中的委托/index.html">
+<meta name="description" content="细节.规范.努力.奋斗">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MyBlog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时">
+<meta property="og:description" content="细节.规范.努力.奋斗">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T02:54:15.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C#中的委托">
-<meta name="twitter:description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时">
+<meta name="twitter:title" content="MyBlog">
+<meta name="twitter:description" content="细节.规范.努力.奋斗">
 
 
 
@@ -119,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/05/C-中的委托/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
 
 
-  <title>C#中的委托 | MyBlog</title>
+  <title>MyBlog</title>
   
 
 
@@ -144,7 +143,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -249,7 +249,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C#中的委托</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/C-中的委托/" itemprop="url">C#中的委托</a></h1>
         
 
         <div class="post-meta">
@@ -299,7 +301,9 @@
       
 
       
-        <h2 id="C-中的委托"><a href="#C-中的委托" class="headerlink" title="C#中的委托"></a>C#中的委托</h2><p>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
+        
+          
+            <h2 id="C-中的委托"><a href="#C-中的委托" class="headerlink" title="C#中的委托"></a>C#中的委托</h2><p>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
 <h2 id="1-1-理解委托"><a href="#1-1-理解委托" class="headerlink" title="1.1 理解委托"></a>1.1 理解委托</h2><h2 id="1-1-1-将方法作为方法的参数"><a href="#1-1-1-将方法作为方法的参数" class="headerlink" title="1.1.1 将方法作为方法的参数"></a>1.1.1 将方法作为方法的参数</h2><p>   我们先不管这个标题如何的绕口，也不管委托究竟是个什么东西，来看下面这两个最简单的方法，它们不过是在屏幕上输出一句问候的话语：</p>
 <p>public void GreetPeople(string name)<br>{<br>    EnglishGreeting(name);<br>}</p>
 <p>public void EnglishGreeting(string name)<br>{<br>    Console.WriteLine(“Good Morning, “ + name);<br>}</p>
@@ -362,6 +366,8 @@ static void Main(string[] args)
 GreetPeople(&quot;李志中&quot;, delegate1);
 Console.ReadLine();</code></pre><p>}</p>
 <h2 id="让我们再次对委托作个总结："><a href="#让我们再次对委托作个总结：" class="headerlink" title=" 让我们再次对委托作个总结："></a> 让我们再次对委托作个总结：</h2><pre><code>使用委托可以将多个方法绑定到同一个委托变量，当调用此变量时(这里用“调用”这个词，是因为此变量代表一个方法)，可以依次调用所有绑定的方法。</code></pre><h2 id="转自：https-www-cnblogs-com-hushzhang-p-5901052-html"><a href="#转自：https-www-cnblogs-com-hushzhang-p-5901052-html" class="headerlink" title="转自：https://www.cnblogs.com/hushzhang/p/5901052.html"></a>转自：<a href="https://www.cnblogs.com/hushzhang/p/5901052.html" target="_blank" rel="noopener">https://www.cnblogs.com/hushzhang/p/5901052.html</a></h2>
+          
+        
       
     </div>
     
@@ -378,28 +384,12 @@ Console.ReadLine();</code></pre><p>}</p>
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/07/C-中Linq常用方法/" rel="prev" title="C#中Linq常用方法">
-                C#中Linq常用方法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -409,11 +399,14 @@ Console.ReadLine();</code></pre><p>}</p>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -421,10 +414,6 @@ Console.ReadLine();</code></pre><p>}</p>
 
 
           
-
-  
-
-
 
         </div>
         
@@ -445,17 +434,8 @@ Console.ReadLine();</code></pre><p>}</p>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -497,22 +477,6 @@ Console.ReadLine();</code></pre><p>}</p>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的委托"><span class="nav-number">1.</span> <span class="nav-text">C#中的委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-理解委托"><span class="nav-number">2.</span> <span class="nav-text">1.1 理解委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-1-将方法作为方法的参数"><span class="nav-number">3.</span> <span class="nav-text">1.1.1 将方法作为方法的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-2-将方法绑定到委托"><span class="nav-number">4.</span> <span class="nav-text">1.1.2 将方法绑定到委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让我们再次对委托作个总结："><span class="nav-number">5.</span> <span class="nav-text"> 让我们再次对委托作个总结：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转自：https-www-cnblogs-com-hushzhang-p-5901052-html"><span class="nav-number">6.</span> <span class="nav-text">转自：https://www.cnblogs.com/hushzhang/p/5901052.html</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -653,10 +617,6 @@ Console.ReadLine();</code></pre><p>}</p>
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
