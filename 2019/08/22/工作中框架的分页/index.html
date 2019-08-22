@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.情况一： 后台Controller：  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行">
+<meta name="description" content="1.情况一： 后台Controller：‘’’Python  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中框架的分页">
 <meta property="og:url" content="http://yoursite.com/2019/08/22/工作中框架的分页/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="1.情况一： 后台Controller：  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行">
+<meta property="og:description" content="1.情况一： 后台Controller：‘’’Python  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T05:51:37.724Z">
+<meta property="og:updated_time" content="2019-08-22T07:22:57.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中框架的分页">
-<meta name="twitter:description" content="1.情况一： 后台Controller：  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行">
+<meta name="twitter:description" content="1.情况一： 后台Controller：‘’’Python  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)        {            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这">
 
 
 
@@ -300,14 +300,14 @@
 
       
         <p>1.情况一：</p>
-<p>后台Controller：<br>  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)<br>        {<br>            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行<br>            search.page_size = search.page_size == 0 ? 10 : search.page_size;//这几行 </p>
+<p>后台Controller：<br>‘’’Python<br>  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)<br>        {<br>            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行<br>            search.page_size = search.page_size == 0 ? 10 : search.page_size;//这几行 </p>
 <pre><code>    var dto = search.Map&lt;QuestionGroupListSearchViewModel, QuestionGroupListSearchDTO&gt;(Constant.MapType.LowerToPascal);
     var result = Business.Logic&lt;QuestionGroupLogic&gt;().GetQuestionGroupList(dto);
     var list = result.Map&lt;QuestionGroupListDTO, QuestionGroupListViewModel&gt;(Constant.MapType.PascalToLower);
 
     var data = new StaticPagedList&lt;QuestionGroupListViewModel&gt;(list, dto.PageIndex, dto.PageSize, dto.TotalCount);//这几行 
     return Request.IsAjaxRequest() ? (ActionResult)PartialView(&quot;_QuestionGroupList&quot;, data) : View(data);//这几行 
-}</code></pre><p>对应的层View：<br>QuestionGroupList.cshtml:</p>
+}</code></pre><p>‘’’<br>对应的层View：<br>QuestionGroupList.cshtml:</p>
 <p>@model StaticPagedList<questiongrouplistviewmodel><br>@{<br>    ViewBag.Title = “题库分类”;<br>    var QuestionGroupIdList = new List<dynamic> {<br>        new {id=QuestionGroupConstants.QuestionGroupId.科目一.GetHashCode().ToString(),name = QuestionGroupConstants.QuestionGroupId.科目一.ToString() },<br>        new {id=QuestionGroupConstants.QuestionGroupId.科目四.GetHashCode().ToString(),name = QuestionGroupConstants.QuestionGroupId.科目四.ToString() },<br>    };<br>}</dynamic></questiongrouplistviewmodel></p>
 <p>@section foot{<br>    <script src="~/js/question_group.js"></script><br>}</p>
 <p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">@ViewBag.Title</div><br>        <a class="ip_create" href="/questiongroup/add">添加</a><br>    </div><br>}<br>@IPHtml.Search.BeginSearch(new SearchAttr { Action = “/questiongroup/questiongrouplist” })<br>@IPHtml.Search.Select(QuestionGroupIdList,<br>    r =&gt; r.id, r =&gt; r.name,<br>    new SelectAttr<br>    {<br>        Id = “question_group_id”,<br>        Label = “科目：”,<br>        PlaceHolder = “全部”,<br>        Required = “不能为空”,<br>        SelectedValue = Request[“question_group_id”]<br>    })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “question_group_list” })<br>@IPHtml.Search.EndSearch()</p>
