@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
+<meta name="description" content="部分代码演示：View层：（通过Form表单提交） 123456789101112131415161718192021222324252627282930313233343536373839404142 &amp;lt;script&amp;gt;        itplus.order = new function ()        &amp;#123;            this.exportOrder = f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c#工作中我遇到的问题--如何导出excel表">
 <meta property="og:url" content="http://yoursite.com/2019/08/17/c-工作中我遇到的问题-如何导出excel表/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
+<meta property="og:description" content="部分代码演示：View层：（通过Form表单提交） 123456789101112131415161718192021222324252627282930313233343536373839404142 &amp;lt;script&amp;gt;        itplus.order = new function ()        &amp;#123;            this.exportOrder = f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-17T07:27:28.139Z">
+<meta property="og:updated_time" content="2019-08-22T08:06:40.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c#工作中我遇到的问题--如何导出excel表">
-<meta name="twitter:description" content="部分代码演示：View层：（通过Form表单提交）         itplus.order = new function ()        {            this.exportOrder = function () {             setValue();        $(&apos;#frmExportOrder&apos;).submit();    } this.exportProd">
+<meta name="twitter:description" content="部分代码演示：View层：（通过Form表单提交） 123456789101112131415161718192021222324252627282930313233343536373839404142 &amp;lt;script&amp;gt;        itplus.order = new function ()        &amp;#123;            this.exportOrder = f">
 
 
 
@@ -299,73 +299,15 @@
       
 
       
-        <p>部分代码演示：<br>View层：（通过Form表单提交）<br> <script><br>        itplus.order = new function ()<br>        {<br>            this.exportOrder = function () {<br>             setValue();<br>        $('#frmExportOrder').submit();<br>    }</p>
-<pre><code>this.exportProduct = function () {
-    setValue();
-    $(&apos;#frmExportProduct&apos;).submit();
-}
-
-    var setValue = function () {
-    $(&apos;input[name=OrderNumber]&apos;).val($(&apos;#OrderNumber&apos;).val());
-    $(&apos;input[name=MinPrice]&apos;).val($(&apos;#MinPrice&apos;).val());
-    $(&apos;input[name=MaxPrice]&apos;).val($(&apos;#MaxPrice&apos;).val());
-    $(&apos;input[name=ShopId]&apos;).val($(&apos;#ShopId&apos;).val());
-    $(&apos;input[name=StatusGroupId]&apos;).val($(&apos;#StatusGroupId&apos;).val());
-}
- &lt;/script&gt;</code></pre><p>}</p>
-<div class="exportLayer">
-    <form id="frmExportOrder" class="export" action="/order/exportorder">
-        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportOrder()">导出订单表</button></span>
-        <input type="hidden" name="OrderNumber" />
-        <input type="hidden" name="MinPrice" />
-        <input type="hidden" name="MaxPrice" />
-        <input type="hidden" name="ShopId" />
-        <input type="hidden" name="StatusGroupId" />
-    </form>
-    <form id="frmExportProduct" class="export" action="/order/exportproduct">
-        <span class="ip_filter"><button type="button" class="ip_s_btn" onclick="itplus.order.exportProduct()">导出捡货表</button></span>
-        <input type="hidden" name="OrderNumber" />
-        <input type="hidden" name="MinPrice" />
-        <input type="hidden" name="MaxPrice" />
-        <input type="hidden" name="ShopId" />
-        <input type="hidden" name="StatusGroupId" />
-    </form>
-</div>
+        <p>部分代码演示：<br>View层：（通过Form表单提交）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">        itplus.order = new function ()</span><br><span class="line">        &#123;</span><br><span class="line">            this.exportOrder = function () &#123;</span><br><span class="line">             setValue();</span><br><span class="line">        $(<span class="string">'#frmExportOrder'</span>).submit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.exportProduct = function () &#123;</span><br><span class="line">        setValue();</span><br><span class="line">        $(<span class="string">'#frmExportProduct'</span>).submit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">        var setValue = function () &#123;</span><br><span class="line">        $(<span class="string">'input[name=OrderNumber]'</span>).val($(<span class="string">'#OrderNumber'</span>).val());</span><br><span class="line">        $(<span class="string">'input[name=MinPrice]'</span>).val($(<span class="string">'#MinPrice'</span>).val());</span><br><span class="line">        $(<span class="string">'input[name=MaxPrice]'</span>).val($(<span class="string">'#MaxPrice'</span>).val());</span><br><span class="line">        $(<span class="string">'input[name=ShopId]'</span>).val($(<span class="string">'#ShopId'</span>).val());</span><br><span class="line">        $(<span class="string">'input[name=StatusGroupId]'</span>).val($(<span class="string">'#StatusGroupId'</span>).val());</span><br><span class="line">    &#125;</span><br><span class="line">     &lt;/script&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;div class="exportLayer"&gt;</span><br><span class="line">    &lt;form id="frmExportOrder" class="export" action="/order/exportorder"&gt;</span><br><span class="line">        &lt;span class="ip_filter"&gt;&lt;button type="button" class="ip_s_btn" onclick="itplus.order.exportOrder()"&gt;导出订单表&lt;/button&gt;&lt;/span&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"OrderNumber"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"MinPrice"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"MaxPrice"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"ShopId"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"StatusGroupId"</span> /&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form id="frmExportProduct" class="export" action="/order/exportproduct"&gt;</span><br><span class="line">        &lt;span class="ip_filter"&gt;&lt;button type="button" class="ip_s_btn" onclick="itplus.order.exportProduct()"&gt;导出捡货表&lt;/button&gt;&lt;/span&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"OrderNumber"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"MinPrice"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"MaxPrice"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"ShopId"</span> /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"StatusGroupId"</span> /&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Controller：（后台调用逻辑层和仓存层的方法略，这两层反正就是去取数据（一般是列表数据）就对了）</p>
-<pre><code>public ActionResult ExportOrder(OrderExportViewModel search)
-{
-    var model = Business.Logic&lt;OrderLogic&gt;().GetOrderWithOrderLines(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;()).Map&lt;OrderDTO, ExportOrderViewModel, OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult ExportOrder(OrderExportViewModel search)</span><br><span class="line">&#123;</span><br><span class="line">    var model = Business.Logic&lt;OrderLogic&gt;().GetOrderWithOrderLines(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;()).Map&lt;OrderDTO, ExportOrderViewModel, OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);</span><br><span class="line"></span><br><span class="line">    var ip_excel_html = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (model.Count &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ip_excel_html = <span class="string">"&lt;meta http-equiv=Content-Type content=\"text/html; charset=utf-8\"&gt;"</span>;</span><br><span class="line">        ip_excel_html += this.PartialViewHtml(<span class="string">"_OrderExport"</span>, model);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    byte[] b = System.Text.Encoding.GetEncoding(<span class="string">"UTF-8"</span>).GetBytes(ip_excel_html);</span><br><span class="line">    <span class="keyword">return</span> File(b, <span class="string">"application/vnd.ms-excel"</span>, <span class="string">"订单表.xls"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    var ip_excel_html = &quot;&quot;;
-    if (model.Count &gt; 0)
-    {
-        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
-        ip_excel_html += this.PartialViewHtml(&quot;_OrderExport&quot;, model);
-    }
-
-    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
-    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;订单表.xls&quot;);
-}
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult ExportProduct(OrderExportViewModel search)</span><br><span class="line">&#123;</span><br><span class="line">    var orders = Business.Logic&lt;OrderLogic&gt;().GetOrder(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;());</span><br><span class="line">    var orderLines = Business.Logic&lt;OrderLineLogic&gt;().GetOrderLine(new OrderLineSearchDTO &#123; OrderIds = orders.  Select(r =&gt; r.OrderId).ToList() &#125;).Map&lt;OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);</span><br><span class="line"></span><br><span class="line">    var ip_excel_html = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (orderLines.Count &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ip_excel_html = <span class="string">"&lt;meta http-equiv=Content-Type content=\"text/html; charset=utf-8\"&gt;"</span>;</span><br><span class="line">        ip_excel_html += this.PartialViewHtml(<span class="string">"_OrderProductExport"</span>, orderLines);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    byte[] b = System.Text.Encoding.GetEncoding(<span class="string">"UTF-8"</span>).GetBytes(ip_excel_html);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> File(b, <span class="string">"application/vnd.ms-excel"</span>, <span class="string">"捡货表.xls"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
-public ActionResult ExportProduct(OrderExportViewModel search)
-{
-    var orders = Business.Logic&lt;OrderLogic&gt;().GetOrder(search.Map&lt;OrderExportViewModel, OrderSearchDTO&gt;());
-    var orderLines = Business.Logic&lt;OrderLineLogic&gt;().GetOrderLine(new OrderLineSearchDTO { OrderIds = orders.  Select(r =&gt; r.OrderId).ToList() }).Map&lt;OrderLineDTO, ExportOrderProductViewModel&gt;(Constant.MapType.PascalToLower);
-
-    var ip_excel_html = &quot;&quot;;
-    if (orderLines.Count &gt; 0)
-    {
-        ip_excel_html = &quot;&lt;meta http-equiv=Content-Type content=\&quot;text/html; charset=utf-8\&quot;&gt;&quot;;
-        ip_excel_html += this.PartialViewHtml(&quot;_OrderProductExport&quot;, orderLines);
-    }
-
-    byte[] b = System.Text.Encoding.GetEncoding(&quot;UTF-8&quot;).GetBytes(ip_excel_html);
-
-    return File(b, &quot;application/vnd.ms-excel&quot;, &quot;捡货表.xls&quot;);
-}</code></pre></script></p>
       
     </div>
     

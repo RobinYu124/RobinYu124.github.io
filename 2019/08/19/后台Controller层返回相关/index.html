@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 public ActionResult EventDEdit(long id)     {         var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new EventSearchViewModel">
+<meta name="description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new Ev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后台Controller层返回相关">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/后台Controller层返回相关/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 public ActionResult EventDEdit(long id)     {         var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new EventSearchViewModel">
+<meta property="og:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new Ev">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-19T07:58:02.237Z">
+<meta property="og:updated_time" content="2019-08-22T08:14:39.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后台Controller层返回相关">
-<meta name="twitter:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 public ActionResult EventDEdit(long id)     {         var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new EventSearchViewModel">
+<meta name="twitter:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new Ev">
 
 
 
@@ -300,21 +300,14 @@
 
       
         <p>1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面</p>
-<pre><code>public ActionResult EventDEdit(long id)
-    {
-        var result = Business.Gateway&lt;Event_D_Gateway&gt;().GetEventList(new EventSearchViewModel { event_id = id }, Config.AppKey);
-        if (result.success &amp;&amp; result.data != null &amp;&amp; result.data.list.Count &gt; 0)
-        {
-            return View(result.data.list.First());
-        }
-        else
-        {
-            return View(new EventListViewModel());
-        }
-    }</code></pre><p>2.从下面的代码可以看出，参数是异步传入（ajax传入）的，从return的Json格式看出。下面代码不用返回一个同名的DeleteEventD.cshtml页面或其他页面，因为她已经通过Json返回了。</p>
-<p>   public ActionResult DeleteEventD(long event_id)<br>        {<br>            var model = new EventDeleteViewModel { event_id = event_id };<br>            var obj = Business.Gateway<event_d_gateway>().DeleteEvent(model, Config.AppKey);</event_d_gateway></p>
-<pre><code>    return Json(new BaseResponse { success = obj.success, code = obj.code, message = obj.message });
-}</code></pre><p>3.那么如何在参数传入是同步传入的情况下（从上面的讨论可以看出，如果参数是同步传入的，必须返回一个同名页面或者通过 return View(“_OtherView”new EventListViewModel());返回另一个页面_OtherView.cshtml），返回Json呢？如下所示：<br>           return Json(new BaseResponse{ success = false, message = “无活动信息！” },JsonRequestBehavior.AllowGet);//通过JsonRequestBehavior.AllowGet</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult EventDEdit(long id)</span><br><span class="line">    &#123;</span><br><span class="line">        var result = Business.Gateway&lt;Event_D_Gateway&gt;().GetEventList(new EventSearchViewModel &#123; event_id = id &#125;, Config.AppKey);</span><br><span class="line">        <span class="keyword">if</span> (result.success &amp;&amp; result.data != null &amp;&amp; result.data.list.Count &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(result.data.list.First());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(new EventListViewModel());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.从下面的代码可以看出，参数是异步传入（ajax传入）的，从return的Json格式看出。下面代码不用返回一个同名的DeleteEventD.cshtml页面或其他页面，因为她已经通过Json返回了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult DeleteEventD(long event_id)</span><br><span class="line">     &#123;</span><br><span class="line">         var model = new EventDeleteViewModel &#123; event_id = event_id &#125;;</span><br><span class="line">         var obj = Business.Gateway&lt;Event_D_Gateway&gt;().DeleteEvent(model, Config.AppKey);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">return</span> Json(new BaseResponse &#123; success = obj.success, code = obj.code, message = obj.message &#125;);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.那么如何在参数传入是同步传入的情况下（从上面的讨论可以看出，如果参数是同步传入的，必须返回一个同名页面或者通过 return View(“_OtherView”new EventListViewModel());返回另一个页面_OtherView.cshtml），返回Json呢？如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Json(new BaseResponse&#123; success = false, message = <span class="string">"无活动信息！"</span> &#125;,JsonRequestBehavior.AllowGet);//通过JsonRequestBehavior.AllowGet</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
