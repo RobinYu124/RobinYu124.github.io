@@ -232,6 +232,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/工作中框架的分页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/22/工作中框架的分页/" itemprop="url">工作中框架的分页</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T13:40:31+08:00">
+                2019-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.情况一：</p>
+<p>后台Controller：<br>  public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)<br>        {<br>            search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行<br>            search.page_size = search.page_size == 0 ? 10 : search.page_size;//这几行 </p>
+<pre><code>    var dto = search.Map&lt;QuestionGroupListSearchViewModel, QuestionGroupListSearchDTO&gt;(Constant.MapType.LowerToPascal);
+    var result = Business.Logic&lt;QuestionGroupLogic&gt;().GetQuestionGroupList(dto);
+    var list = result.Map&lt;QuestionGroupListDTO, QuestionGroupListViewModel&gt;(Constant.MapType.PascalToLower);
+
+    var data = new StaticPagedList&lt;QuestionGroupListViewModel&gt;(list, dto.PageIndex, dto.PageSize, dto.TotalCount);//这几行 
+    return Request.IsAjaxRequest() ? (ActionResult)PartialView(&quot;_QuestionGroupList&quot;, data) : View(data);//这几行 
+}</code></pre><p>对应的层View：<br>QuestionGroupList.cshtml:</p>
+<p>@model StaticPagedList<questiongrouplistviewmodel><br>@{<br>    ViewBag.Title = “题库分类”;<br>    var QuestionGroupIdList = new List<dynamic> {<br>        new {id=QuestionGroupConstants.QuestionGroupId.科目一.GetHashCode().ToString(),name = QuestionGroupConstants.QuestionGroupId.科目一.ToString() },<br>        new {id=QuestionGroupConstants.QuestionGroupId.科目四.GetHashCode().ToString(),name = QuestionGroupConstants.QuestionGroupId.科目四.ToString() },<br>    };<br>}</dynamic></questiongrouplistviewmodel></p>
+<p>@section foot{<br>    <script src="~/js/question_group.js"></script><br>}</p>
+<p>@section containerTop{<br>    <div class="ip_container_top"><br>        <div class="ip_title">@ViewBag.Title</div><br>        <a class="ip_create" href="/questiongroup/add">添加</a><br>    </div><br>}<br>@IPHtml.Search.BeginSearch(new SearchAttr { Action = “/questiongroup/questiongrouplist” })<br>@IPHtml.Search.Select(QuestionGroupIdList,<br>    r =&gt; r.id, r =&gt; r.name,<br>    new SelectAttr<br>    {<br>        Id = “question_group_id”,<br>        Label = “科目：”,<br>        PlaceHolder = “全部”,<br>        Required = “不能为空”,<br>        SelectedValue = Request[“question_group_id”]<br>    })<br>@IPHtml.Search.Submit(new SearchSubmitAttr { Id = “question_group_list” })<br>@IPHtml.Search.EndSearch()</p>
+<p>@IPHtml.BeginUpdateTarget(new UpdateTargetAttr { Id = “question_group_list” })<br>@Html.Partial(“_QuestionGroupList”, Model)<br>@IPHtml.EndUpdateTarget()</p>
+<p>_QuestionGroupList.cshtml:</p>
+<p>@model StaticPagedList<questiongrouplistviewmodel></questiongrouplistviewmodel></p>
+<p>@IPHtml.List(<br>    Model,<br>    r =&gt; Html.Partial(“_QuestionGroupListItem”, r),<br>    new ColumnHeadAttr[] {<br>        new ColumnHeadAttr { Percentage=30, Head=”题库科目” },<br>        new ColumnHeadAttr { Percentage=30, Head=”题库分类” },<br>        new ColumnHeadAttr { Percentage=30, Head=”操作” }<br>    }<br>)<br>//这里分页<br>@IPHtml.Paging(<br>    Html,<br>    Model,<br>    page_index =&gt; Url.Action(“QuestionGroupList”,<br>    new<br>    {<br>        page_index = page_index,<br>        question_group_id = Request[“question_group_id”]<br>    }))</p>
+<p>_QuestionGroupListItem.cshtml:</p>
+<p>@model QuestionGroupListViewModel</p>
+<p>@IPHtml.Item(Model, r =&gt; new RowAttr { Id = “id” + r.question_type_id }, r =&gt; new ColumnBodyAttr[] {<br>        new ColumnBodyAttr { Field=r.question_group_name,Percentage=30 },<br>        new ColumnBodyAttr { Field=r.question_type_name, Percentage=30 },<br>        new ColumnBodyAttr { Field=”&lt;a href=’/questiongroup/edit/“+r.question_type_id+”‘ &quot;&gt;修改&lt;a onclick=&quot;itplus.questionType.delete(“+r.question_type_id+”)&quot;&gt;删除“,Percentage =30 }</p>
+<p>})</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/后台Controller层返回相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2003,219 +2142,6 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/C-中Linq常用方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RobinYu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MyBlog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/C-中Linq常用方法/" itemprop="url">C#中Linq常用方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T10:28:22+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Aggregate—自定义的聚合计算</p>
-<p>All—检测序列中所有元素是否都满足指定的条件</p>
-<p>Any—检测序列中是否存在满足指定条件的元素</p>
-<p>Average—计算序列中元素的平均值</p>
-<p>Cast—将序列中元素的类型转换成指定的类型(由TResult参数指定)</p>
-<p>Contact—将一个序列中的元素全部追加到另一个序列中，并构成一个新的序列。</p>
-<p>Contains—检测序列中是否存在指定的元素。</p>
-<p>Count—计算序列中元素的数量，或者计算序列中满足条件元素的数量。</p>
-<p>DefaultIfEmpty—返回IEnumerable<t>类型的序列。如果序列为空，则返回只包含一个元素(值为默认值或指定的值)的序列</t></p>
-<p>Distinct—可以去掉数据源中重复的元素，并返回一个新序列。另外，他还可以指定一个比较器来比较两个元素是否相同。</p>
-<p>Element—返回集合中指定索引处的元素。</p>
-<p>ElementAtOrDefault—返回集合中指定索引处的元素。如果索引超出集合的范围，则返回默认值</p>
-<p>Empty—返回IEnumerable<t>类型的空序列</t></p>
-<p>EqualAll/SequenceEqual—判断两个序列是否相等。</p>
-<p>Except—可以计算两个集合的差集(由在一个集合中而不在另一个集合中的元素组成的集合)</p>
-<p>First—返回集合的第一个元素，或者返回集合中满足制定条件的第一个元素。</p>
-<p>FirstOrDefault—返回集合的第一个元素，或者返回集合中满足制定条件的第一个元素。如果不存在满足该条件的元素，则返回默认元素。</p>
-<p>GroupBy—对序列中的元素进行分组</p>
-<p>GroupJoin—他产生分层数据结构，降低一个集合中的每一个元素与第二个集合中的一组相关元素进行匹配。在查询结果中，第一个集合中的元素都会出现在查询结果中。如果第一个集合中的元素在第二个集合中找到相关的元素，则使用被找到的元素，否则使用空</p>
-<p>Intersect—可以计算两个集合的交集(元素即在第一个序列中，也在第二个序列中)</p>
-<p>Join—要求元素的连接关系必须同时满足被链接的两个数据源，和SQL语句中的inner join字句相似</p>
-<p>Last—返回集合的最后一个元素，或者返回集合的满足指定条件的最后一个元素。</p>
-<p>LastOrDefault—返回集合的最后一个元素，或者返回集合的满足指定条件的最后一个元素。如果出存在满足该条件的元素，则返回默认元素。</p>
-<p>LongCount—计算序列中元素的数量，或者计算序列满足一定条件的元素的数量。一半计算大型集合中的元素的数量。</p>
-<p>Max—计算序列中元素的最大值。</p>
-<p>Min—计算序列中元素的最小值。</p>
-<p>OfType—从序列中筛选指定类型的元素，并构成为一个序列。</p>
-<p>OrderBy—根据关键字对序列中的元素升序。</p>
-<p>OrderByDescending—根据关键字对序列中的元素降序。</p>
-<p>Range—返回指定范围的数字序列。</p>
-<p>Repeat—返回IEnumerable<t>类型的包含一个重复值得序列。</t></p>
-<p>Reverse—将序列中的元素的顺序进行反转。</p>
-<p>Select—将数据源中的元素投影到新序列中，并指定元素的类型和表现形式。</p>
-<p>SelectMany—可以将数据源中的元素投影到新序列中，并制定元素的类型和表达式。</p>
-<p>Single—返回集合的唯一元素，或者返回集合的满足指定条件的唯一元素。</p>
-<p>SingleOrDefault—返回集合的唯一元素，或者返回集合的满足指定条件的唯一元素。如果不存在满足该条件的元素，则返回默认元素。</p>
-<p>Skip—跳过数据源(序列)中指定数量的元素，然后返回剩余的元素或序列。</p>
-<p>SkipWhile—跳过数据源(序列)中满足指定条件的元素，然后返回剩余的元素或序列。</p>
-<p>Sum—计算序列中元素的和。</p>
-<p>Take—从数据源(序列)的开头开始提取指定数量的元素。然后返回有这些元素组成的序列。</p>
-<p>TakeWhile—从数据源(序列)的开头开始提取满足指定条件的元素。然后返回有这些元素组成的序列。</p>
-<p>ThenBy—根据次要关键字对序列中的元素按升序排序。</p>
-<p>ThereByDescending—根据次要关键字对序列中的元素按降序排列。</p>
-<p>ToArray—将IEnumerable<t>类型的序列转换为T[]类型的数组。</t></p>
-<p>ToDictionary—按照键值将序列中的元素放入一对一的字典序列(Dictionary&lt;TKey,TValue&gt;)中。</p>
-<p>ToList—将IEnumerable<t>类型的序列转换为List<t>类型的序列。</t></t></p>
-<p>ToLookup—按照键值将序列中的元素放入一对多的字典序列(Lookup&lt;TKey,TValue&gt;)中。</p>
-<p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
-<p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
-<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><p>　　SelectMany</p>
-<h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
-<p>　　GroupJoin</p>
-<h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><p>　　Where</p>
-<h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
-<p>　　OrderByDescending</p>
-<p>　　ThereBy</p>
-<p>　　ThereByDescending</p>
-<p>　　Reverse</p>
-<h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>　　Max</p>
-<p>　　Min</p>
-<p>　　Count</p>
-<p>　　LongCount</p>
-<p>　　Sum</p>
-<p>　　Aggregate</p>
-<h2 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h2><p>　　Distinct</p>
-<p>　　Except</p>
-<p>　　Intersect</p>
-<p>　　Union</p>
-<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><p>　　Element</p>
-<p>　　ElementAtOrDefault</p>
-<p>　　First</p>
-<p>　　FirstOrDefault</p>
-<p>　　Last</p>
-<p>　　LastOrDefault</p>
-<p>　　Single</p>
-<p>　　SingleOrDefault</p>
-<h2 id="数据类型转换操作"><a href="#数据类型转换操作" class="headerlink" title="数据类型转换操作"></a>数据类型转换操作</h2><p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
-<p>　　AsEnumerable ： 可以将数据源转换成IEnumerable<t>或者IEnumerable的集合序列。</t></p>
-<p>　　Cast ： 将序列中元素的类型转换为指定类型。</p>
-<p>　　OfType ：从序列中筛选一个指定类型的元素，并构成一个序列。</p>
-<p>　　ToArray ： 将一个IEnumerable<t>的序列转换成一个T[]类型的一个数组。</t></p>
-<p>　　ToList ： 将一个IEnumerable<t>的序列转换成一个List<t>类型的一个序列。</t></t></p>
-<p>　　ToDictionary ： 按照键值将序列中的元素放入到一对一的字典序列中。</p>
-<p>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</p>
-<h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
-<p>　　Any</p>
-<p>　　Contains</p>
-<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>　　Skip</p>
-<p>　　SkipWhile</p>
-<p>　　Take</p>
-<p>　　TakeWhile</p>
-<p>　　Contact</p>
-<p>　　SequenceEqual</p>
-<h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据<br>      var linqtest = (from r in db.Am_recProScheme<br>                      where r.rpId &gt; 10<br>                      orderby r.rpId descending<br>                      select r).Skip(10).Take(10); //取第11条到第20条数据  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2266,7 +2192,7 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
