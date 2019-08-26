@@ -232,6 +232,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/工作中C-MVC路由的一些命名习惯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/15/工作中C-MVC路由的一些命名习惯/" itemprop="url">工作中C# MVC接口路由的一些命名习惯</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T14:10:51+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-接口路由名和方法名保持一致（-Route-“get-event-join-list”-和get-event-join-list）要保持一致"><a href="#1-接口路由名和方法名保持一致（-Route-“get-event-join-list”-和get-event-join-list）要保持一致" class="headerlink" title="1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致"></a>1.接口路由名和方法名保持一致（[Route(“get_event_join_list”)]和get_event_join_list）要保持一致</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[Route(<span class="string">"get_event_join_list"</span>)]</span><br><span class="line">[HttpGet]</span><br><span class="line">public DataResponse&lt;PageResponse&lt;EventDJoinViewModel&gt;&gt; get_event_join_list([FromUri]EventJoinSearchViewModel search)</span><br><span class="line">&#123;</span><br><span class="line">    var searchDTO = search.Map&lt;EventJoinSearchViewModel, EventJoinSearchDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">    var result = Business.Logic&lt;EventLogic&gt;().GetEventJoinList(searchDTO, AppKey);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new DataResponse&lt;PageResponse&lt;EventDJoinViewModel&gt;&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        success = true,</span><br><span class="line">        code = ResponseCode.Ok.code,</span><br><span class="line">        message = ResponseCode.Ok.message,</span><br><span class="line">        data = new PageResponse&lt;EventDJoinViewModel&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            last_page = searchDTO.PageIndex * searchDTO.PageSize &gt;= searchDTO.TotalCount,</span><br><span class="line">            total_count = searchDTO.TotalCount,</span><br><span class="line">            list = result.Map&lt;EventDJoinDTO, EventDJoinViewModel&gt;(Constant.MapType.PascalToLower)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get-event-join-list和GetEventJoinList"><a href="#1-1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get-event-join-list和GetEventJoinList" class="headerlink" title="1.1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get_event_join_list和GetEventJoinList"></a>1.1接口路由方法名也要和逻辑层和仓存储的方法保持一致，如上面的get_event_join_list和GetEventJoinList</h2><p>逻辑层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;EventDJoinDTO&gt; GetEventJoinList(EventJoinSearchDTO search, string appKey)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> new EventRepository().GetEventJoinList(search, appKey).ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仓存储：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public IQueryable&lt;EventDJoinDTO&gt; GetEventJoinList(EventJoinSearchDTO search, string appKey)</span><br><span class="line">&#123;</span><br><span class="line">    var query = <span class="keyword">from</span> e <span class="keyword">in</span> GetAll()</span><br><span class="line">                join ej <span class="keyword">in</span> DBContext.EventJoins on e.EventId equals ej.EventId</span><br><span class="line">                join t <span class="keyword">in</span> DBContext.EventTypes on e.EventTypeId equals t.EventTypeId</span><br><span class="line">                join tg <span class="keyword">in</span> DBContext.EventTypeGroups on t.EventTypeGroupId equals tg.EventTypeGroupId</span><br><span class="line">                where e.AppKey == appKey &amp;&amp; !e.DateDeleted.HasValue</span><br><span class="line">                orderby ej.OrderId</span><br><span class="line">                select new EventDJoinDTO</span><br><span class="line">                &#123;</span><br><span class="line">                    AppKey = e.AppKey,</span><br><span class="line">                    Title = e.Title,</span><br><span class="line">                    EventAddress = e.EventAddress,</span><br><span class="line">                    Description = e.Description,</span><br><span class="line">                    EventId = e.EventId,</span><br><span class="line">                    ShopId = e.ShopId,</span><br><span class="line">                    OrderId = ej.OrderId,</span><br><span class="line">                    UserId = ej.UserId,</span><br><span class="line">                    DateDeleted = e.DateDeleted,</span><br><span class="line">                    DateCreated = e.DateCreated,</span><br><span class="line">                    ClientId = e.ClientId,</span><br><span class="line">                    CategoryId = e.CategoryId,</span><br><span class="line">                    Price = e.Price,</span><br><span class="line">                    EventTypeId = e.EventTypeId,</span><br><span class="line">                    EventTypeName = t.EventTypeName,</span><br><span class="line">                    EventTypeGroupId = tg.EventTypeGroupId,</span><br><span class="line">                    EventTypeGroupName = tg.EventTypeGroupName,</span><br><span class="line">                    UserName = ej.UserName,</span><br><span class="line">                    Mobile = ej.Mobile,</span><br><span class="line">                    Note = ej.Note,</span><br><span class="line">                    ImagePaths = ej.ImagePaths,</span><br><span class="line">                    VideoJson = ej.VideoJson,</span><br><span class="line">                    EventDateFrom = e.EventDateFrom,</span><br><span class="line">                    EventDateTo = e.EventDateTo</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (search.EventId.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.EventId == search.EventId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (search.OrderId.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.OrderId == search.OrderId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (search.EventTypeId.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.EventTypeId == search.EventTypeId.Value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (search.EventTypeGroupId.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.EventTypeGroupId == search.EventTypeGroupId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (search.UserId.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.UserId == search.UserId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!string.IsNullOrWhiteSpace(search.Mobile))</span><br><span class="line">    &#123;</span><br><span class="line">        query = query.Where(r =&gt; r.Mobile.Contains(search.Mobile));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (search.PageIndex &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        search.TotalCount = query.Count();</span><br><span class="line">        query = query.Skip((search.PageIndex - <span class="number">1</span>) * search.PageSize).Take(search.PageSize);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> query.AsNoTracking();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2接口-api的controller层-路由方法传入单个参数的时候要用（int-order-id，int-event-id）这样的命名方式"><a href="#1-2接口-api的controller层-路由方法传入单个参数的时候要用（int-order-id，int-event-id）这样的命名方式" class="headerlink" title="1.2接口(api的controller层)路由方法传入单个参数的时候要用（int order_id，int event_id）这样的命名方式"></a>1.2接口(api的controller层)路由方法传入单个参数的时候要用（int order_id，int event_id）这样的命名方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Route(<span class="string">"get_event_join_detail"</span>)]</span><br><span class="line">[HttpGet]</span><br><span class="line">public DataResponse&lt;EventDJoinViewModel&gt; get_event_join_detail(int order_id)</span><br><span class="line">&#123;</span><br><span class="line">    var result = Business.Logic&lt;EventLogic&gt;().GetEventDJoinDetail(new EventJoinSearchDTO &#123; OrderId = order_id &#125;, AppKey);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new DataResponse&lt;EventDJoinViewModel&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        success = true,</span><br><span class="line">        code = ResponseCode.Ok.code,</span><br><span class="line">        message = ResponseCode.Ok.message,</span><br><span class="line">        data = result.Map&lt;EventDJoinDTO, EventDJoinViewModel&gt;(Constant.MapType.PascalToLower)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.2.1后台controller层传入单个参数的时候可以用(int eventId)这样的方式，第一个字母小写，之后单词的第一个字母都大写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult Forbidden(long eventId)</span><br><span class="line">     &#123;</span><br><span class="line">         var dto = new ForbiddenEventViewModel &#123; event_id = eventId, user_id = UserId.Value &#125;;</span><br><span class="line">         var obj = Business.Gateway&lt;Event_C_Gateway&gt;().ForbiddenEvent(dto);</span><br><span class="line">         <span class="keyword">return</span> Json(new BaseResponse &#123; success = obj.success, code = obj.code, message = obj.message &#125;);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-ViewModel和DTO自由属性的命名规范"><a href="#2-ViewModel和DTO自由属性的命名规范" class="headerlink" title="2.ViewModel和DTO自由属性的命名规范"></a>2.ViewModel和DTO自由属性的命名规范</h2><p>2.1Viewmodel:(根据需要返回需要的属性，给Controller层传参或者返回)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace AlaGou.Admin.ViewModel</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="class"><span class="keyword">class</span> <span class="title">HouseViewModel</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        public int? house_id &#123; get; set; &#125;</span><br><span class="line">        public string title &#123; get; set; &#125;</span><br><span class="line">        public int client_id &#123; get; set; &#125;    </span><br><span class="line">        public string price &#123; get; set; &#125;</span><br><span class="line">        public string tag &#123; get; set; &#125;    </span><br><span class="line">        public DateTime date_created &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public <span class="class"><span class="keyword">class</span> <span class="title">HouseDetailViewModel</span> :</span> HouseViewModel</span><br><span class="line">    &#123;</span><br><span class="line">        public string cover_image_path &#123; get; set; &#125;</span><br><span class="line">        public string description &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.2DTO:(和数据库里设计的属性保持一致，给逻辑层和仓储层用的对象)</p>
+<p>///HouseDTO(如下)，可以直接继承House表（数据库里自己设计的表，一般在一个项目的Model中），省去再写属性的麻烦</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">using System.ComponentModel.DataAnnotations.Schema;</span><br><span class="line">using AlaGou.Models;</span><br><span class="line">namespace AlaGou.BusinessLogic.DTO</span><br><span class="line">&#123;</span><br><span class="line">    [NotMapped]</span><br><span class="line">    public <span class="class"><span class="keyword">class</span> <span class="title">HouseDTO</span> :</span> House</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>///HouseEditDTO（如下）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using AlaGou.Models;</span><br><span class="line">namespace AlaGou.BusinessLogic.DTO</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="class"><span class="keyword">class</span> <span class="title">HouseEditDTO</span> :</span> House</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>///HouseSearchDTO（如下）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using ITPlus.Contract;</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Threading.Tasks;</span><br><span class="line">namespace AlaGou.BusinessLogic.DTO</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="class"><span class="keyword">class</span> <span class="title">HouseSearchDTO</span> :</span> MvcPaging</span><br><span class="line">    &#123;</span><br><span class="line">        public string Title &#123; get; set; &#125;</span><br><span class="line">        public string Tag &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1528,7 +1673,7 @@ Console.ReadKey();</code></pre><p>　　　　　　这段代码中，用到了�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
