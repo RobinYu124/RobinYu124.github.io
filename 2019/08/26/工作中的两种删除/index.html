@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta name="description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EF实体对象变动跟踪">
-<meta property="og:url" content="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/index.html">
+<meta property="og:title" content="工作中的两种删除">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/工作中的两种删除/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta property="og:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T06:08:19.726Z">
+<meta property="og:updated_time" content="2019-08-26T07:47:11.586Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EF实体对象变动跟踪">
-<meta name="twitter:description" content="转载：https://blog.csdn.net/u011127019/article/details/53941235">
+<meta name="twitter:title" content="工作中的两种删除">
+<meta name="twitter:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/26/工作中的两种删除/">
 
 
 
 
 
-  <title>EF实体对象变动跟踪 | MyBlog</title>
+  <title>工作中的两种删除 | MyBlog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/EF实体对象变动跟踪/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/工作中的两种删除/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RobinYu">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EF实体对象变动跟踪</h1>
+          <h1 class="post-title" itemprop="name headline">工作中的两种删除</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:07:22+08:00">
-                2019-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T15:45:26+08:00">
+                2019-08-26
               </time>
             
 
@@ -299,7 +299,12 @@
       
 
       
-        <p>转载：<a href="https://blog.csdn.net/u011127019/article/details/53941235" target="_blank" rel="noopener">https://blog.csdn.net/u011127019/article/details/53941235</a></p>
+        <p>第1种：<br>js:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">itplus.productParam = new function () &#123;</span><br><span class="line">    this.deleteProductParam = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"此操作会同时删除它的所有参数值，确认删除吗"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/productparam/deleteproductparam'</span>, &#123; productparamId: id &#125;, function (result) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">                    layer.closeAll(<span class="string">'dialog'</span>);</span><br><span class="line">                    $(<span class="string">'#id_'</span> + id).remove();</span><br><span class="line">                    layer.msg(<span class="string">"已删除"</span>, &#123; icon: <span class="number">1</span>, time: <span class="number">1000</span> &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    layer.msg(result.message, &#123; icon: <span class="number">2</span> &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种：<br>js:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">itplus.questionType = new function () &#123;</span><br><span class="line"></span><br><span class="line">    this.callback = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.success)</span><br><span class="line">            itplus.toast(result.message, function () &#123; layer.closeAll(); location.reload(); &#125;);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.delete = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"确认删除此分类吗？"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            layer.closeAll();</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/questiongroup/delquestiongroupdetail'</span>, &#123; question_type_id: id &#125;, function (result) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">                    layer.closeAll();</span><br><span class="line">                    itplus.toast(result.message, function () &#123; location.reload(); &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -324,8 +329,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/Linq中的Join使用笔记/" rel="next" title="Linq中的Join使用笔记">
-                <i class="fa fa-chevron-left"></i> Linq中的Join使用笔记
+              <a href="/2019/08/26/工作中批量传入数组如何接收并压入另一数据表/" rel="next" title="工作中批量传入数组如何接收并压入另一数据表">
+                <i class="fa fa-chevron-left"></i> 工作中批量传入数组如何接收并压入另一数据表
               </a>
             
           </div>
@@ -333,10 +338,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/15/工作中C-MVC路由的一些命名习惯/" rel="prev" title="工作中C# MVC接口路由的一些命名习惯">
-                工作中C# MVC接口路由的一些命名习惯 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
