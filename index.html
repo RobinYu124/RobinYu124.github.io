@@ -232,6 +232,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/工作中批量传入数组如何接收并压入另一数据表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/26/工作中批量传入数组如何接收并压入另一数据表/" itemprop="url">工作中批量传入数组如何接收并压入另一数据表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T14:39:18+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>路由：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Route(<span class="string">"submit_test_paper"</span>)]</span><br><span class="line">[ApiAuth]</span><br><span class="line">[HttpPost]</span><br><span class="line">public DataResponse&lt;TestResultViewModel&gt; submit_test_paper([FromBody]SubmitTestPaperViewModel search)</span><br><span class="line">&#123;</span><br><span class="line">    var searchDTO = search.Map&lt;SubmitTestPaperViewModel, SubmitTestPaperDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">    var result = Business.Logic&lt;QuestionBankLogic&gt;().SubmitTestPaper(searchDTO, UserId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new DataResponse&lt;TestResultViewModel&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        code = result.code,</span><br><span class="line">        message = result.message,</span><br><span class="line">        success = result.success,</span><br><span class="line">        data = result.data.Map&lt;TestResultDTO, TestResultViewModel&gt;(Constant.MapType.PascalToLower)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Logic层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public DataResponse&lt;TestResultDTO&gt; SubmitTestPaper(SubmitTestPaperDTO model, long userId)</span><br><span class="line">&#123;</span><br><span class="line">    var rep = new TestPaperRepository();</span><br><span class="line">    var test = rep.First(r =&gt; r.TestPaperId == model.TestPaperId &amp;&amp; r.UserId == userId);</span><br><span class="line"></span><br><span class="line">    test.Score = model.Score;</span><br><span class="line">    test.WrongCount = model.QuestionIds.Count;</span><br><span class="line">    test.DateConfrimed = DateTime.Now;</span><br><span class="line">    rep.Update(test);</span><br><span class="line"></span><br><span class="line">    var wrongRep = new QuetionWrongRepository();</span><br><span class="line">    var wrongIds = wrongRep.Where(r =&gt; r.UserId == userId).Select(r =&gt; r.QuestionId).ToList();</span><br><span class="line"></span><br><span class="line">    var questionIds = model.QuestionIds.Where(r =&gt; !wrongIds.Contains(r));</span><br><span class="line">    foreach (var id <span class="keyword">in</span> questionIds)</span><br><span class="line">    &#123;</span><br><span class="line">        wrongRep.AddEntityToContext(new QuetionWrong</span><br><span class="line">        &#123;</span><br><span class="line">            DateCreated = DateTime.Now,</span><br><span class="line">            QuestionId = id,</span><br><span class="line">            UserId = userId</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    wrongRep.SaveChanges();</span><br><span class="line"></span><br><span class="line">    var bestScore = rep.Where(r =&gt; r.UserId == userId &amp;&amp; r.QuestionGroupId == model.QuestionGroupId).Select(r =&gt; r.Score).Max();</span><br><span class="line">    <span class="keyword">return</span> new DataResponse&lt;TestResultDTO&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        code = ResponseCode.Ok.code,</span><br><span class="line">        message = <span class="string">"提交成功"</span>,</span><br><span class="line">        success = true,</span><br><span class="line">        data = new TestResultDTO</span><br><span class="line">        &#123;</span><br><span class="line">            TestCostTime = (test.DateConfrimed - test.DateCreated).ToString(),</span><br><span class="line">            Score = model.Score,</span><br><span class="line">            BestScore = bestScore</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中下面的最为关键：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var wrongRep = new QuetionWrongRepository();</span><br><span class="line">var wrongIds = wrongRep.Where(r =&gt; r.UserId == userId).Select(r =&gt; r.QuestionId).ToList();</span><br><span class="line"></span><br><span class="line">var questionIds = model.QuestionIds.Where(r =&gt; !wrongIds.Contains(r));</span><br><span class="line">foreach (var id <span class="keyword">in</span> questionIds)</span><br><span class="line">&#123;</span><br><span class="line">    wrongRep.AddEntityToContext(new QuetionWrong</span><br><span class="line">    &#123;</span><br><span class="line">        DateCreated = DateTime.Now,</span><br><span class="line">        QuestionId = id,</span><br><span class="line">        UserId = userId</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">wrongRep.SaveChanges();</span><br></pre></td></tr></table></figure>
+
+<p>DTO:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SubmitTestPaperDTO</span></span></span><br><span class="line"> &#123;        </span><br><span class="line">     public DateTime? DateConfrimed &#123; get; set; &#125;</span><br><span class="line">     public string ScoreSharedImagePath &#123; get; set; &#125;</span><br><span class="line">     public int WrongCount &#123; get; set; &#125;</span><br><span class="line">     public int Score &#123; get; set; &#125;</span><br><span class="line">     public long TestPaperId &#123; get; set; &#125;</span><br><span class="line">     public int QuestionGroupId &#123; get; set; &#125;</span><br><span class="line">     public List&lt;long&gt; QuestionIds &#123; get; set; &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>ViewModel:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SubmitTestPaperViewModel</span></span></span><br><span class="line">&#123;    </span><br><span class="line">    public string score_shared_image_path &#123; get; set; &#125;</span><br><span class="line">    public int score &#123; get; set; &#125;</span><br><span class="line">    public long test_paper_id &#123; get; set; &#125;</span><br><span class="line">    public List&lt;long&gt; question_ids &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/Postman调试的时候注意事项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1397,126 +1529,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/Linq中的Join使用笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RobinYu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MyBlog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/Linq中的Join使用笔记/" itemprop="url">Linq中的Join使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:01:45+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转载：<a href="https://blog.csdn.net/deaoe/article/details/85224733" target="_blank" rel="noopener">https://blog.csdn.net/deaoe/article/details/85224733</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1567,7 +1579,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
