@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;S">
+<meta name="description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;Sy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C# MVC工作中View层配置Web.Config简化命名">
 <meta property="og:url" content="http://yoursite.com/2019/08/16/C-MVC工作中View层配置Web-Config简化命名/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;S">
+<meta property="og:description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;Sy">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T08:23:09.408Z">
+<meta property="og:updated_time" content="2019-09-10T09:13:01.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# MVC工作中View层配置Web.Config简化命名">
-<meta name="twitter:description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;S">
+<meta name="twitter:description" content="1.View-web.config里（把重复用的namespace放在这里） 1234567891011121314151617181920&amp;lt;namespaces&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc&quot; /&amp;gt;  &amp;lt;add namespace=&quot;System.Web.Mvc.Ajax&quot; /&amp;gt;  &amp;lt;add namespace=&quot;Sy">
 
 
 
@@ -316,8 +316,7 @@
       
 
       
-        <a id="more"></a>
-<p>1.View-web.config里（把重复用的namespace放在这里）</p>
+        <p>1.View-web.config里（把重复用的namespace放在这里）</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;namespaces&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Web.Mvc"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Web.Mvc.Ajax"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Web.Mvc.Html"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Web.Routing"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Web.Optimization"</span>/&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"System.Linq"</span>/&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Module.Client.Intern"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Configuration"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Contract"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Control"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Entity"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Framework"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"PagedList"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"PagedList.Mvc"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Module.Client.Intern.Areas.EventArea.ViewModels"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Framework.Extension"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Event.Intern.C.Contract"</span> /&gt;</span><br><span class="line">  &lt;add namespace=<span class="string">"ITPlus.Event.Intern.D.ViewModels"</span> /&gt;</span><br><span class="line">&lt;/namespaces&gt;</span><br></pre></td></tr></table></figure>
       
     </div>

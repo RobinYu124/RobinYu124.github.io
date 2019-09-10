@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超">
+<meta name="description" content="请点击查看更多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#中的委托">
 <meta property="og:url" content="http://yoursite.com/2019/08/05/C-中的委托/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超">
+<meta property="og:description" content="请点击查看更多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T08:43:30.359Z">
+<meta property="og:updated_time" content="2019-09-10T09:13:59.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中的委托">
-<meta name="twitter:description" content="C#中的委托   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超">
+<meta name="twitter:description" content="请点击查看更多">
 
 
 
@@ -316,7 +316,8 @@
       
 
       
-        <a id="more"></a>
+        <p>请点击查看更多</p>
+<a id="more"></a>
 <h2 id="C-中的委托"><a href="#C-中的委托" class="headerlink" title="C#中的委托"></a>C#中的委托</h2><p>   委托和事件在 .NET Framework 中的应用非常广泛，然而，较好地理解委托和事件对很多接触 C# 时间不长的人来说并不容易。它们就像是一道槛儿，过了这个槛的人，觉得真是太容易了，而没有过去的人每次见到委托和事件就觉得心里堵得慌，浑身不自在。本章中，我将由浅入深地讲述什么是委托、为什么要使用委托、事件的由来、.NET Framework 中的委托和事件、委托中方法异常和超时的处理、委托与异步编程、委托和事件对Observer 设计模式的意义，对它们的编译代码也做了讨论。</p>
 <h2 id="1-1-理解委托"><a href="#1-1-理解委托" class="headerlink" title="1.1 理解委托"></a>1.1 理解委托</h2><h2 id="1-1-1-将方法作为方法的参数"><a href="#1-1-1-将方法作为方法的参数" class="headerlink" title="1.1.1 将方法作为方法的参数"></a>1.1.1 将方法作为方法的参数</h2><p>   我们先不管这个标题如何的绕口，也不管委托究竟是个什么东西，来看下面这两个最简单的方法，它们不过是在屏幕上输出一句问候的话语：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void GreetPeople(string name)</span><br><span class="line">&#123;</span><br><span class="line">    EnglishGreeting(name);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public void EnglishGreeting(string name)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"Good Morning, "</span> + name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

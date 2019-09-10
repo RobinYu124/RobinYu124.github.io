@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new E">
+<meta name="description" content="请点击查看更多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后台Controller层返回相关">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/后台Controller层返回相关/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new E">
+<meta property="og:description" content="请点击查看更多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T08:44:42.432Z">
+<meta property="og:updated_time" content="2019-09-10T09:14:51.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后台Controller层返回相关">
-<meta name="twitter:description" content="1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面 123456789101112public ActionResult EventDEdit(long id)    &amp;#123;        var result = Business.Gateway&amp;lt;Event_D_Gateway&amp;gt;().GetEventList(new E">
+<meta name="twitter:description" content="请点击查看更多">
 
 
 
@@ -316,7 +316,8 @@
       
 
       
-        <a id="more"></a>
+        <p>请点击查看更多</p>
+<a id="more"></a>
 <p>1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult EventDEdit(long id)</span><br><span class="line">    &#123;</span><br><span class="line">        var result = Business.Gateway&lt;Event_D_Gateway&gt;().GetEventList(new EventSearchViewModel &#123; event_id = id &#125;, Config.AppKey);</span><br><span class="line">        <span class="keyword">if</span> (result.success &amp;&amp; result.data != null &amp;&amp; result.data.list.Count &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(result.data.list.First());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(new EventListViewModel());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 

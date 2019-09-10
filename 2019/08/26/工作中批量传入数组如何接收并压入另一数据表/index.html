@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="路由： 12345678910111213141516[Route(&quot;submit_test_paper&quot;)][ApiAuth][HttpPost]public DataResponse&amp;lt;TestResultViewModel&amp;gt; submit_test_paper([FromBody]SubmitTestPaperViewModel search)&amp;#123;    var sear">
+<meta name="description" content="请点击查看更多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中批量传入数组如何接收并压入另一数据表">
 <meta property="og:url" content="http://yoursite.com/2019/08/26/工作中批量传入数组如何接收并压入另一数据表/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="路由： 12345678910111213141516[Route(&quot;submit_test_paper&quot;)][ApiAuth][HttpPost]public DataResponse&amp;lt;TestResultViewModel&amp;gt; submit_test_paper([FromBody]SubmitTestPaperViewModel search)&amp;#123;    var sear">
+<meta property="og:description" content="请点击查看更多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T08:44:31.609Z">
+<meta property="og:updated_time" content="2019-09-10T09:14:40.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中批量传入数组如何接收并压入另一数据表">
-<meta name="twitter:description" content="路由： 12345678910111213141516[Route(&quot;submit_test_paper&quot;)][ApiAuth][HttpPost]public DataResponse&amp;lt;TestResultViewModel&amp;gt; submit_test_paper([FromBody]SubmitTestPaperViewModel search)&amp;#123;    var sear">
+<meta name="twitter:description" content="请点击查看更多">
 
 
 
@@ -316,7 +316,8 @@
       
 
       
-        <a id="more"></a>
+        <p>请点击查看更多</p>
+<a id="more"></a>
 <p>路由：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Route(<span class="string">"submit_test_paper"</span>)]</span><br><span class="line">[ApiAuth]</span><br><span class="line">[HttpPost]</span><br><span class="line">public DataResponse&lt;TestResultViewModel&gt; submit_test_paper([FromBody]SubmitTestPaperViewModel search)</span><br><span class="line">&#123;</span><br><span class="line">    var searchDTO = search.Map&lt;SubmitTestPaperViewModel, SubmitTestPaperDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">    var result = Business.Logic&lt;QuestionBankLogic&gt;().SubmitTestPaper(searchDTO, UserId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new DataResponse&lt;TestResultViewModel&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        code = result.code,</span><br><span class="line">        message = result.message,</span><br><span class="line">        success = result.success,</span><br><span class="line">        data = result.data.Map&lt;TestResultDTO, TestResultViewModel&gt;(Constant.MapType.PascalToLower)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
