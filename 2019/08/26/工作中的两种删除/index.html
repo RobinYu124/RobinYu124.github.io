@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
+<meta name="description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中的两种删除">
 <meta property="og:url" content="http://yoursite.com/2019/08/26/工作中的两种删除/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
+<meta property="og:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T07:47:11.586Z">
+<meta property="og:updated_time" content="2019-09-10T08:31:47.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中的两种删除">
-<meta name="twitter:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#125">
+<meta name="twitter:description" content="第1种：js: 123456789101112131415itplus.productParam = new function () &amp;#123;    this.deleteProductParam = function (id) &amp;#123;        layer.confirm(&quot;此操作会同时删除它的所有参数值，确认删除吗&quot;, &amp;#123; btn: [&quot;确定&quot;, &quot;取消&quot;] &amp;#12">
 
 
 
@@ -311,7 +311,8 @@
       
 
       
-        <p>第1种：<br>js:</p>
+        <a id="more"></a>
+<p>第1种：<br>js:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">itplus.productParam = new function () &#123;</span><br><span class="line">    this.deleteProductParam = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"此操作会同时删除它的所有参数值，确认删除吗"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/productparam/deleteproductparam'</span>, &#123; productparamId: id &#125;, function (result) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">                    layer.closeAll(<span class="string">'dialog'</span>);</span><br><span class="line">                    $(<span class="string">'#id_'</span> + id).remove();</span><br><span class="line">                    layer.msg(<span class="string">"已删除"</span>, &#123; icon: <span class="number">1</span>, time: <span class="number">1000</span> &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    layer.msg(result.message, &#123; icon: <span class="number">2</span> &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>第二种：<br>js:</p>

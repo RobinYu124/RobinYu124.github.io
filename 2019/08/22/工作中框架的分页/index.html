@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_i">
+<meta name="description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作中框架的分页">
 <meta property="og:url" content="http://yoursite.com/2019/08/22/工作中框架的分页/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_i">
+<meta property="og:description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T08:50:45.587Z">
+<meta property="og:updated_time" content="2019-09-10T08:31:54.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作中框架的分页">
-<meta name="twitter:description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_i">
+<meta name="twitter:description" content="1.情况一： 后台Controller： 123456789101112public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)       &amp;#123;           search.page_index = search.page_index == 0 ? 1 : search.page_">
 
 
 
@@ -311,7 +311,8 @@
       
 
       
-        <p>1.情况一：</p>
+        <a id="more"></a>
+<p>1.情况一：</p>
 <p>后台Controller：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult QuestionGroupList(QuestionGroupListSearchViewModel search)</span><br><span class="line">       &#123;</span><br><span class="line">           search.page_index = search.page_index == 0 ? 1 : search.page_index;//这几行 </span><br><span class="line">           search.page_size = search.page_size == 0 ? 10 : search.page_size;//这几行 </span><br><span class="line"></span><br><span class="line">           var dto = search.Map&lt;QuestionGroupListSearchViewModel, QuestionGroupListSearchDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">           var result = Business.Logic&lt;QuestionGroupLogic&gt;().GetQuestionGroupList(dto);</span><br><span class="line">           var list = result.Map&lt;QuestionGroupListDTO, QuestionGroupListViewModel&gt;(Constant.MapType.PascalToLower);</span><br><span class="line"></span><br><span class="line">           var data = new StaticPagedList&lt;QuestionGroupListViewModel&gt;(list, dto.PageIndex, dto.PageSize, dto.TotalCount);//这几行 </span><br><span class="line">           return Request.IsAjaxRequest() ? (ActionResult)PartialView("_QuestionGroupList", data) : View(data);//这几行 </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 
