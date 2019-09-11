@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="请点击阅读全文浏览详细信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#中Linq常用方法">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/C-中Linq常用方法/index.html">
+<meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="请点击阅读全文浏览详细信息">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-10T09:56:14.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#中Linq常用方法">
+<meta name="twitter:description" content="请点击阅读全文浏览详细信息">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/C-中Linq常用方法/">
+
+
+
+
+
+  <title>C#中Linq常用方法 | MyBlog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<script src="https://RobinYu124.github.io/live2d/autoload.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MyBlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Robin的程序员之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/C-中Linq常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RobinYu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#中Linq常用方法</h1>
+        
+
+        <div class="post-meta">
+			
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于&#58;</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T10:28:22+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+		  
+		  
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>请点击阅读全文浏览详细信息</p>
+<a id="more"></a>
+<p>Aggregate—自定义的聚合计算</p>
+<p>All—检测序列中所有元素是否都满足指定的条件</p>
+<p>Any—检测序列中是否存在满足指定条件的元素</p>
+<p>Average—计算序列中元素的平均值</p>
+<p>Cast—将序列中元素的类型转换成指定的类型(由TResult参数指定)</p>
+<p>Contact—将一个序列中的元素全部追加到另一个序列中，并构成一个新的序列。</p>
+<p>Contains—检测序列中是否存在指定的元素。</p>
+<p>Count—计算序列中元素的数量，或者计算序列中满足条件元素的数量。</p>
+<p>DefaultIfEmpty—返回IEnumerable<t>类型的序列。如果序列为空，则返回只包含一个元素(值为默认值或指定的值)的序列</t></p>
+<p>Distinct—可以去掉数据源中重复的元素，并返回一个新序列。另外，他还可以指定一个比较器来比较两个元素是否相同。</p>
+<p>Element—返回集合中指定索引处的元素。</p>
+<p>ElementAtOrDefault—返回集合中指定索引处的元素。如果索引超出集合的范围，则返回默认值</p>
+<p>Empty—返回IEnumerable<t>类型的空序列</t></p>
+<p>EqualAll/SequenceEqual—判断两个序列是否相等。</p>
+<p>Except—可以计算两个集合的差集(由在一个集合中而不在另一个集合中的元素组成的集合)</p>
+<p>First—返回集合的第一个元素，或者返回集合中满足制定条件的第一个元素。</p>
+<p>FirstOrDefault—返回集合的第一个元素，或者返回集合中满足制定条件的第一个元素。如果不存在满足该条件的元素，则返回默认元素。</p>
+<p>GroupBy—对序列中的元素进行分组</p>
+<p>GroupJoin—他产生分层数据结构，降低一个集合中的每一个元素与第二个集合中的一组相关元素进行匹配。在查询结果中，第一个集合中的元素都会出现在查询结果中。如果第一个集合中的元素在第二个集合中找到相关的元素，则使用被找到的元素，否则使用空</p>
+<p>Intersect—可以计算两个集合的交集(元素即在第一个序列中，也在第二个序列中)</p>
+<p>Join—要求元素的连接关系必须同时满足被链接的两个数据源，和SQL语句中的inner join字句相似</p>
+<p>Last—返回集合的最后一个元素，或者返回集合的满足指定条件的最后一个元素。</p>
+<p>LastOrDefault—返回集合的最后一个元素，或者返回集合的满足指定条件的最后一个元素。如果出存在满足该条件的元素，则返回默认元素。</p>
+<p>LongCount—计算序列中元素的数量，或者计算序列满足一定条件的元素的数量。一半计算大型集合中的元素的数量。</p>
+<p>Max—计算序列中元素的最大值。</p>
+<p>Min—计算序列中元素的最小值。</p>
+<p>OfType—从序列中筛选指定类型的元素，并构成为一个序列。</p>
+<p>OrderBy—根据关键字对序列中的元素升序。</p>
+<p>OrderByDescending—根据关键字对序列中的元素降序。</p>
+<p>Range—返回指定范围的数字序列。</p>
+<p>Repeat—返回IEnumerable<t>类型的包含一个重复值得序列。</t></p>
+<p>Reverse—将序列中的元素的顺序进行反转。</p>
+<p>Select—将数据源中的元素投影到新序列中，并指定元素的类型和表现形式。</p>
+<p>SelectMany—可以将数据源中的元素投影到新序列中，并制定元素的类型和表达式。</p>
+<p>Single—返回集合的唯一元素，或者返回集合的满足指定条件的唯一元素。</p>
+<p>SingleOrDefault—返回集合的唯一元素，或者返回集合的满足指定条件的唯一元素。如果不存在满足该条件的元素，则返回默认元素。</p>
+<p>Skip—跳过数据源(序列)中指定数量的元素，然后返回剩余的元素或序列。</p>
+<p>SkipWhile—跳过数据源(序列)中满足指定条件的元素，然后返回剩余的元素或序列。</p>
+<p>Sum—计算序列中元素的和。</p>
+<p>Take—从数据源(序列)的开头开始提取指定数量的元素。然后返回有这些元素组成的序列。</p>
+<p>TakeWhile—从数据源(序列)的开头开始提取满足指定条件的元素。然后返回有这些元素组成的序列。</p>
+<p>ThenBy—根据次要关键字对序列中的元素按升序排序。</p>
+<p>ThereByDescending—根据次要关键字对序列中的元素按降序排列。</p>
+<p>ToArray—将IEnumerable<t>类型的序列转换为T[]类型的数组。</t></p>
+<p>ToDictionary—按照键值将序列中的元素放入一对一的字典序列(Dictionary&lt;TKey,TValue&gt;)中。</p>
+<p>ToList—将IEnumerable<t>类型的序列转换为List<t>类型的序列。</t></t></p>
+<p>ToLookup—按照键值将序列中的元素放入一对多的字典序列(Lookup&lt;TKey,TValue&gt;)中。</p>
+<p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
+<p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
+<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><p>　　SelectMany</p>
+<h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
+<p>　　GroupJoin</p>
+<h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><p>　　Where</p>
+<h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
+<p>　　OrderByDescending</p>
+<p>　　ThereBy</p>
+<p>　　ThereByDescending</p>
+<p>　　Reverse</p>
+<h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>　　Max</p>
+<p>　　Min</p>
+<p>　　Count</p>
+<p>　　LongCount</p>
+<p>　　Sum</p>
+<p>　　Aggregate</p>
+<h2 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h2><p>　　Distinct</p>
+<p>　　Except</p>
+<p>　　Intersect</p>
+<p>　　Union</p>
+<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><p>　　Element</p>
+<p>　　ElementAtOrDefault</p>
+<p>　　First</p>
+<p>　　FirstOrDefault</p>
+<p>　　Last</p>
+<p>　　LastOrDefault</p>
+<p>　　Single</p>
+<p>　　SingleOrDefault</p>
+<h2 id="数据类型转换操作"><a href="#数据类型转换操作" class="headerlink" title="数据类型转换操作"></a>数据类型转换操作</h2><p>　　AsQueryable ： 可以将数据源转换成IQueryable<t>或者IIIIIQueryable的集合序列。</t></p>
+<p>　　AsEnumerable ： 可以将数据源转换成IEnumerable<t>或者IEnumerable的集合序列。</t></p>
+<p>　　Cast ： 将序列中元素的类型转换为指定类型。</p>
+<p>　　OfType ：从序列中筛选一个指定类型的元素，并构成一个序列。</p>
+<p>　　ToArray ： 将一个IEnumerable<t>的序列转换成一个T[]类型的一个数组。</t></p>
+<p>　　ToList ： 将一个IEnumerable<t>的序列转换成一个List<t>类型的一个序列。</t></t></p>
+<p>　　ToDictionary ： 按照键值将序列中的元素放入到一对一的字典序列中。</p>
+<p>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</p>
+<h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
+<p>　　Any</p>
+<p>　　Contains</p>
+<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>　　Skip</p>
+<p>　　SkipWhile</p>
+<p>　　Take</p>
+<p>　　TakeWhile</p>
+<p>　　Contact</p>
+<p>　　SequenceEqual</p>
+<h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var linqtest = (<span class="keyword">from</span> r <span class="keyword">in</span> db.Am_recProScheme</span><br><span class="line">                where r.rpId &gt; <span class="number">10</span></span><br><span class="line">                orderby r.rpId descending</span><br><span class="line">                select r).Skip(<span class="number">10</span>).Take(<span class="number">10</span>); //取第<span class="number">11</span>条到第<span class="number">20</span>条数据</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/05/C-中的委托/" rel="next" title="C#中的委托">
+                <i class="fa fa-chevron-left"></i> C#中的委托
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/Linq教程（待概括）/" rel="prev" title="Linq教程（待概括）">
+                Linq教程（待概括） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">RobinYu</p>
+              <p class="site-description motion-element" itemprop="description">细节.规范.努力.奋斗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这些方法大致有可以分成几类："><span class="nav-text">这些方法大致有可以分成几类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#投影操作"><span class="nav-text">投影操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接操作"><span class="nav-text">链接操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选操作"><span class="nav-text">筛选操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序操作"><span class="nav-text">排序操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合操作"><span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作"><span class="nav-text">集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素操作"><span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换操作"><span class="nav-text">数据类型转换操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限定符操作"><span class="nav-text">限定符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有"><span class="nav-text">还有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子（待补充）"><span class="nav-text">例子（待补充）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RobinYu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">15.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+<div>
+<script type="text/javascript">
+       var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+       document.write(unescape("%3Cspan id='cnzz_stat_icon_1278016814'%3E%3C/span%3E%3Cscript
+       src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278016814%26show%3Dpic'
+       type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
