@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T09:56:14.100Z">
+<meta property="og:updated_time" content="2019-09-12T08:10:47.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中Linq常用方法">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -402,8 +402,8 @@
 <p>ToLookup—按照键值将序列中的元素放入一对多的字典序列(Lookup&lt;TKey,TValue&gt;)中。</p>
 <p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
 <p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
-<h2 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h2><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作 "></a>投影操作 </h2><pre><code>Select</code></pre><p>　　SelectMany</p>
-<h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作 "></a>链接操作 </h2><p>　　Join</p>
+<h1 id="这些方法大致有可以分成几类："><a href="#这些方法大致有可以分成几类：" class="headerlink" title="这些方法大致有可以分成几类："></a>这些方法大致有可以分成几类：</h1><h2 id="投影操作"><a href="#投影操作" class="headerlink" title="投影操作"></a>投影操作</h2><pre><code>Select</code></pre><p>　　SelectMany</p>
+<h2 id="链接操作"><a href="#链接操作" class="headerlink" title="链接操作"></a>链接操作</h2><p>　　Join</p>
 <p>　　GroupJoin</p>
 <h2 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h2><p>　　Where</p>
 <h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>　　OrderBy</p>
@@ -446,7 +446,7 @@
 <p>　　TakeWhile</p>
 <p>　　Contact</p>
 <p>　　SequenceEqual</p>
-<h2 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h2><p>1.跳过前面多少条数据取余下的数据</p>
+<h1 id="例子（待补充）"><a href="#例子（待补充）" class="headerlink" title="例子（待补充）"></a>例子（待补充）</h1><p>1.跳过前面多少条数据取余下的数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var linqtest = (<span class="keyword">from</span> r <span class="keyword">in</span> db.Am_recProScheme</span><br><span class="line">                where r.rpId &gt; <span class="number">10</span></span><br><span class="line">                orderby r.rpId descending</span><br><span class="line">                select r).Skip(<span class="number">10</span>).Take(<span class="number">10</span>); //取第<span class="number">11</span>条到第<span class="number">20</span>条数据</span><br></pre></td></tr></table></figure>
 
 
@@ -599,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这些方法大致有可以分成几类："><span class="nav-text">这些方法大致有可以分成几类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#投影操作"><span class="nav-text">投影操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接操作"><span class="nav-text">链接操作 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选操作"><span class="nav-text">筛选操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序操作"><span class="nav-text">排序操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合操作"><span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作"><span class="nav-text">集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素操作"><span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换操作"><span class="nav-text">数据类型转换操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限定符操作"><span class="nav-text">限定符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有"><span class="nav-text">还有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子（待补充）"><span class="nav-text">例子（待补充）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这些方法大致有可以分成几类："><span class="nav-text">这些方法大致有可以分成几类：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#投影操作"><span class="nav-text">投影操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接操作"><span class="nav-text">链接操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#筛选操作"><span class="nav-text">筛选操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序操作"><span class="nav-text">排序操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合操作"><span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作"><span class="nav-text">集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素操作"><span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换操作"><span class="nav-text">数据类型转换操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限定符操作"><span class="nav-text">限定符操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有"><span class="nav-text">还有</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子（待补充）"><span class="nav-text">例子（待补充）</span></a></li></ol></div>
             
 
           </div>
