@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C#中virtual和abstract的区别]]></title>
+    <url>%2F2019%2F09%2F16%2FC-%E4%B8%ADvirtual%E5%92%8Cabstract%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 Virtual1.virtual表示成员可以在派生类中被重写。如果派生类没有重写，则直接使用父类的原始成员。2.当子类对父类的virtual方法进行override时，父类的对象通过 123BaseClass bcdc = new DerivedClass();bcdc.Method1();// 输出：Derived - Method1 调用的是子类的方法 1234567class BaseClass &#123; public virtual void Method1() &#123; Console.WriteLine("Base - Method1"); &#125; &#125; 1234567class DerivedClass : BaseClass&#123; public override void Method1() &#123; Console.WriteLine("Derived - Method1"); &#125; &#125; 3.virtual可以被子类重写,也可以不重写。4.默认情况下，非virtual的方法不能被重写。5.virtual 修饰符不能与 static、abstract、private 或 override 修饰符一起使用。6.除了声明和调用语法不同外，virtual属性的行为与抽象方法一样。 Abstract1.抽象类不能实例化。2.抽象类可以包含抽象方法和抽象访问器。3.从抽象类派生的非抽象类必须包括继承的所有抽象方法和抽象访问器的实实现。 virtual和abstractvirtual和abstract都是用来修饰父类的，通过覆盖父类的定义，让子类重新定义。1.virtual修饰的方法必须有实现（哪怕是仅仅添加一对大括号),而abstract修饰的方法一定不能实现。2.virtual可以被子类重写，而abstract必须被子类重写。3.如果类成员被abstract修饰，则该类前必须添加abstract，因为只有抽象类才可以有抽象方法。4.无法创建abstract类的实例，只能被继承无法实例化。 注：部分内容转自百度知道https://zhidao.baidu.com/question/874757131434647332.html]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C#--了解何时使用 Override 和 New 关键字]]></title>
     <url>%2F2019%2F09%2F16%2FC-%E4%BA%86%E8%A7%A3%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-Override-%E5%92%8C-New-%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 点击查看官方连接： 1https://docs.microsoft.com/zh-cn/previous-versions/ms173153%28v%3dvs.120%29 总结：1.当子类含父类中的一样的函数，只是内容不同时，新建这个子类对象，对象调用此方法的时候，可以用new关键字排除警告2.当子类对父类的virtual方法进行override时，父类的对象可以通过 123BaseClass bcdc = new DerivedClass();bcdc.Method1();// 输出：Derived - Method1 调用子类的方法 1234567class BaseClass &#123; public virtual void Method1() &#123; Console.WriteLine("Base - Method1"); &#125; &#125; 1234567class DerivedClass : BaseClass&#123; public override void Method1() &#123; Console.WriteLine("Derived - Method1"); &#125; &#125;]]></content>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 点击查看官方连接： 1https://docs.microsoft.com/zh-cn/previous-versions/ms173153%28v%3dvs.120%29 总结：1.当子类含父类中的一样的函数，只是内容不同时，新建这个子类对象，对象调用此方法的时候，可以用new关键字排除警告2.当子类对父类的virtual方法进行override时，父类的对象通过 123BaseClass bcdc = new DerivedClass();bcdc.Method1();// 输出：Derived - Method1 调用的是子类的方法 1234567class BaseClass &#123; public virtual void Method1() &#123; Console.WriteLine("Base - Method1"); &#125; &#125; 1234567class DerivedClass : BaseClass&#123; public override void Method1() &#123; Console.WriteLine("Derived - Method1"); &#125; &#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[重载与重写]]></title>

@@ -83,14 +83,14 @@
 
 <meta name="description" content="请点击阅读全文浏览详细信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后台Controller层返回相关">
-<meta property="og:url" content="http://yoursite.com/2019/08/19/后台Controller层返回相关/index.html">
+<meta property="og:title" content="C#中virtual和abstract的区别">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/C-中virtual和abstract的区别/index.html">
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T09:57:21.517Z">
+<meta property="og:updated_time" content="2019-09-16T06:40:21.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后台Controller层返回相关">
+<meta name="twitter:title" content="C#中virtual和abstract的区别">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/19/后台Controller层返回相关/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/C-中virtual和abstract的区别/">
 
 
 
 
 
-  <title>后台Controller层返回相关 | Robin Yu's Blog</title>
+  <title>C#中virtual和abstract的区别 | Robin Yu's Blog</title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/后台Controller层返回相关/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/C-中virtual和abstract的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="余彬/Robin Yu">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">后台Controller层返回相关</h1>
+          <h1 class="post-title" itemprop="name headline">C#中virtual和abstract的区别</h1>
         
 
         <div class="post-meta">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T15:45:52+08:00">
-                2019-08-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T14:31:36+08:00">
+                2019-09-16
               </time>
             
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  300字
+                  413字
                 </span>
               
 
@@ -385,15 +385,18 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
-<p>1.下面的代码会把结果返回给一个EventDEdit.cshtml的同名页面（参数是同步传入的）或其他页面</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult EventDEdit(long id)</span><br><span class="line">    &#123;</span><br><span class="line">        var result = Business.Gateway&lt;Event_D_Gateway&gt;().GetEventList(new EventSearchViewModel &#123; event_id = id &#125;, Config.AppKey);</span><br><span class="line">        <span class="keyword">if</span> (result.success &amp;&amp; result.data != null &amp;&amp; result.data.list.Count &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(result.data.list.First());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(new EventListViewModel());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Virtual"><a href="#Virtual" class="headerlink" title="Virtual"></a>Virtual</h1><p>1.virtual表示成员可以在派生类中被重写。如果派生类没有重写，则直接使用父类的原始成员。<br>2.当子类对父类的virtual方法进行override时，父类的对象通过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaseClass bcdc = new DerivedClass();</span><br><span class="line">bcdc.Method1();</span><br><span class="line">// 输出：Derived - Method1</span><br></pre></td></tr></table></figure>
 
-<p>2.从下面的代码可以看出，参数是异步传入（ajax传入）的，从return的Json格式看出。下面代码不用返回一个同名的DeleteEventD.cshtml页面或其他页面，因为她已经通过Json返回了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult DeleteEventD(long event_id)</span><br><span class="line">     &#123;</span><br><span class="line">         var model = new EventDeleteViewModel &#123; event_id = event_id &#125;;</span><br><span class="line">         var obj = Business.Gateway&lt;Event_D_Gateway&gt;().DeleteEvent(model, Config.AppKey);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">return</span> Json(new BaseResponse &#123; success = obj.success, code = obj.code, message = obj.message &#125;);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>调用的是子类的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span></span></span><br><span class="line">   &#123;</span><br><span class="line">       public virtual void Method1()</span><br><span class="line">       &#123;</span><br><span class="line">           Console.WriteLine(<span class="string">"Base - Method1"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p>3.那么如何在参数传入是同步传入的情况下（从上面的讨论可以看出，如果参数是同步传入的，必须返回一个同名页面或者通过 return View(“_OtherView”new EventListViewModel());返回另一个页面_OtherView.cshtml），返回Json呢？如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Json(new BaseResponse&#123; success = false, message = <span class="string">"无活动信息！"</span> &#125;,JsonRequestBehavior.AllowGet);//通过JsonRequestBehavior.AllowGet</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DerivedClass</span> :</span> BaseClass</span><br><span class="line">&#123;</span><br><span class="line">    public override void Method1()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Derived - Method1"</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>3.virtual可以被子类重写,也可以不重写。<br>4.默认情况下，非virtual的方法不能被重写。<br>5.virtual 修饰符不能与 static、abstract、private 或 override 修饰符一起使用。<br>6.除了声明和调用语法不同外，virtual属性的行为与抽象方法一样。</p>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>1.抽象类不能实例化。<br>2.抽象类可以包含抽象方法和抽象访问器。<br>3.从抽象类派生的非抽象类必须包括继承的所有抽象方法和抽象访问器的实实现。</p>
+<h1 id="virtual和abstract"><a href="#virtual和abstract" class="headerlink" title="virtual和abstract"></a>virtual和abstract</h1><p>virtual和abstract都是用来修饰父类的，通过覆盖父类的定义，让子类重新定义。<br>1.virtual修饰的方法必须有实现（哪怕是仅仅添加一对大括号),而abstract修饰的方法一定不能实现。<br>2.virtual可以被子类重写，而abstract必须被子类重写。<br>3.如果类成员被abstract修饰，则该类前必须添加abstract，因为只有抽象类才可以有抽象方法。<br>4.无法创建abstract类的实例，只能被继承无法实例化。</p>
+<p>注：部分内容转自百度知道<br><a href="https://zhidao.baidu.com/question/874757131434647332.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/874757131434647332.html</a></p>
 
       
     </div>
@@ -418,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/17/c-工作中我遇到的问题-如何导出excel表/" rel="next" title="c#工作中我遇到的问题--如何导出excel表">
-                <i class="fa fa-chevron-left"></i> c#工作中我遇到的问题--如何导出excel表
+              <a href="/2019/09/16/C-了解何时使用-Override-和-New-关键字/" rel="next" title="C#--了解何时使用 Override 和 New 关键字">
+                <i class="fa fa-chevron-left"></i> C#--了解何时使用 Override 和 New 关键字
               </a>
             
           </div>
@@ -427,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/22/工作中框架的分页/" rel="prev" title="工作中框架的分页">
-                工作中框架的分页 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -482,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,6 +533,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual"><span class="nav-text">Virtual</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual和abstract"><span class="nav-text">virtual和abstract</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
