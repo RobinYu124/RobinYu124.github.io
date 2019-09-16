@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[C#--了解何时使用 Override 和 New 关键字]]></title>
     <url>%2F2019%2F09%2F16%2FC-%E4%BA%86%E8%A7%A3%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-Override-%E5%92%8C-New-%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 点击查看官方连接： 1https://docs.microsoft.com/zh-cn/previous-versions/ms173153%28v%3dvs.120%29 总结：1.当子类含父类中的一样的函数，只是内容不同时，新建这个子类对象，对象调用此方法的时候，可以用new关键字排除警告2.当子类对父类的virtual方法进行override时，父类的对象可以通过 1234BaseClass bcdc = new DerivedClass();bcdc.Method1();// 输出：Derived - Method1调用子类的方法 1234567class BaseClass &#123; public virtual void Method1() &#123; Console.WriteLine("Base - Method1"); &#125; &#125; 1234567class DerivedClass : BaseClass&#123; public override void Method1() &#123; Console.WriteLine("Derived - Method1"); &#125; &#125;]]></content>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 点击查看官方连接： 1https://docs.microsoft.com/zh-cn/previous-versions/ms173153%28v%3dvs.120%29 总结：1.当子类含父类中的一样的函数，只是内容不同时，新建这个子类对象，对象调用此方法的时候，可以用new关键字排除警告2.当子类对父类的virtual方法进行override时，父类的对象可以通过 123BaseClass bcdc = new DerivedClass();bcdc.Method1();// 输出：Derived - Method1 调用子类的方法 1234567class BaseClass &#123; public virtual void Method1() &#123; Console.WriteLine("Base - Method1"); &#125; &#125; 1234567class DerivedClass : BaseClass&#123; public override void Method1() &#123; Console.WriteLine("Derived - Method1"); &#125; &#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[重载与重写]]></title>

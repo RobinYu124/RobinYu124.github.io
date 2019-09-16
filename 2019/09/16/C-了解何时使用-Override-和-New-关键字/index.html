@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T06:06:45.532Z">
+<meta property="og:updated_time" content="2019-09-16T06:21:14.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#--了解何时使用 Override 和 New 关键字">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -389,8 +389,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://docs.microsoft.com/zh-cn/previous-versions/ms173153%<span class="number">28</span>v%<span class="number">3</span>dvs<span class="number">.120</span>%<span class="number">29</span></span><br></pre></td></tr></table></figure>
 
 <p>总结：<br>1.当子类含父类中的一样的函数，只是内容不同时，新建这个子类对象，对象调用此方法的时候，可以用new关键字排除警告<br>2.当子类对父类的virtual方法进行override时，父类的对象可以通过</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BaseClass bcdc = new DerivedClass();</span><br><span class="line">bcdc.Method1();</span><br><span class="line">// 输出：Derived - Method1</span><br><span class="line">调用子类的方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaseClass bcdc = new DerivedClass();</span><br><span class="line">bcdc.Method1();</span><br><span class="line">// 输出：Derived - Method1</span><br></pre></td></tr></table></figure>
 
+<p>调用子类的方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span></span></span><br><span class="line">   &#123;</span><br><span class="line">       public virtual void Method1()</span><br><span class="line">       &#123;</span><br><span class="line">           Console.WriteLine(<span class="string">"Base - Method1"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DerivedClass</span> :</span> BaseClass</span><br><span class="line">&#123;</span><br><span class="line">    public override void Method1()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Derived - Method1"</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
