@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释]]></title>
     <url>%2F2019%2F09%2F19%2FC-System-Configuration-ConfigurationManager-AppSettings-DB-%E7%9A%84%E8%A7%A3%E9%87%8A%2F</url>
-    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 解释：System.Configuration.ConfigurationManager.AppSettings[“DB”]b/s程序从web.config配置文件中获取key值为”DB”的Valuec/s程序从app.config配置文件中获取key值为”DB”的Value 作用: 1234&lt;AppSettings&gt;&lt;add key="config1" value="a" /&gt;&lt;add key="config2" value="b" /&gt;&lt;/AppSettings&gt; string str = System.Configuration.ConfigurationManager.AppSettings[“config1”].ToString();//str等于astring str1 = System.Configuration.ConfigurationManager.AppSettings[“config2”].ToString();//str1等于b————————————————原文链接：https://blog.csdn.net/TGBTrial/article/details/88052802]]></content>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 解释：System.Configuration.ConfigurationManager.AppSettings[“DB”]b/s程序从Web.config配置文件中获取key值为”DB”的Valuec/s程序从App.config配置文件中获取key值为”DB”的Value 作用: 1234&lt;AppSettings&gt;&lt;add key="config1" value="a" /&gt;&lt;add key="config2" value="b" /&gt;&lt;/AppSettings&gt; string str = System.Configuration.ConfigurationManager.AppSettings[“config1”].ToString();//str等于astring str1 = System.Configuration.ConfigurationManager.AppSettings[“config2”].ToString();//str1等于b————————————————原文链接：https://blog.csdn.net/TGBTrial/article/details/88052802]]></content>
   </entry>
   <entry>
     <title><![CDATA[C# 添加修改弹窗]]></title>
