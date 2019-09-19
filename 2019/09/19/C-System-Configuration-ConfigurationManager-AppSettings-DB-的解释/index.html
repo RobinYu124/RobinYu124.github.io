@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="转载：https://blog.csdn.net/deaoe/article/details/85224733">
+<meta name="description" content="请点击阅读全文浏览详细信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linq中的Join使用笔记">
-<meta property="og:url" content="http://yoursite.com/2019/08/07/Linq中的Join使用笔记/index.html">
+<meta property="og:title" content="C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/C-System-Configuration-ConfigurationManager-AppSettings-DB-的解释/index.html">
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
-<meta property="og:description" content="转载：https://blog.csdn.net/deaoe/article/details/85224733">
+<meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T06:06:14.870Z">
+<meta property="og:updated_time" content="2019-09-19T09:20:57.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linq中的Join使用笔记">
-<meta name="twitter:description" content="转载：https://blog.csdn.net/deaoe/article/details/85224733">
+<meta name="twitter:title" content="C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释">
+<meta name="twitter:description" content="请点击阅读全文浏览详细信息">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/07/Linq中的Join使用笔记/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/19/C-System-Configuration-ConfigurationManager-AppSettings-DB-的解释/">
 
 
 
 
 
-  <title>Linq中的Join使用笔记 | Robin Yu's Blog</title>
+  <title>C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释 | Robin Yu's Blog</title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/Linq中的Join使用笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/C-System-Configuration-ConfigurationManager-AppSettings-DB-的解释/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="余彬/Robin Yu">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linq中的Join使用笔记</h1>
+          <h1 class="post-title" itemprop="name headline">C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释</h1>
         
 
         <div class="post-meta">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:01:45+08:00">
-                2019-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T17:19:04+08:00">
+                2019-09-19
               </time>
             
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10字
+                  167字
                 </span>
               
 
@@ -383,7 +383,13 @@
       
 
       
-        <p>转载：<a href="https://blog.csdn.net/deaoe/article/details/85224733" target="_blank" rel="noopener">https://blog.csdn.net/deaoe/article/details/85224733</a></p>
+        <p>请点击阅读全文浏览详细信息</p>
+<a id="more"></a>
+<p>解释：<br>System.Configuration.ConfigurationManager.AppSettings[“DB”]<br>b/s程序<br>从web.config配置文件中获取key值为”DB”的Value<br>c/s程序<br>从app.config配置文件中获取key值为”DB”的Value</p>
+<p>作用:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;AppSettings&gt;</span><br><span class="line">&lt;add key=<span class="string">"config1"</span> value=<span class="string">"a"</span> /&gt;</span><br><span class="line">&lt;add key=<span class="string">"config2"</span> value=<span class="string">"b"</span> /&gt;</span><br><span class="line">&lt;/AppSettings&gt;</span><br></pre></td></tr></table></figure>
+
+<p>string str = System.Configuration.ConfigurationManager.AppSettings[“config1”].ToString();<br>//str等于a<br>string str1 = System.Configuration.ConfigurationManager.AppSettings[“config2”].ToString();<br>//str1等于b<br>————————————————<br>版权声明：本文为CSDN博主「杨光_Demiurge」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/TGBTrial/article/details/88052802" target="_blank" rel="noopener">https://blog.csdn.net/TGBTrial/article/details/88052802</a><br>原文链接：<a href="https://blog.csdn.net/TGBTrial/article/details/88052802" target="_blank" rel="noopener">https://blog.csdn.net/TGBTrial/article/details/88052802</a></p>
 
       
     </div>
@@ -408,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/Linq教程（待概括）/" rel="next" title="Linq教程（待概括）">
-                <i class="fa fa-chevron-left"></i> Linq教程（待概括）
+              <a href="/2019/09/19/C-添加修改弹窗/" rel="next" title="C# 添加修改弹窗">
+                <i class="fa fa-chevron-left"></i> C# 添加修改弹窗
               </a>
             
           </div>
@@ -417,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/07/EF实体对象变动跟踪/" rel="prev" title="EF实体对象变动跟踪">
-                EF实体对象变动跟踪 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
