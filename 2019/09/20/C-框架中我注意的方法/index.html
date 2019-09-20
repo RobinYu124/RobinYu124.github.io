@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-20T08:26:36.370Z">
+<meta property="og:updated_time" content="2019-09-20T09:17:08.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#框架中我注意的方法">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  158字
+                  176字
                 </span>
               
 
@@ -385,6 +385,8 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
+
+<p>注：输入地址，自动获取当前地址的位置信息</p>
 <p>_BusinessAreaAdd.cshtml(某后台的某一功能的添加页)</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">"margin-top:10px;"</span>&gt;</span><br><span class="line"><span class="meta">    @IPHtml.Form.BeginForm(new FormAttr &#123; Id = "frmAdd", Action = "/businessarea/addbusinessarea" &#125;)</span></span><br><span class="line">    ......</span><br><span class="line">    //就是这句</span><br><span class="line"><span class="meta">    @IPHtml.Form.Location(new LocationAttr &#123; Id = "Address", GeoId = "Location", Label =  "地址：", PlaceHolder = "请输入地址！" , Required = "请选择地址！" &#125;)</span></span><br><span class="line">    ......</span><br><span class="line"><span class="meta">    @IPHtml.Form.Submit(new SubmitAttr &#123; Id = "btnSave", Text = "确定", OnSuccess = "itplus.businessArea.callback" &#125;)</span></span><br><span class="line"><span class="meta">    @IPHtml.Form.EndPartialViewForm(new FormAttr &#123; Id = "frmAdd" &#125;)</span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
