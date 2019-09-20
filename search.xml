@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[工作中C#框架里我注意的方法]]></title>
+    <url>%2F2019%2F09%2F20%2F%E5%B7%A5%E4%BD%9C%E4%B8%ADC-%E6%A1%86%E6%9E%B6%E9%87%8C%E6%88%91%E6%B3%A8%E6%84%8F%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 _BusinessAreaAdd.cshtml(某后台的某一功能的添加页) 123456789&lt;div style="margin-top:10px;"&gt; @IPHtml.Form.BeginForm(new FormAttr &#123; Id = "frmAdd", Action = "/businessarea/addbusinessarea" &#125;) ...... //就是这句 @IPHtml.Form.Location(new LocationAttr &#123; Id = "Address", GeoId = "Location", Label = "地址：", PlaceHolder = "请输入地址！" , Required = "请选择地址！" &#125;) ...... @IPHtml.Form.Submit(new SubmitAttr &#123; Id = "btnSave", Text = "确定", OnSuccess = "itplus.businessArea.callback" &#125;) @IPHtml.Form.EndPartialViewForm(new FormAttr &#123; Id = "frmAdd" &#125;)&lt;/div&gt; BusinessAreaController: 12345public JsonResult AddBusinessArea(AddBusinessAreaViewModel model) &#123; var result = Business.Logic&lt;BusinessAreaLogic&gt;().AddBusinessArea(model.Map&lt;AddBusinessAreaViewModel, AddBusinessAreaDTO&gt;(), ClientId); return Json(result); &#125; AddBusinessAreaViewModel: 123456789public class AddBusinessAreaViewModel &#123; public string BusinessAreaName &#123; get; set; &#125; public string Address &#123; get; set; &#125; public string Location &#123; get; set; &#125; &#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C#--System.Configuration.ConfigurationManager.AppSettings[DB]的解释]]></title>
     <url>%2F2019%2F09%2F19%2FC-System-Configuration-ConfigurationManager-AppSettings-DB-%E7%9A%84%E8%A7%A3%E9%87%8A%2F</url>
     <content type="text"><![CDATA[请点击阅读全文浏览详细信息 解释：System.Configuration.ConfigurationManager.AppSettings[“DB”]b/s程序从Web.config配置文件中获取key值为”DB”的Valuec/s程序从App.config配置文件中获取key值为”DB”的Value 作用: 1234&lt;AppSettings&gt;&lt;add key="config1" value="a" /&gt;&lt;add key="config2" value="b" /&gt;&lt;/AppSettings&gt; string str = System.Configuration.ConfigurationManager.AppSettings[“config1”].ToString();//str等于astring str1 = System.Configuration.ConfigurationManager.AppSettings[“config2”].ToString();//str1等于b————————————————原文链接：https://blog.csdn.net/TGBTrial/article/details/88052802]]></content>
