@@ -83,14 +83,14 @@
 
 <meta name="description" content="请点击阅读全文浏览详细信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作中的两种删除">
-<meta property="og:url" content="http://yoursite.com/2019/08/26/工作中的两种删除/index.html">
+<meta property="og:title" content="System.Collections.Generic List&lt;T&gt;类中的方法">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/System-Collections-Generic-List-T-类中的方法/index.html">
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T09:56:56.644Z">
+<meta property="og:updated_time" content="2019-09-23T07:41:38.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作中的两种删除">
+<meta name="twitter:title" content="System.Collections.Generic List&lt;T&gt;类中的方法">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/26/工作中的两种删除/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/23/System-Collections-Generic-List-T-类中的方法/">
 
 
 
 
 
-  <title>工作中的两种删除 | Robin Yu's Blog</title>
+  <title>System.Collections.Generic List<t>类中的方法 | Robin Yu's Blog</t></title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/工作中的两种删除/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/System-Collections-Generic-List-T-类中的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="余彬/Robin Yu">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">工作中的两种删除</h1>
+          <h1 class="post-title" itemprop="name headline">System.Collections.Generic List<t>类中的方法</t></h1>
         
 
         <div class="post-meta">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T15:45:26+08:00">
-                2019-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T15:35:46+08:00">
+                2019-09-23
               </time>
             
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  204字
+                  203字
                 </span>
               
 
@@ -385,12 +385,11 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
-<p>第1种：<br>js:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">itplus.productParam = new function () &#123;</span><br><span class="line">    this.deleteProductParam = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"此操作会同时删除它的所有参数值，确认删除吗"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/productparam/deleteproductparam'</span>, &#123; productparamId: id &#125;, function (result) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">                    layer.closeAll(<span class="string">'dialog'</span>);</span><br><span class="line">                    $(<span class="string">'#id_'</span> + id).remove();</span><br><span class="line">                    layer.msg(<span class="string">"已删除"</span>, &#123; icon: <span class="number">1</span>, time: <span class="number">1000</span> &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    layer.msg(result.message, &#123; icon: <span class="number">2</span> &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例：某逻辑层对图片的修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;CaseDTO&gt; GetCase(CaseSearchDTO search)</span><br><span class="line">      &#123;</span><br><span class="line">          var list = new CaseRepository().GetApiCase(search, search.ClientId).ToList();</span><br><span class="line">          list.ForEach(r =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">if</span> (!string.IsNullOrEmpty(r.BigImagePath))</span><br><span class="line">              &#123;</span><br><span class="line">                  r.OssBigImagePath = ITPlus.Configuration.Config.API.OssCdn + <span class="string">"/"</span> + r.BigImagePath;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (!string.IsNullOrEmpty(r.LogoPath))</span><br><span class="line">              &#123;</span><br><span class="line">                  r.OssLogoPath = ITPlus.Configuration.Config.API.OssCdn + <span class="string">"/"</span> + r.LogoPath;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (!string.IsNullOrEmpty(r.SmallImagePath))</span><br><span class="line">              &#123;</span><br><span class="line">                  r.OssSmallImagePath = ITPlus.Configuration.Config.API.OssCdn + <span class="string">"/"</span> + r.SmallImagePath;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (!string.IsNullOrEmpty(r.WxaQrCodePath))</span><br><span class="line">              &#123;</span><br><span class="line">                  r.OssWxaQrCodePath = ITPlus.Configuration.Config.API.OssCdn + <span class="string">"/"</span> + r.WxaQrCodePath;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (!string.IsNullOrEmpty(r.ImagePaths))</span><br><span class="line">              &#123;</span><br><span class="line">                  var imagePaths = new List&lt;string&gt;();</span><br><span class="line">                  var paths = r.ImagePaths.Split(new string[] &#123; <span class="string">","</span> &#125;, System.StringSplitOptions.RemoveEmptyEntries);</span><br><span class="line">                  foreach (var path <span class="keyword">in</span> paths)</span><br><span class="line">                  &#123;</span><br><span class="line">                      imagePaths.Add(ITPlus.Configuration.Config.API.OssCdn + <span class="string">"/"</span> + path);</span><br><span class="line">                  &#125;</span><br><span class="line">                  r.OssImagePaths = string.Join(<span class="string">","</span>, imagePaths);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">return</span> list;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
-<p>第二种：<br>js:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">itplus.questionType = new function () &#123;</span><br><span class="line"></span><br><span class="line">    this.callback = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.success)</span><br><span class="line">            itplus.toast(result.message, function () &#123; layer.closeAll(); location.reload(); &#125;);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.delete = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"确认删除此分类吗？"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            layer.closeAll();</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/questiongroup/delquestiongroupdetail'</span>, &#123; question_type_id: id &#125;, function (result) &#123;</span><br><span class="line">                <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">                    layer.closeAll();</span><br><span class="line">                    itplus.toast(result.message, function () &#123; location.reload(); &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p> list.ForEach：其中list是List<t>类型的，list.ForEach为遍历list里每个对象</t></p>
+<p>官网参考：<br>转载：<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.generic.list-1?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-tw/dotnet/api/system.collections.generic.list-1?view=netframework-4.8</a></p>
 
       
     </div>
@@ -415,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/26/工作中批量传入数组如何接收并压入另一数据表/" rel="next" title="工作中批量传入数组如何接收并压入另一数据表">
-                <i class="fa fa-chevron-left"></i> 工作中批量传入数组如何接收并压入另一数据表
+              <a href="/2019/09/23/System-Web-Helpers-Json-Decode/" rel="next" title="System.Web.Helpers.Json.Decode">
+                <i class="fa fa-chevron-left"></i> System.Web.Helpers.Json.Decode
               </a>
             
           </div>
@@ -424,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/26/工作中转入对象数组的例子/" rel="prev" title="工作中转入对象数组的例子">
-                工作中转入对象数组的例子 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
