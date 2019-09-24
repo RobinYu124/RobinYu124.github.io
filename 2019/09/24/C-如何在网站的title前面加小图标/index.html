@@ -83,15 +83,19 @@
 
 <meta name="description" content="请点击阅读全文浏览详细信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System.Web.Helpers.Json.Decode">
-<meta property="og:url" content="http://yoursite.com/2019/09/23/System-Web-Helpers-Json-Decode/index.html">
+<meta property="og:title" content="C#如何在网站的title前面加小图标">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/C-如何在网站的title前面加小图标/index.html">
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-23T07:26:31.242Z">
+<meta property="og:image" content="https://i.ibb.co/s2F1hGp/935400c0cc479d13e3b1a9e975ede01.png">
+<meta property="og:image" content="https://i.ibb.co/hfpVR1B/ac3042c4099b5755c7ff3b4dec8e2f7.png">
+<meta property="og:image" content="https://i.ibb.co/mhVjwmK/e9dbc572fb91bd1c39ed96fcfaa8a48.png">
+<meta property="og:updated_time" content="2019-09-24T02:43:19.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System.Web.Helpers.Json.Decode">
+<meta name="twitter:title" content="C#如何在网站的title前面加小图标">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
+<meta name="twitter:image" content="https://i.ibb.co/s2F1hGp/935400c0cc479d13e3b1a9e975ede01.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/23/System-Web-Helpers-Json-Decode/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/24/C-如何在网站的title前面加小图标/">
 
 
 
 
 
-  <title>System.Web.Helpers.Json.Decode | Robin Yu's Blog</title>
+  <title>C#如何在网站的title前面加小图标 | Robin Yu's Blog</title>
   
 
 
@@ -276,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/System-Web-Helpers-Json-Decode/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/C-如何在网站的title前面加小图标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="余彬/Robin Yu">
@@ -293,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">System.Web.Helpers.Json.Decode</h1>
+          <h1 class="post-title" itemprop="name headline">C#如何在网站的title前面加小图标</h1>
         
 
         <div class="post-meta">
@@ -307,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T15:08:45+08:00">
-                2019-09-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T10:31:25+08:00">
+                2019-09-24
               </time>
             
 
@@ -346,7 +350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  470字
+                  105字
                 </span>
               
 
@@ -362,7 +366,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  1分钟
                 </span>
               
             </div>
@@ -385,18 +389,13 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Route(<span class="string">"contents"</span>)]</span><br><span class="line">        [HttpGet]</span><br><span class="line">        public DataResponse&lt;dynamic&gt; contents([FromUri]PositionSearchViewModel search)</span><br><span class="line">        &#123;</span><br><span class="line">            var searchDTO = search.Map&lt;PositionSearchViewModel, PositionSearchDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">            var list = Business.Logic&lt;ApiPositionLogic&gt;().GetPosition(searchDTO).Map&lt;PositionDTO, PositionViewModel&gt;(Constant.MapType.PascalToLower);</span><br><span class="line"></span><br><span class="line">            var model = <span class="string">"&#123;"</span>;</span><br><span class="line"></span><br><span class="line">            foreach (var item <span class="keyword">in</span> list)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (model == <span class="string">"&#123;"</span>)</span><br><span class="line">                    model += <span class="string">"\""</span> + item.position_key + <span class="string">"\":"</span> + System.Web.Helpers.Json.Encode(item);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    model += <span class="string">",\""</span> + item.position_key + <span class="string">"\":"</span> + System.Web.Helpers.Json.Encode(item);</span><br><span class="line">            &#125;</span><br><span class="line">            model += <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> new DataResponse&lt;dynamic&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                success = true,</span><br><span class="line">                code = ResponseCode.Ok.code,</span><br><span class="line">                message = ResponseCode.Ok.message,</span><br><span class="line">                data = System.Web.Helpers.Json.Decode(model)</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>如下图，如何在标题前添加logo呢？<br><img src="https://i.ibb.co/s2F1hGp/935400c0cc479d13e3b1a9e975ede01.png" alt="1"></p>
+<p>解决如下：<br><img src="https://i.ibb.co/hfpVR1B/ac3042c4099b5755c7ff3b4dec8e2f7.png" alt="2"><br><img src="https://i.ibb.co/mhVjwmK/e9dbc572fb91bd1c39ed96fcfaa8a48.png" alt="3"></p>
+<p>注：先在根目录下将想要添加的logo重命名为favicon.ico文件，然后用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"/favicon.ico"</span> /&gt;</span><br></pre></td></tr></table></figure>
 
-<p>返回的内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"success"</span>,</span><br><span class="line">    <span class="string">"success"</span>: true,</span><br><span class="line">    <span class="string">"data"</span>: &#123;</span><br><span class="line">        <span class="string">"product"</span>: &#123;</span><br><span class="line">            <span class="string">"position_id"</span>: <span class="number">15</span>,</span><br><span class="line">            <span class="string">"page_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"position_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"image_paths"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_image_paths"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"tags"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"sub_title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"content"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_from"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_to"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"address"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"latitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"longitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"description"</span>: <span class="string">""</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"save"</span>: &#123;</span><br><span class="line">            <span class="string">"position_id"</span>: <span class="number">13</span>,</span><br><span class="line">            <span class="string">"page_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"position_key"</span>: <span class="string">"save"</span>,</span><br><span class="line">            <span class="string">"small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"image_paths"</span>: <span class="string">"/upload/official/image/201804/26/6af5aad0-242a-456d-94dc-5696899b90e4.jpg,/upload/official/image/201804/26/081ebd01-a41f-49f1-b6fe-bec82b27ffd9.jpg"</span>,</span><br><span class="line">            <span class="string">"oss_image_paths"</span>: <span class="string">"http://cdn.oss.itplus.net.cn//upload/official/image/201804/26/6af5aad0-242a-456d-94dc-5696899b90e4.jpg,http://cdn.oss.itplus.net.cn//upload/official/image/201804/26/081ebd01-a41f-49f1-b6fe-bec82b27ffd9.jpg"</span>,</span><br><span class="line">            <span class="string">"tags"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"sub_title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"content"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_from"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_to"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"address"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"latitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"longitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"description"</span>: <span class="string">""</span></span><br><span class="line">        &#125;,</span><br><span class="line">      ......</span><br><span class="line">      ......  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Route(<span class="string">"list"</span>)]</span><br><span class="line">       [HttpGet]</span><br><span class="line">       public DataResponse&lt;List&lt;PositionViewModel&gt;&gt; list([FromUri]PositionSearchViewModel search)</span><br><span class="line">       &#123;</span><br><span class="line">           var searchDTO = search.Map&lt;PositionSearchViewModel, PositionSearchDTO&gt;(Constant.MapType.LowerToPascal);</span><br><span class="line">           var model = Business.Logic&lt;ApiPositionLogic&gt;().GetPosition(searchDTO);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">return</span> new DataResponse&lt;List&lt;PositionViewModel&gt;&gt;</span><br><span class="line">           &#123;</span><br><span class="line">               success = true,</span><br><span class="line">               code = ResponseCode.Ok.code,</span><br><span class="line">               message = ResponseCode.Ok.message,</span><br><span class="line">               data = model.Map&lt;PositionDTO, PositionViewModel&gt;(Constant.MapType.PascalToLower)</span><br><span class="line">           &#125;;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-<p>返回的内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">"code"</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"success"</span>,</span><br><span class="line">    <span class="string">"success"</span>: true,</span><br><span class="line">    <span class="string">"data"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"position_id"</span>: <span class="number">15</span>,</span><br><span class="line">            <span class="string">"page_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"position_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"image_paths"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_image_paths"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"tags"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"sub_title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"content"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_from"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_to"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"address"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"latitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"longitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"description"</span>: <span class="string">""</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"position_id"</span>: <span class="number">13</span>,</span><br><span class="line">            <span class="string">"page_key"</span>: <span class="string">"product"</span>,</span><br><span class="line">            <span class="string">"position_key"</span>: <span class="string">"save"</span>,</span><br><span class="line">            <span class="string">"small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_small_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"oss_big_image_path"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"image_paths"</span>: <span class="string">"/upload/official/image/201804/26/6af5aad0-242a-456d-94dc-5696899b90e4.jpg,/upload/official/image/201804/26/081ebd01-a41f-49f1-b6fe-bec82b27ffd9.jpg"</span>,</span><br><span class="line">            <span class="string">"oss_image_paths"</span>: <span class="string">"http://cdn.oss.itplus.net.cn//upload/official/image/201804/26/6af5aad0-242a-456d-94dc-5696899b90e4.jpg,http://cdn.oss.itplus.net.cn//upload/official/image/201804/26/081ebd01-a41f-49f1-b6fe-bec82b27ffd9.jpg"</span>,</span><br><span class="line">            <span class="string">"tags"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"sub_title"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"content"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_from"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"date_to"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"address"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"latitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"longitude"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"description"</span>: <span class="string">""</span></span><br><span class="line">        &#125;,</span><br><span class="line">        ......</span><br><span class="line">        ......</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>序列化和反序列化：<br>转载：<a href="https://blog.csdn.net/u013870094/article/details/82765907" target="_blank" rel="noopener">https://blog.csdn.net/u013870094/article/details/82765907</a></p>
-<p>参考文章：System.Web.Helpers.Json 与 Newtonsoft.Json 的性能对比<br>转载：<a href="https://www.cnblogs.com/dahuiyang/p/10965920.html#top" target="_blank" rel="noopener">https://www.cnblogs.com/dahuiyang/p/10965920.html#top</a></p>
+<p>调用即可（我这里的_Layout.cshtml是全局页，也就是公用的页面，所以在这里引用）</p>
+<p>参考博客：<br><a href="https://blog.csdn.net/warylee/article/details/82796288" target="_blank" rel="noopener">https://blog.csdn.net/warylee/article/details/82796288</a></p>
 
       
     </div>
@@ -421,19 +420,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/C-框架中我注意的方法/" rel="next" title="C#框架中我注意的方法">
-                <i class="fa fa-chevron-left"></i> C#框架中我注意的方法
-              </a>
+              <a href="/2019/09/23/System-Collections-Generic-List-T-类中的方法/" rel="next" title="System.Collections.Generic List<T>类中的方法">
+                <i class="fa fa-chevron-left"></i> System.Collections.Generic List<t>类中的方法
+              </t></a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/23/System-Collections-Generic-List-T-类中的方法/" rel="prev" title="System.Collections.Generic List<T>类中的方法">
-                System.Collections.Generic List<t>类中的方法 <i class="fa fa-chevron-right"></i>
-              </t></a>
             
           </div>
         </div>
