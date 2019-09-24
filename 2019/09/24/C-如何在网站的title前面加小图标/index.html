@@ -90,8 +90,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.ibb.co/s2F1hGp/935400c0cc479d13e3b1a9e975ede01.png">
 <meta property="og:image" content="https://i.ibb.co/hfpVR1B/ac3042c4099b5755c7ff3b4dec8e2f7.png">
-<meta property="og:image" content="https://i.ibb.co/mhVjwmK/e9dbc572fb91bd1c39ed96fcfaa8a48.png">
-<meta property="og:updated_time" content="2019-09-24T02:43:19.940Z">
+<meta property="og:image" content="https://i.ibb.co/wyFwqrs/fca4b9f8511d586717aba5afeaba7b9.png">
+<meta property="og:updated_time" content="2019-09-24T02:54:53.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#如何在网站的title前面加小图标">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -350,7 +350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  105字
+                  381字
                 </span>
               
 
@@ -390,7 +390,10 @@
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
 <p>如下图，如何在标题前添加logo呢？<br><img src="https://i.ibb.co/s2F1hGp/935400c0cc479d13e3b1a9e975ede01.png" alt="1"></p>
-<p>解决如下：<br><img src="https://i.ibb.co/hfpVR1B/ac3042c4099b5755c7ff3b4dec8e2f7.png" alt="2"><br><img src="https://i.ibb.co/mhVjwmK/e9dbc572fb91bd1c39ed96fcfaa8a48.png" alt="3"></p>
+<p>解决如下：<br><img src="https://i.ibb.co/hfpVR1B/ac3042c4099b5755c7ff3b4dec8e2f7.png" alt="2"><br><img src="https://i.ibb.co/wyFwqrs/fca4b9f8511d586717aba5afeaba7b9.png" alt="3"></p>
+<p>_Layout.cshtml:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"圣杰加安，如竹环保科技，不锈钢波纹管， 可弯试不锈钢管，可弯试不锈钢波纹管，316L不锈钢，304不锈钢，316L不锈钢波纹家装管，不锈钢管，过滤器，分水器，接头，双密封接头，快接，直插快接，燃气管，地暖管，不锈钢水管（家装管），不锈钢波纹水管"</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"description"</span> content=<span class="string">"圣杰加安，如竹环保科技，不锈钢波纹管， 可弯试不锈钢管，可弯试不锈钢波纹管，316L不锈钢，304不锈钢，316L不锈钢波纹家装管，不锈钢管，过滤器，分水器，接头，双密封接头，快接，直插快接，燃气管，地暖管，不锈钢水管（家装管），不锈钢波纹水管"</span> /&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"/favicon.ico"</span> /&gt;</span><br><span class="line">     &lt;title&gt;圣杰加安@(!string.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : "")&lt;/title&gt;</span><br><span class="line"><span class="meta">     @Html.Partial("_LayoutHead")</span></span><br><span class="line"><span class="meta">    @RenderSection("head", false)</span></span><br><span class="line">    &lt;link rel=<span class="string">"stylesheet"</span> type=<span class="string">"text/css"</span> href=<span class="string">"~/css/share.css"</span> /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">    ......</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+
 <p>注：先在根目录下将想要添加的logo重命名为favicon.ico文件，然后用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"shortcut icon"</span> href=<span class="string">"/favicon.ico"</span> /&gt;</span><br></pre></td></tr></table></figure>
 
@@ -551,7 +554,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">18.4k</span>
+    <span title="总字数">18.7k</span>
 
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
