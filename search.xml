@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[String.Split Method]]></title>
+    <url>%2F2019%2F09%2F24%2FString-Split-Method%2F</url>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 待整理： 123456789if (!string.IsNullOrEmpty(edit.TagIds)) &#123; var tagIds = edit.TagIds.Split(new string[] &#123; "," &#125;, StringSplitOptions.RemoveEmptyEntries); var ids = Array.ConvertAll(tagIds, r =&gt; int.Parse(r)); foreach (var id in ids) &#123; caseTagRep.AddEntityToContext(new CaseTag &#123; ClientId = clientId, DateCreated = DateTime.Now, CaseId = edit.CaseId, TagId = id &#125;); &#125; &#125; 1var tagIds = edit.TagIds.Split(new string[] &#123; "," &#125;, StringSplitOptions.RemoveEmptyEntries); 参考文档：https://docs.microsoft.com/zh-tw/dotnet/api/system.string.split?redirectedfrom=MSDN&amp;view=netframework-4.7.2]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C#如何在网站的title前面加小图标]]></title>
     <url>%2F2019%2F09%2F24%2FC-%E5%A6%82%E4%BD%95%E5%9C%A8%E7%BD%91%E7%AB%99%E7%9A%84title%E5%89%8D%E9%9D%A2%E5%8A%A0%E5%B0%8F%E5%9B%BE%E6%A0%87%2F</url>
     <content type="text"><![CDATA[请点击阅读全文浏览详细信息 如下图，如何在标题前添加logo呢？ 解决如下： _Layout.cshtml: 123456789101112131415&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="utf-8" /&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;meta name="keywords" content="圣杰加安，如竹环保科技，不锈钢波纹管， 可弯试不锈钢管，可弯试不锈钢波纹管，316L不锈钢，304不锈钢，316L不锈钢波纹家装管，不锈钢管，过滤器，分水器，接头，双密封接头，快接，直插快接，燃气管，地暖管，不锈钢水管（家装管），不锈钢波纹水管" /&gt; &lt;meta name="description" content="圣杰加安，如竹环保科技，不锈钢波纹管， 可弯试不锈钢管，可弯试不锈钢波纹管，316L不锈钢，304不锈钢，316L不锈钢波纹家装管，不锈钢管，过滤器，分水器，接头，双密封接头，快接，直插快接，燃气管，地暖管，不锈钢水管（家装管），不锈钢波纹水管" /&gt; &lt;link rel="shortcut icon" href="/favicon.ico" /&gt; &lt;title&gt;圣杰加安@(!string.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : "")&lt;/title&gt; @Html.Partial("_LayoutHead") @RenderSection("head", false) &lt;link rel="stylesheet" type="text/css" href="~/css/share.css" /&gt;&lt;/head&gt; ...... ...... 注：先在根目录下将想要添加的logo重命名为favicon.ico文件，然后用 1&lt;link rel="shortcut icon" href="/favicon.ico" /&gt; 调用即可（我这里的_Layout.cshtml是全局页，也就是公用的页面，所以在这里引用） 参考博客：https://blog.csdn.net/warylee/article/details/82796288]]></content>
