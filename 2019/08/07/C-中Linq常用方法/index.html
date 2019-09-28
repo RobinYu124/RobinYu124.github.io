@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-12T08:10:47.063Z">
+<meta property="og:updated_time" content="2019-09-28T06:45:57.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#中Linq常用方法">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -449,9 +449,9 @@
 <p>TakeWhile—从数据源(序列)的开头开始提取满足指定条件的元素。然后返回有这些元素组成的序列。</p>
 <p>ThenBy—根据次要关键字对序列中的元素按升序排序。</p>
 <p>ThereByDescending—根据次要关键字对序列中的元素按降序排列。</p>
-<p>ToArray—将IEnumerable<t>类型的序列转换为T[]类型的数组。</t></p>
+<p>ToArray—将IEnumerable<t>或者IQueryable<t>类型的序列转换为T[]类型的数组。</t></t></p>
 <p>ToDictionary—按照键值将序列中的元素放入一对一的字典序列(Dictionary&lt;TKey,TValue&gt;)中。</p>
-<p>ToList—将IEnumerable<t>类型的序列转换为List<t>类型的序列。</t></t></p>
+<p>ToList—将IEnumerable<t>或者IQueryable<t>类型的序列转换为List<t>类型的序列。</t></t></t></p>
 <p>ToLookup—按照键值将序列中的元素放入一对多的字典序列(Lookup&lt;TKey,TValue&gt;)中。</p>
 <p>Union—可以计算两个集合的并集(由在一个集合中，或者在另外一个集合中的元素组成的集合)</p>
 <p>Where—处理由逻辑运算符(如逻辑”与”、逻辑”或”)组成的逻辑表达式，并从数据源中筛选数据。</p>
@@ -486,8 +486,8 @@
 <p>　　AsEnumerable ： 可以将数据源转换成IEnumerable<t>或者IEnumerable的集合序列。</t></p>
 <p>　　Cast ： 将序列中元素的类型转换为指定类型。</p>
 <p>　　OfType ：从序列中筛选一个指定类型的元素，并构成一个序列。</p>
-<p>　　ToArray ： 将一个IEnumerable<t>的序列转换成一个T[]类型的一个数组。</t></p>
-<p>　　ToList ： 将一个IEnumerable<t>的序列转换成一个List<t>类型的一个序列。</t></t></p>
+<p>　　ToArray ： 将一个IEnumerable<t>或者IQueryable<t>的序列转换成一个T[]类型的一个数组。</t></t></p>
+<p>　　ToList ： 将一个IEnumerable<t>或者IQueryable<t>的序列转换成一个List<t>类型的一个序列。</t></t></t></p>
 <p>　　ToDictionary ： 按照键值将序列中的元素放入到一对一的字典序列中。</p>
 <p>　　ToLookup ：按照键值将序列中的元素放入到一对多的字典序列中。</p>
 <h2 id="限定符操作"><a href="#限定符操作" class="headerlink" title="限定符操作"></a>限定符操作</h2><p>　　All</p>
