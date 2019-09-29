@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[jquery值得注意的例子]]></title>
     <url>%2F2019%2F09%2F29%2Fjquery%E5%80%BC%E5%BE%97%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BE%8B%E5%AD%90%2F</url>
-    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 11. $('#id' + $('#groupId').val()).replaceWith(result); 123456789101112 2. this.addServiceTypeCallBack = function (result) &#123; if (typeof (result) == "string") &#123; //这一行比较生疏 layer.closeAll("page"); $('.empty').remove(); $('.ip_t_body').prepend(result); itplus.toast('添加成功'); &#125; else &#123; itplus.toast(result.message, 2); &#125; &#125;说明：typeof 可以用来检测给定变量的数据类型 1234563. (1) itplus.ajaxGet('/product/GetProductTypeByGroup?groupId=' + groupId, function (result)(2) itplus.ajaxPost('/entrymanagement/getentryeditview', &#123; shortListId: id &#125;, function (result)说明：itplus.ajaxGet与tplus.ajaxPost]]></content>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 121.$('#id' + $('#groupId').val()).replaceWith(result); 123456789101112132. this.addServiceTypeCallBack = function (result) &#123; if (typeof (result) == "string") &#123; //这一行比较生疏 layer.closeAll("page"); $('.empty').remove(); $('.ip_t_body').prepend(result); itplus.toast('添加成功'); &#125; else &#123; itplus.toast(result.message, 2); &#125; &#125;说明：typeof 可以用来检测给定变量的数据类型 1234563. (1) itplus.ajaxGet('/product/GetProductTypeByGroup?groupId=' + groupId, function (result)(2) itplus.ajaxPost('/entrymanagement/getentryeditview', &#123; shortListId: id &#125;, function (result)说明：itplus.ajaxGet与tplus.ajaxPost]]></content>
   </entry>
   <entry>
     <title><![CDATA[C#框架如何同时传入地址和经纬度]]></title>

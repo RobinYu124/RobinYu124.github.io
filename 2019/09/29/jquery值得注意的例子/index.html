@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T06:24:43.344Z">
+<meta property="og:updated_time" content="2019-09-29T06:34:14.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery值得注意的例子">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  107字
+                  106字
                 </span>
               
 
@@ -406,9 +406,9 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> $(<span class="string">'#id'</span> + $(<span class="string">'#groupId'</span>).val()).replaceWith(result);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line">$(<span class="string">'#id'</span> + $(<span class="string">'#groupId'</span>).val()).replaceWith(result);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">2.</span> this.addServiceTypeCallBack = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (typeof (result) == <span class="string">"string"</span>) &#123;   //这一行比较生疏</span><br><span class="line">            layer.closeAll(<span class="string">"page"</span>);</span><br><span class="line">            $(<span class="string">'.empty'</span>).remove();</span><br><span class="line">            $(<span class="string">'.ip_t_body'</span>).prepend(result);</span><br><span class="line">            itplus.toast(<span class="string">'添加成功'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">说明：typeof 可以用来检测给定变量的数据类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span> </span><br><span class="line">this.addServiceTypeCallBack = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (typeof (result) == <span class="string">"string"</span>) &#123;   //这一行比较生疏</span><br><span class="line">            layer.closeAll(<span class="string">"page"</span>);</span><br><span class="line">            $(<span class="string">'.empty'</span>).remove();</span><br><span class="line">            $(<span class="string">'.ip_t_body'</span>).prepend(result);</span><br><span class="line">            itplus.toast(<span class="string">'添加成功'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">说明：typeof 可以用来检测给定变量的数据类型</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span> </span><br><span class="line">(<span class="number">1</span>) itplus.ajaxGet(<span class="string">'/product/GetProductTypeByGroup?groupId='</span> + groupId, function (result)</span><br><span class="line"></span><br><span class="line">(<span class="number">2</span>) itplus.ajaxPost(<span class="string">'/entrymanagement/getentryeditview'</span>, &#123; shortListId: id &#125;, function (result)</span><br><span class="line"></span><br><span class="line">说明：itplus.ajaxGet与tplus.ajaxPost</span><br></pre></td></tr></table></figure>
       
