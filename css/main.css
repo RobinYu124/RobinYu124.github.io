@@ -1942,7 +1942,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #259cff;
+  background: #2bc1cd;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3034,7 +3034,7 @@ hr {
   }
 }
 body {
-  background: url("https://source.unsplash.com/random/1600x900");
+  background: url("https://source.unsplash.com/@bingo330/collections/1600x900");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
