@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ASP.NET Razor语法]]></title>
+    <url>%2F2019%2F10%2F08%2FASP-NET-Razor%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 待概括 参考链接：https://www.runoob.com/aspnet/razor-syntax.html]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C#中的装箱和拆箱]]></title>
     <url>%2F2019%2F10%2F08%2FC-%E4%B8%AD%E7%9A%84%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1%2F</url>
     <content type="text"><![CDATA[请点击阅读全文浏览详细信息 待概括 参考文档：https://yq.aliyun.com/articles/693430https://docs.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/types-and-variableshttps://www.cnblogs.com/zjtao/p/11345442.html]]></content>
