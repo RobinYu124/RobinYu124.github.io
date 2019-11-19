@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[待整理]]></title>
+    <url>%2F2019%2F11%2F19%2F%E5%BE%85%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"><![CDATA[请点击阅读全文浏览详细信息 itplus.zhimafen = new function () { this.CallBack = function (result) { if (result.success) { layer.msg(‘提交成功’, { icon: 1, time: 1000 }, function () { window.location = ‘/zhimafendeposit/index’; }); } else { layer.msg(result.message, { icon: 2 }); } } this.getZhiMaFenAddView = function () { itplus.ajaxPost(&apos;/zhimafendeposit/add&apos;, null, function (result) { layer.open({ type: 1, title: &quot;添加芝麻分&quot;, skin: &apos;layui-layer-rim&apos;, area: [&apos;550px&apos;, &apos;380px&apos;], content: result }); }); } this.addCallBack = function (result) { if (result.success) { layer.closeAll(&quot;page&quot;); itplus.toast(&quot;添加成功&quot;); window.location.reload(); } else { itplus.toast(result.message, 2); } } this.getZhiMaFenEditView = function (id) { itplus.ajaxPost(&apos;/zhimafendeposit/edit&apos;, { id: id }, function (result) { layer.open({ type: 1, title: &quot;修改芝麻分&quot;, skin: &apos;layui-layer-rim&apos;, area: [&apos;550px&apos;, &apos;380px&apos;], content: result }); }); } this.editCallBack = function (result) { if (result.success) { layer.closeAll(&quot;page&quot;); itplus.toast(&quot;修改成功&quot;); window.location.reload(); } else { itplus.toast(result.message, 2); } } this.delete = function (id) { layer.confirm(&quot;确认这条记录吗&quot;, { btn: [&quot;确定&quot;, &quot;取消&quot;] }, function () { itplus.ajaxPost(&apos;/zhimafendeposit/delete&apos;, { id: id }, function () { }); layer.closeAll(); itplus.toast(&quot;已删除&quot;); window.location.reload(); }) }}]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[jquery validate验证]]></title>
     <url>%2F2019%2F11%2F11%2Fjquery-validate%E9%AA%8C%E8%AF%81%2F</url>
     <content type="text"><![CDATA[请点击阅读全文浏览详细信息 待概括 参考链接：https://blog.csdn.net/weixin_44540343/article/details/95042207]]></content>

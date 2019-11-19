@@ -83,14 +83,14 @@
 
 <meta name="description" content="请点击阅读全文浏览详细信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ASP.NET Razor语法">
-<meta property="og:url" content="http://yoursite.com/2019/10/08/ASP-NET-Razor语法/index.html">
+<meta property="og:title" content="待整理">
+<meta property="og:url" content="http://yoursite.com/2019/11/19/待整理/index.html">
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-08T09:30:15.520Z">
+<meta property="og:updated_time" content="2019-11-19T05:38:36.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ASP.NET Razor语法">
+<meta name="twitter:title" content="待整理">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/08/ASP-NET-Razor语法/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/19/待整理/">
 
 
 
 
 
-  <title>ASP.NET Razor语法 | Robin Yu's Blog</title>
+  <title>待整理 | Robin Yu's Blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/ASP-NET-Razor语法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/待整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Robin Yu">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ASP.NET Razor语法</h1>
+          <h1 class="post-title" itemprop="name headline">待整理</h1>
         
 
         <div class="post-meta">
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于&#58;</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T17:29:07+08:00">
-                2019-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T13:37:55+08:00">
+                2019-11-19
               </time>
             
 
@@ -339,8 +339,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
 				<span class="post-meta-item-text">评论数&#58;</span>
-                <a href="/2019/10/08/ASP-NET-Razor语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/08/ASP-NET-Razor语法/" itemprop="commentCount"></span>
+                <a href="/2019/11/19/待整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/19/待整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  28字
+                  230字
                 </span>
               
 
@@ -406,9 +406,61 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
+<p>itplus.zhimafen = new function () {<br>    this.CallBack = function (result) {<br>        if (result.success) {<br>            layer.msg(‘提交成功’, { icon: 1, time: 1000 }, function () { window.location = ‘/zhimafendeposit/index’; });<br>        } else {<br>            layer.msg(result.message, { icon: 2 });<br>        }<br>    }</p>
+<pre><code>this.getZhiMaFenAddView = function () {
+    itplus.ajaxPost(&apos;/zhimafendeposit/add&apos;, null, function (result) {
+        layer.open({
+            type: 1,
+            title: &quot;添加芝麻分&quot;,
+            skin: &apos;layui-layer-rim&apos;,
+            area: [&apos;550px&apos;, &apos;380px&apos;],
+            content: result
+        });
+    });
+}
 
-<p>待概括</p>
-<p>参考链接：<br><a href="https://www.runoob.com/aspnet/razor-syntax.html" target="_blank" rel="noopener">https://www.runoob.com/aspnet/razor-syntax.html</a></p>
+this.addCallBack = function (result) {
+    if (result.success) {
+        layer.closeAll(&quot;page&quot;);
+        itplus.toast(&quot;添加成功&quot;);
+        window.location.reload();
+    }
+    else {
+        itplus.toast(result.message, 2);
+    }
+}
+
+this.getZhiMaFenEditView = function (id) {
+    itplus.ajaxPost(&apos;/zhimafendeposit/edit&apos;, { id: id }, function (result) {
+        layer.open({
+            type: 1,
+            title: &quot;修改芝麻分&quot;,
+            skin: &apos;layui-layer-rim&apos;,
+            area: [&apos;550px&apos;, &apos;380px&apos;],
+            content: result
+        });
+    });
+}
+
+this.editCallBack = function (result) {
+    if (result.success) {
+        layer.closeAll(&quot;page&quot;);
+        itplus.toast(&quot;修改成功&quot;);
+        window.location.reload();
+    }
+    else {
+        itplus.toast(result.message, 2);
+    }
+}
+
+this.delete = function (id) {
+    layer.confirm(&quot;确认这条记录吗&quot;, { btn: [&quot;确定&quot;, &quot;取消&quot;] }, function () {
+        itplus.ajaxPost(&apos;/zhimafendeposit/delete&apos;, { id: id }, function () { });
+        layer.closeAll();
+        itplus.toast(&quot;已删除&quot;);
+        window.location.reload();
+    })
+}</code></pre><p>}</p>
 
       
     </div>
@@ -462,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/08/C-中的装箱和拆箱/" rel="next" title="C#中的装箱和拆箱">
-                <i class="fa fa-chevron-left"></i> C#中的装箱和拆箱
+              <a href="/2019/11/11/jquery-validate验证/" rel="next" title="jquery validate验证">
+                <i class="fa fa-chevron-left"></i> jquery validate验证
               </a>
             
           </div>
@@ -471,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/11/jquery-validate验证/" rel="prev" title="jquery validate验证">
-                jquery validate验证 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
