@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Robin Yu&#39;s Blog">
 <meta property="og:description" content="请点击阅读全文浏览详细信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-19T05:38:36.120Z">
+<meta property="og:updated_time" content="2019-11-19T05:44:23.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="待整理">
 <meta name="twitter:description" content="请点击阅读全文浏览详细信息">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  230字
+                  242字
                 </span>
               
 
@@ -406,62 +406,7 @@
       
         <p>请点击阅读全文浏览详细信息</p>
 <a id="more"></a>
-<p>itplus.zhimafen = new function () {<br>    this.CallBack = function (result) {<br>        if (result.success) {<br>            layer.msg(‘提交成功’, { icon: 1, time: 1000 }, function () { window.location = ‘/zhimafendeposit/index’; });<br>        } else {<br>            layer.msg(result.message, { icon: 2 });<br>        }<br>    }</p>
-<pre><code>this.getZhiMaFenAddView = function () {
-    itplus.ajaxPost(&apos;/zhimafendeposit/add&apos;, null, function (result) {
-        layer.open({
-            type: 1,
-            title: &quot;添加芝麻分&quot;,
-            skin: &apos;layui-layer-rim&apos;,
-            area: [&apos;550px&apos;, &apos;380px&apos;],
-            content: result
-        });
-    });
-}
-
-this.addCallBack = function (result) {
-    if (result.success) {
-        layer.closeAll(&quot;page&quot;);
-        itplus.toast(&quot;添加成功&quot;);
-        window.location.reload();
-    }
-    else {
-        itplus.toast(result.message, 2);
-    }
-}
-
-this.getZhiMaFenEditView = function (id) {
-    itplus.ajaxPost(&apos;/zhimafendeposit/edit&apos;, { id: id }, function (result) {
-        layer.open({
-            type: 1,
-            title: &quot;修改芝麻分&quot;,
-            skin: &apos;layui-layer-rim&apos;,
-            area: [&apos;550px&apos;, &apos;380px&apos;],
-            content: result
-        });
-    });
-}
-
-this.editCallBack = function (result) {
-    if (result.success) {
-        layer.closeAll(&quot;page&quot;);
-        itplus.toast(&quot;修改成功&quot;);
-        window.location.reload();
-    }
-    else {
-        itplus.toast(result.message, 2);
-    }
-}
-
-this.delete = function (id) {
-    layer.confirm(&quot;确认这条记录吗&quot;, { btn: [&quot;确定&quot;, &quot;取消&quot;] }, function () {
-        itplus.ajaxPost(&apos;/zhimafendeposit/delete&apos;, { id: id }, function () { });
-        layer.closeAll();
-        itplus.toast(&quot;已删除&quot;);
-        window.location.reload();
-    })
-}</code></pre><p>}</p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">itplus.zhimafen = new function () &#123;</span><br><span class="line">    this.CallBack = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">            layer.msg(<span class="string">'提交成功'</span>, &#123; icon: <span class="number">1</span>, time: <span class="number">1000</span> &#125;, function () &#123; window.location = <span class="string">'/zhimafendeposit/index'</span>; &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            layer.msg(result.message, &#123; icon: <span class="number">2</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.getZhiMaFenAddView = function () &#123;</span><br><span class="line">        itplus.ajaxPost(<span class="string">'/zhimafendeposit/add'</span>, null, function (result) &#123;</span><br><span class="line">            layer.open(&#123;</span><br><span class="line">                type: <span class="number">1</span>,</span><br><span class="line">                title: <span class="string">"添加芝麻分"</span>,</span><br><span class="line">                skin: <span class="string">'layui-layer-rim'</span>,</span><br><span class="line">                area: [<span class="string">'550px'</span>, <span class="string">'380px'</span>],</span><br><span class="line">                content: result</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.addCallBack = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">            layer.closeAll(<span class="string">"page"</span>);</span><br><span class="line">            itplus.toast(<span class="string">"添加成功"</span>);</span><br><span class="line">            window.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.getZhiMaFenEditView = function (id) &#123;</span><br><span class="line">        itplus.ajaxPost(<span class="string">'/zhimafendeposit/edit'</span>, &#123; id: id &#125;, function (result) &#123;</span><br><span class="line">            layer.open(&#123;</span><br><span class="line">                type: <span class="number">1</span>,</span><br><span class="line">                title: <span class="string">"修改芝麻分"</span>,</span><br><span class="line">                skin: <span class="string">'layui-layer-rim'</span>,</span><br><span class="line">                area: [<span class="string">'550px'</span>, <span class="string">'380px'</span>],</span><br><span class="line">                content: result</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.editCallBack = function (result) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.success) &#123;</span><br><span class="line">            layer.closeAll(<span class="string">"page"</span>);</span><br><span class="line">            itplus.toast(<span class="string">"修改成功"</span>);</span><br><span class="line">            window.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            itplus.toast(result.message, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.delete = function (id) &#123;</span><br><span class="line">        layer.confirm(<span class="string">"确认这条记录吗"</span>, &#123; btn: [<span class="string">"确定"</span>, <span class="string">"取消"</span>] &#125;, function () &#123;</span><br><span class="line">            itplus.ajaxPost(<span class="string">'/zhimafendeposit/delete'</span>, &#123; id: id &#125;, function () &#123; &#125;);</span><br><span class="line">            layer.closeAll();</span><br><span class="line">            itplus.toast(<span class="string">"已删除"</span>);</span><br><span class="line">            window.location.reload();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
